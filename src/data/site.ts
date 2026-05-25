@@ -8,6 +8,6 @@ export const site = {
   socials: {
     github: 'https://github.com/heytrisha',
     linkedin: 'https://www.linkedin.com/in/trishaaga',
-    behance: 'https://www.behance.net',
+    behance: 'https://www.behance.net/trishaagarwal4',
   },
 };
