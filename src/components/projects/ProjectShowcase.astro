@@ -1,0 +1,99 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { effects } from '@/data/effects';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+  basePath: string;
+}
+
+const colors = [
+  '#5eead4', // teal
+  '#c4b5fd', // violet
+  '#fdba74', // orange
+  '#f9a8d4', // pink
+  '#7dd3fc', // sky
+  '#86efac', // green
+];
+
+// configure these to tweak layout
+const MOBILE_INSET_X = '1.5rem';
+const DESKTOP_INSET_X = '20%';
+const TEXT_MAX_WIDTH = '18rem';
+
+const { projects, basePath } = Astro.props;
+const hoverClass = effects.imageHoverScale ? 'group-hover:scale-[1.03]' : '';
+---
+
+<style define:vars={{
+  mobileInsetX: MOBILE_INSET_X,
+  desktopInsetX: DESKTOP_INSET_X,
+  textMaxWidth: TEXT_MAX_WIDTH,
+}}>
+  .project-text {
+    max-width: var(--textMaxWidth);
+  }
+  .project-text-pos-right {
+    right: var(--mobileInsetX);
+    left: auto;
+    text-align: left;
+  }
+  .project-text-pos-left {
+    left: var(--mobileInsetX);
+    right: auto;
+    text-align: right;
+  }
+  @media (min-width: 1024px) {
+    .project-text-pos-right {
+      right: var(--desktopInsetX);
+      left: auto;
+      text-align: left;
+    }
+    .project-text-pos-left {
+      left: var(--desktopInsetX);
+      right: auto;
+      text-align: right;
+    }
+  }
+</style>
+
+<div>
+  {projects.map((project, index) => {
+    const isEven = index % 2 === 0;
+    const color = colors[index % colors.length];
+    const posClass = isEven ? 'project-text-pos-right' : 'project-text-pos-left';
+
+    return (
+      <div class="relative">
+        <!-- Full width image -->
+        <a
+          href={`${basePath}/projects/${project.id}`}
+          class="group block overflow-hidden rounded-2xl"
+        >
+          <img
+            src={project.data.thumbnail}
+            alt={project.data.title}
+            class={`aspect-video w-full object-cover transition-transform duration-700 ease-out will-change-transform ${hoverClass}`}
+            loading="lazy"
+            onerror={`this.onerror=null;this.src='${basePath}/images/projects/placeholder.svg'`}
+          />
+        </a>
+
+        <!-- Text overlay -->
+        <div class={`project-text absolute top-1/2 z-10 -translate-y-1/2 ${posClass}`}>
+          <a href={`${basePath}/projects/${project.id}`} class="group block">
+            <h3
+              class="text-2xl font-semibold tracking-tight lowercase transition-opacity group-hover:opacity-80 lg:text-4xl"
+              style={`color: ${color};`}
+            >
+              {project.data.title.toLowerCase()}
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground lowercase transition-opacity group-hover:opacity-80 lg:text-base">
+              {project.data.description.toLowerCase()}
+            </p>
+          </a>
+        </div>
+      </div>
+    );
+  })}
+</div>
