@@ -1,6 +1,6 @@
 # heytrisha.github.io
 
-Personal portfolio built with Astro, React, MDX, and Tailwind CSS v4.
+Personal site built with Astro, React, MDX, and Tailwind CSS v4.
 
 ## Initial Setup
 
@@ -15,11 +15,12 @@ make dev
 ```
 The site will be available at http://localhost:4321.
 
-## Cleanup
+## Skills
 
-If the dev server is acting up or builds seem off:
+This project includes AI-assisted skills to help non-technical contributors work safely with the codebase. Invoke skills in opencode with `/<skill-name>`. Run `/skills` to see all available skills.
 
-```bash
-make clean
-```
-Then run make install and make dev again.
+### `/git` — Safe Git Operations
+
+Handles common Git workflows with safety checks at every step. You can save work, push changes, start new features, sync with the latest code, deploy, check status, or fix problems, just describe what you want to do in plain English.
+
+Example: type `/git` and say "I want to build a new feature", "save my work" or "push to GitHub".
