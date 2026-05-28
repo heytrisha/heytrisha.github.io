@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { effects } from '@/data/effects';
+import config from '@/config/features.json';
 
 interface Props {
   projects: CollectionEntry<'projects'>[];
@@ -22,7 +22,7 @@ const DESKTOP_INSET_X = '20%';
 const TEXT_MAX_WIDTH = '18rem';
 
 const { projects, basePath } = Astro.props;
-const hoverClass = effects.imageHoverScale ? 'group-hover:scale-[1.03]' : '';
+const hoverClass = config.imageHoverScale ? 'group-hover:scale-[1.03]' : '';
 ---
 
 <style define:vars={{
