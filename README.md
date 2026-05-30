@@ -2,13 +2,6 @@
 
 Personal site built with Astro, React, MDX, and Tailwind CSS v4.
 
-## Table of Contents
-
-- [Initial Setup](#initial-setup)
-- [Run Development Server](#run-development-server)
-- [Adding Projects](#adding-projects)
-- [AI Assisted Development](#ai-assisted-development)
-
 ## Initial Setup
 
 ```bash
