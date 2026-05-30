@@ -2,6 +2,8 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 
+const codedModules = import.meta.glob('/src/projects/*/index.astro', { eager: true });
+
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
   return projects.map((project) => ({
@@ -12,48 +14,71 @@ export async function getStaticPaths() {
 
 const basePath = import.meta.env.BASE_PATH || '';
 const { project } = Astro.props;
-const { Content } = await render(project);
+
+let Content = null;
+if (project.data.type === 'case-study') {
+  const rendered = await render(project);
+  Content = rendered.Content;
+}
+
+const modulePath = `/src/projects/${project.id}/index.astro`;
+const CodedComponent = project.data.type === 'coded'
+  ? (codedModules[modulePath] as any)?.default
+  : null;
+
+const showHeader = !project.data.hideDefaultHeader;
+const containerClass = project.data.type === 'coded' ? 'max-w-5xl' : 'max-w-3xl';
 ---
 
 <Layout title={project.data.title} description={project.data.description}>
   <article class="px-6 py-24">
-    <div class="mx-auto max-w-3xl">
-      <!-- Back link -->
-      <a
-        href={`${basePath}/#work`}
-        class="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-      >
-        ← Back to work
-      </a>
+    <div class={`mx-auto ${containerClass}`}>
+      {showHeader && (
+        <>
+          <!-- Back link -->
+          <a
+            href={`${basePath}/#work`}
+            class="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            ← Back to work
+          </a>
 
-      <!-- Header -->
-      <header class="mb-12">
-        <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
-          {project.data.title}
-        </h1>
-        <p class="mt-4 text-lg text-muted-foreground">
-          {project.data.description}
-        </p>
-        <div class="mt-6 flex flex-wrap gap-2">
-          {project.data.tags.map((tag: string) => (
-            <span class="rounded-md bg-muted px-2.5 py-1 text-xs text-muted-foreground">
-              {tag}
-            </span>
-          ))}
-        </div>
-        {project.data.heroImage && (
-          <img
-            src={project.data.heroImage}
-            alt={project.data.title}
-            class="mt-8 aspect-video w-full rounded-xl object-cover"
-          />
-        )}
-      </header>
+          <!-- Header -->
+          <header class="mb-12">
+            <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
+              {project.data.title}
+            </h1>
+            <p class="mt-4 text-lg text-muted-foreground">
+              {project.data.description}
+            </p>
+            <div class="mt-6 flex flex-wrap gap-2">
+              {project.data.tags.map((tag: string) => (
+                <span class="rounded-md bg-muted px-2.5 py-1 text-xs text-muted-foreground">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            {project.data.heroImage && (
+              <img
+                src={project.data.heroImage}
+                alt={project.data.title}
+                class="mt-8 aspect-video w-full rounded-xl object-cover"
+              />
+            )}
+          </header>
+        </>
+      )}
 
       <!-- Content -->
-      <div class="prose prose-invert max-w-none">
-        <Content />
-      </div>
+      {project.data.type === 'case-study' && Content ? (
+        <div class="prose prose-invert max-w-none">
+          <Content />
+        </div>
+      ) : CodedComponent ? (
+        <CodedComponent />
+      ) : (
+        <p class="text-muted-foreground">Project not found.</p>
+      )}
     </div>
   </article>
 </Layout>

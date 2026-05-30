@@ -17,7 +17,7 @@ const projects = defineCollection({
     order: z.number().default(0),
     client: z.string().optional(),
     year: z.number(),
-    codedProjectSlug: z.string().optional(),
+    hideDefaultHeader: z.boolean().default(false),
   }),
 });
 
