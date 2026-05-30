@@ -2,6 +2,13 @@
 
 Personal site built with Astro, React, MDX, and Tailwind CSS v4.
 
+## Table of Contents
+
+- [Initial Setup](#initial-setup)
+- [Run Development Server](#run-development-server)
+- [Adding Projects](#adding-projects)
+- [AI Assisted Development](#ai-assisted-development)
+
 ## Initial Setup
 
 ```bash
@@ -13,9 +20,14 @@ make install
 ```bash
 make dev
 ```
+
 The site will be available at http://localhost:4321.
 
-## Skills
+## Adding Projects
+
+See [NEW_PROJECT_GUIDE.md](NEW_PROJECT_GUIDE.md) for step-by-step instructions on adding new case studies or coded projects.
+
+## AI Assisted Development
 
 This project includes AI-assisted skills to help non-technical contributors work safely with the codebase. Invoke skills in opencode with `/<skill-name>`. Run `/skills` to see all available skills.
 

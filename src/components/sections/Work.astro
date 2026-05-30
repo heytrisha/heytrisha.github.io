@@ -6,6 +6,7 @@ const basePath = import.meta.env.BASE_PATH || '';
 let projects: Awaited<ReturnType<typeof getCollection<'projects'>>> = [];
 try {
   projects = await getCollection('projects');
+  projects = projects.filter((p) => p.data.featured);
   projects.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
 } catch {
   // No projects yet

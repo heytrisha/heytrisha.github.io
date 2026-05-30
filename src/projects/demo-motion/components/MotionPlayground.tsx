@@ -236,58 +236,7 @@ function OrchestratedSequence() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  6. Layout Expand / Collapse                                         */
-/* ------------------------------------------------------------------ */
-function LayoutExpandCards() {
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-  const items = [
-    { id: 'a', title: 'Alpha', color: 'bg-chart-1' },
-    { id: 'b', title: 'Beta', color: 'bg-chart-3' },
-    { id: 'c', title: 'Gamma', color: 'bg-chart-5' },
-  ];
-
-  return (
-    <section className="space-y-4">
-      <h2 className="text-xl font-semibold">6. Layout Expand Cards</h2>
-      <p className="text-sm text-muted-foreground">
-        Click a card to see it smoothly expand while siblings reflow.
-      </p>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        {items.map((item) => (
-          <motion.div
-            key={item.id}
-            layout
-            onClick={() => setSelectedId(selectedId === item.id ? null : item.id)}
-            className={`cursor-pointer rounded-xl p-6 text-sm font-medium text-background ${item.color}`}
-            initial={{ borderRadius: 12 }}
-            animate={{
-              gridColumn: selectedId === item.id ? '1 / -1' : 'auto',
-              height: selectedId === item.id ? 192 : 128,
-            }}
-            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-          >
-            <motion.h3 layout="position" className="text-lg font-bold">
-              {item.title}
-            </motion.h3>
-            {selectedId === item.id && (
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 0.9, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="mt-2 text-sm"
-              >
-                Expanded detail content appears here with layout-driven transitions.
-              </motion.p>
-            )}
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  7. SVG Path Draw                                                    */
+/*  6. SVG Path Draw                                                    */
 /* ------------------------------------------------------------------ */
 function SvgPathDraw() {
   const ref = useRef<HTMLDivElement>(null);
@@ -295,7 +244,7 @@ function SvgPathDraw() {
 
   return (
     <section className="space-y-4" ref={ref}>
-      <h2 className="text-xl font-semibold">7. SVG Path Draw</h2>
+      <h2 className="text-xl font-semibold">6. SVG Path Draw</h2>
       <p className="text-sm text-muted-foreground">
         An SVG stroke animates from 0% to 100% length as it enters the viewport.
       </p>
@@ -346,7 +295,7 @@ function MagneticButton() {
 
   return (
     <section className="space-y-4">
-      <h2 className="text-xl font-semibold">8. Magnetic Button</h2>
+      <h2 className="text-xl font-semibold">7. Magnetic Button</h2>
       <p className="text-sm text-muted-foreground">
         Move your cursor near the button — it subtly pulls toward you via spring physics.
       </p>
@@ -371,7 +320,7 @@ function MagneticButton() {
 function MorphingBlob() {
   return (
     <section className="space-y-4">
-      <h2 className="text-xl font-semibold">9. Morphing Blob</h2>
+      <h2 className="text-xl font-semibold">8. Morphing Blob</h2>
       <p className="text-sm text-muted-foreground">
         A single shape continuously morphing its border-radius.
       </p>
@@ -407,7 +356,6 @@ export default function MotionPlayground() {
       <DraggableBox />
       <ParallaxLayers />
       <OrchestratedSequence />
-      <LayoutExpandCards />
       <SvgPathDraw />
       <MagneticButton />
       <MorphingBlob />
