@@ -159,6 +159,9 @@ const projects = defineCollection({
 export const collections = { projects };
 ```
 
+- `thumbnail` stores a relative path to an image in `src/assets/images/`. Astro's `<Image />` component optimizes these at build time, converting PNG/JPG to WebP/AVIF and generating responsive `srcset`.
+- Never place project thumbnails in `public/images/` — those are served as-is with no optimization.
+
 ---
 
 ## R.5 Font Loading

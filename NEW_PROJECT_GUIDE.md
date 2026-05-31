@@ -26,8 +26,8 @@ title: "Project Name"
 description: "One-line summary shown in the Work grid"
 type: "case-study"
 pubDate: 2025-06-15
-thumbnail: "/images/projects/<slug>.svg"
-heroImage: "/images/projects/<slug>-hero.png"
+thumbnail: "../../assets/images/<slug>.png"
+heroImage: "../../assets/images/<slug>-hero.png"
 figmaUrl: "https://www.figma.com/file/..."
 tags: ["Fintech", "Mobile App"]
 featured: true
@@ -39,7 +39,7 @@ year: 2025
 
 ### Step 2: Add the thumbnail
 
-Add an image at `public/images/projects/<slug>.svg` (or `.png`, `.jpg`).
+Add an image at `src/assets/images/<slug>.png` (or `.jpg`, `.webp`).
 
 ### Step 3: Write the case study
 
@@ -92,7 +92,7 @@ title: "Project Name"
 description: "One-line summary shown in the Work grid"
 type: "coded"
 pubDate: 2025-06-15
-thumbnail: "/images/projects/<slug>.svg"
+thumbnail: "../../assets/images/<slug>.png"
 tags: ["Generative Art", "Canvas"]
 featured: false
 order: 2
@@ -103,7 +103,7 @@ hideDefaultHeader: false
 
 ### Step 4: Add the thumbnail
 
-Add `public/images/projects/<slug>.svg` (or `.png`, `.jpg`).
+Add `src/assets/images/<slug>.png` (or `.jpg`, `.webp`).
 
 ---
 

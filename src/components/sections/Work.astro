@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import ProjectShowcase from '@/components/projects/ProjectShowcase.astro';
+import ProjectCard from '@/components/projects/ProjectCard.astro';
 
 const basePath = import.meta.env.BASE_PATH || '';
 let projects: Awaited<ReturnType<typeof getCollection<'projects'>>> = [];
@@ -24,8 +24,12 @@ try {
   </div>
 
   {projects.length > 0 ? (
-    <div class="mx-auto max-w-7xl">
-      <ProjectShowcase projects={projects} basePath={basePath} />
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project, index) => (
+          <ProjectCard project={project} index={index} basePath={basePath} />
+        ))}
+      </div>
     </div>
   ) : (
     <div class="mx-auto max-w-6xl px-6">

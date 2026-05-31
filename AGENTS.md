@@ -35,6 +35,7 @@ Conventions, structure, and decision rules for this Astro + React + Tailwind por
 | `src/config/` | Feature flags and toggles | A feature flag or toggle |
 | `src/lib/` | Pure utility functions. No framework imports. | A pure helper function |
 | `src/styles/` | Global CSS and Tailwind v4 `@theme` tokens | Global CSS or Tailwind tokens |
+| `src/assets/` | Images optimized by Astro's `<Image />` component | An image that needs build-time optimization |
 | `public/` | Static assets served at root | A static asset |
 
 ---
