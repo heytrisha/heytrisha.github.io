@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform, useMotionValueEvent } from 'motion/react';
+import { motion, useScroll, useMotionValueEvent } from 'motion/react';
 import { useState } from 'react';
 
 const skills = [
@@ -17,6 +17,11 @@ function SkillItem({ skill, index, activeIndex }: { skill: string; index: number
 
   return (
     <motion.div
+      initial={{
+        opacity: 0.3,
+        scale: 0.95,
+        color: 'var(--muted-foreground)',
+      }}
       animate={{
         opacity: isActive ? 1 : 0.3,
         scale: isActive ? 1 : 0.95,
@@ -26,7 +31,8 @@ function SkillItem({ skill, index, activeIndex }: { skill: string; index: number
         duration: 0.5,
         ease: [0.23, 1, 0.32, 1],
       }}
-      className="py-8 text-4xl font-bold tracking-tight uppercase sm:text-5xl md:text-6xl lg:text-7xl"
+      className="py-8 text-4xl tracking-tight uppercase sm:text-5xl md:text-6xl lg:text-7xl"
+      style={{ fontFamily: "'Geist Variable', sans-serif", fontWeight: 400 }}
     >
       {skill}
     </motion.div>
