@@ -11,4 +11,10 @@ export const site = {
   },
 
   get fullName() { return `${this.firstName} ${this.lastName}`; },
+
+  get resumeDownloadName() {
+    const year = new Date().getFullYear();
+    const ext = this.resumeUrl.split('.').pop() || 'pdf';
+    return `${this.firstName}_${this.lastName}_Resume_${year}.${ext}`;
+  },
 };

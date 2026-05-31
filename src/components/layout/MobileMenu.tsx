@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { MenuIcon } from 'lucide-react';
+import { site } from '@/data/site';
 
 interface NavLink {
   label: string;
@@ -49,7 +50,7 @@ export function MobileMenu({ links, basePath }: MobileMenuProps) {
             ))}
             <a
               href={`${basePath}/resume.pdf`}
-              download
+              download={site.resumeDownloadName}
               onClick={() => setOpen(false)}
               className="rounded-lg px-4 py-3 text-lg font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
             >
