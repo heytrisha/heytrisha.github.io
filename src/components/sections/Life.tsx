@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useMotionValue, useMotionValueEvent, animate } from 'motion/react';
+import { useRef } from 'react';
+import { motion, useInView } from 'motion/react';
 
 interface PolaroidData {
   color: string;
@@ -21,22 +21,40 @@ const polaroids: PolaroidData[] = [
   { color: '#85C1E9', caption: 'Blue moments' },
 ];
 
-function getPolaroidTransform(index: number) {
-  const rotation = ((index * 7) % 9) - 4;
-  const yOffset = ((index * 13) % 41) - 20;
-  const pinX = ((index * 3) % 17) - 8;
-  const pinY = ((index * 5) % 13) - 6;
-  return { rotation, yOffset, pinX, pinY };
-}
+// Spread across a 3-column x 4-row grid with random offsets
+const positions = [
+  { col: 0, row: 0, xOff: 10, yOff: 0, rotate: -8 },
+  { col: 1, row: 0, xOff: -15, yOff: 30, rotate: 5 },
+  { col: 2, row: 0, xOff: 5, yOff: 10, rotate: -3 },
+  { col: 0, row: 1, xOff: -5, yOff: 20, rotate: 6 },
+  { col: 1, row: 1, xOff: 20, yOff: -10, rotate: -5 },
+  { col: 2, row: 1, xOff: -10, yOff: 25, rotate: 4 },
+  { col: 0, row: 2, xOff: 15, yOff: 5, rotate: -6 },
+  { col: 1, row: 2, xOff: -20, yOff: 15, rotate: 3 },
+  { col: 2, row: 2, xOff: 0, yOff: -5, rotate: -4 },
+  { col: 1, row: 3, xOff: 10, yOff: 0, rotate: 7 },
+];
 
 function Polaroid({ data, index }: { data: PolaroidData; index: number }) {
-  const { rotation, yOffset, pinX, pinY } = getPolaroidTransform(index);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const pos = positions[index % positions.length];
+
+  const left = `${(pos.col / 3) * 100 + 16 + pos.xOff}%`;
+  const top = `${(pos.row / 4) * 100 + 10 + pos.yOff}%`;
 
   return (
-    <div
-      className="shrink-0"
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40, scale: 0.85 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.08, ease: [0.23, 1, 0.32, 1] }}
+      className="absolute w-44 sm:w-48"
       style={{
-        transform: `rotate(${rotation}deg) translateY(${yOffset}px)`,
+        left,
+        top,
+        transform: `translate(-50%, -50%) rotate(${pos.rotate}deg)`,
+        zIndex: index,
       }}
     >
       <div className="relative rounded-sm bg-white shadow-xl dark:bg-neutral-100" style={{ padding: '14px 14px 20px 14px' }}>
@@ -44,8 +62,8 @@ function Polaroid({ data, index }: { data: PolaroidData; index: number }) {
         <div
           className="absolute left-1/2 z-10"
           style={{
-            top: `${12 + pinY}px`,
-            transform: `translateX(calc(-50% + ${pinX}px))`,
+            top: '8px',
+            transform: 'translateX(-50%)',
           }}
         >
           <div className="h-8 w-8 rounded-full shadow-lg" style={{
@@ -55,169 +73,37 @@ function Polaroid({ data, index }: { data: PolaroidData; index: number }) {
         </div>
 
         <div
-          className="aspect-[3/4] w-44 sm:w-52 md:w-60"
+          className="aspect-[3/4] w-full"
           style={{ backgroundColor: data.color }}
         />
         <p
-          className="mt-2 text-center text-4xl text-neutral-900 lowercase"
+          className="mt-2 text-center text-3xl text-neutral-900 lowercase"
           style={{ fontFamily: "'Caveat', cursive", fontWeight: 700, letterSpacing: '-0.02em' }}
         >
           {data.caption.toLowerCase()}
         </p>
       </div>
-    </div>
-  );
-}
-
-// Variant 1: Scroll-driven infinite carousel
-function ScrollCarousel() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [setWidth, setSetWidth] = useState(0);
-  const x = useMotionValue(-setWidth);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
-
-  // Calculate set width after mount
-  useEffect(() => {
-    if (trackRef.current) {
-      const width = trackRef.current.scrollWidth / 3;
-      setSetWidth(width);
-      x.set(-width);
-    }
-  }, []);
-
-  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    if (!setWidth) return;
-
-    const target = -setWidth - latest * setWidth;
-    let wrapped = target;
-
-    // Wrap seamlessly: jump from -2*setWidth to -setWidth
-    if (wrapped < -2 * setWidth) {
-      wrapped += setWidth;
-    }
-
-    x.set(wrapped);
-  });
-
-  const allItems = [...polaroids, ...polaroids, ...polaroids];
-
-  return (
-    <div ref={containerRef} className="relative" style={{ height: '250vh' }}>
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div
-          ref={trackRef}
-          className="flex gap-24 px-8"
-          style={{ x }}
-        >
-          {allItems.map((item, i) => (
-            <Polaroid key={i} data={item} index={i % 10} />
-          ))}
-        </motion.div>
-      </div>
-    </div>
-  );
-}
-
-// Variant 2: Drag carousel with infinite wrap
-function DragCarousel() {
-  const [setWidth, setSetWidth] = useState(0);
-  const x = useMotionValue(-setWidth);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const updateWidth = () => {
-      if (containerRef.current) {
-        const width = containerRef.current.scrollWidth / 3;
-        setSetWidth(width);
-      }
-    };
-
-    updateWidth();
-    window.addEventListener('resize', updateWidth);
-    return () => window.removeEventListener('resize', updateWidth);
-  }, []);
-
-  // Wrap position during drag
-  useMotionValueEvent(x, 'change', (latest) => {
-    if (!setWidth) return;
-
-    if (latest < -2 * setWidth) {
-      x.set(latest + setWidth);
-    } else if (latest > -setWidth) {
-      x.set(latest - setWidth);
-    }
-  });
-
-  const handleDragEnd = (_: any, info: any) => {
-    if (!setWidth) return;
-
-    const velocity = info.velocity.x;
-    const currentX = x.get();
-    const targetX = currentX + velocity * 0.2;
-
-    let wrapped = targetX;
-    while (wrapped < -2 * setWidth) wrapped += setWidth;
-    while (wrapped > -setWidth) wrapped -= setWidth;
-
-    animate(x, wrapped, {
-      type: 'spring',
-      stiffness: 300,
-      damping: 30,
-    });
-  };
-
-  const allItems = [...polaroids, ...polaroids, ...polaroids];
-
-  return (
-    <div className="overflow-hidden py-12">
-      <motion.div
-        ref={containerRef}
-        drag="x"
-        style={{ x }}
-        className="flex cursor-grab gap-24 px-8 active:cursor-grabbing"
-        dragElastic={0.1}
-        onDragEnd={handleDragEnd}
-      >
-        {allItems.map((item, i) => (
-          <Polaroid key={i} data={item} index={i % 10} />
-        ))}
-      </motion.div>
-    </div>
+    </motion.div>
   );
 }
 
 export function Life() {
   return (
-    <section id="life" className="py-24">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="life" className="px-6 py-24">
+      <div className="mx-auto max-w-6xl">
         <div className="mb-16 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Life</h2>
           <p className="mt-3 text-muted-foreground">
             Moments beyond the screen
           </p>
         </div>
-      </div>
 
-      {/* Variant 1: Scroll-driven */}
-      <div className="mx-auto max-w-6xl px-6 mb-4">
-        <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-8">
-          Scroll to explore
-        </p>
+        <div className="relative mx-auto max-w-5xl" style={{ height: '1100px' }}>
+          {polaroids.map((item, index) => (
+            <Polaroid key={index} data={item} index={index} />
+          ))}
+        </div>
       </div>
-      <ScrollCarousel />
-
-      {/* Variant 2: Drag */}
-      <div className="mx-auto max-w-6xl px-6 mt-24 mb-4">
-        <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-8">
-          Drag to explore
-        </p>
-      </div>
-      <DragCarousel />
     </section>
   );
 }
