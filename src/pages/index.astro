@@ -2,7 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/sections/Hero.astro';
 import Work from '@/components/sections/Work.astro';
-import Skills from '@/components/sections/Skills.astro';
+import { Skills } from '@/components/sections/Skills';
 import Life from '@/components/sections/Life.astro';
 import Connect from '@/components/sections/Connect.tsx';
 ---
@@ -10,7 +10,7 @@ import Connect from '@/components/sections/Connect.tsx';
 <Layout>
   <Hero />
   <Work />
-  <Skills />
+  <Skills client:visible />
   <Life />
 
   <Connect client:visible />
