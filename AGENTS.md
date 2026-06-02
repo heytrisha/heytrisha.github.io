@@ -22,7 +22,7 @@ Conventions, structure, and decision rules for this Astro + React + Tailwind por
 |-----------|---------|-------------------|
 | `src/pages/` | Astro routes (URL entry points) | A route that maps to a URL |
 | `src/layouts/` | Page shell wrappers (head, header, footer) | A page shell with `<html>`/`<head>` |
-| `src/sections/` | Page-level sections. **Not reusable across pages.** | A large block of a single page |
+| `src/components/sections/` | Page-level section components. **Not reusable across pages.** | A large block of a single page |
 | `src/components/ui/` | Design-system primitives. Presentation + behavior only. | A design-system primitive |
 | `src/components/layout/` | Shared structural pieces | A shared structural piece |
 | `src/components/motion/` | Generic animation wrappers | A generic animation wrapper |
@@ -36,6 +36,7 @@ Conventions, structure, and decision rules for this Astro + React + Tailwind por
 | `src/lib/` | Pure utility functions. No framework imports. | A pure helper function |
 | `src/styles/` | Global CSS and Tailwind v4 `@theme` tokens | Global CSS or Tailwind tokens |
 | `src/assets/` | Images optimized by Astro's `<Image />` component | An image that needs build-time optimization |
+| `src/plugins/` | Vite / build tooling plugins | A custom Vite plugin or build-time tool |
 | `public/` | Static assets served at root | A static asset |
 
 ---

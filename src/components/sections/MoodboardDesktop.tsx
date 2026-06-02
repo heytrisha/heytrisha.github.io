@@ -1,12 +1,12 @@
 'use client';
 
 import { useRef, useState, useCallback, useEffect } from 'react';
-import { MoodboardItemRenderer } from '@/components/moodboard/Registry';
-import { moodboardItems } from '@/data/lifeData';
+import { MoodboardItemRenderer } from '@/components/moodboard/ItemRenderer';
+import { moodboardItems } from '@/data/moodboard/items';
 import {
   defaultPositions,
   type ItemOffset,
-} from '@/data/lifePositions';
+} from '@/data/moodboard/positions';
 
 interface DragState {
   mode: 'move' | 'rotate';
@@ -18,7 +18,7 @@ interface DragState {
   startRotation: number;
 }
 
-const STORAGE_KEY = 'life-moodboard-positions';
+const STORAGE_KEY = 'moodboard-positions';
 
 function loadOffsets(): ItemOffset[] {
   if (typeof window === 'undefined') return defaultPositions;
@@ -59,11 +59,11 @@ function findItemIndex(target: HTMLElement): number | null {
   return null;
 }
 
-interface LifeMoodboardProps {
+interface MoodboardDesktopProps {
   editor?: boolean;
 }
 
-export function LifeMoodboard({ editor = false }: LifeMoodboardProps) {
+export function MoodboardDesktop({ editor = false }: MoodboardDesktopProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [offsets, setOffsets] = useState<ItemOffset[]>(loadOffsets);
   const offsetsRef = useRef(offsets);
@@ -205,7 +205,7 @@ export function LifeMoodboard({ editor = false }: LifeMoodboardProps) {
   const handleSaveToFile = useCallback(async () => {
     setSaveFeedback('saving');
     try {
-      const res = await fetch('/__life/save-positions', {
+      const res = await fetch('/__moodboard/save-positions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(offsetsRef.current),

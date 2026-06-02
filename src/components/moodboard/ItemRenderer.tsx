@@ -1,6 +1,6 @@
-import { Polaroid } from '@/components/ui/Polaroid';
+import { Polaroid } from './Polaroid';
 import { StickyNote } from './StickyNote';
-import type { MoodboardItem } from '@/data/lifeData';
+import type { MoodboardItem } from '@/data/moodboard/items';
 
 const componentMap = {
   polaroid: Polaroid,

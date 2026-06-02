@@ -1,8 +1,8 @@
 'use client';
 
 import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { LifeMoodboard } from './LifeMoodboard';
-import { LifeMobile } from './LifeMobile';
+import { MoodboardDesktop } from './MoodboardDesktop';
+import { MoodboardMobile } from './MoodboardMobile';
 
 export function Life() {
   const isDesktop = useMediaQuery('(min-width: 768px)');
@@ -20,9 +20,9 @@ export function Life() {
           </p>
         </div>
         {isDesktop ? (
-          <LifeMoodboard editor={isDev} />
+          <MoodboardDesktop editor={isDev} />
         ) : (
-          <LifeMobile />
+          <MoodboardMobile />
         )}
       </div>
     </section>

@@ -1,8 +1,8 @@
-import { moodboardItems } from '@/data/lifeData';
-import { defaultPositions } from '@/data/lifePositions';
-import { MoodboardItemRenderer } from '@/components/moodboard/Registry';
+import { moodboardItems } from '@/data/moodboard/items';
+import { defaultPositions } from '@/data/moodboard/positions';
+import { MoodboardItemRenderer } from '@/components/moodboard/ItemRenderer';
 
-export function LifeMobile() {
+export function MoodboardMobile() {
   return (
     <div className="flex flex-col items-center gap-10 py-8">
       {moodboardItems.map((item, index) => (

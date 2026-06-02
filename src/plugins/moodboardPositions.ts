@@ -1,11 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export default function lifePositionsPlugin() {
+export default function moodboardPositionsPlugin() {
   return {
-    name: 'life-positions',
+    name: 'moodboard-positions',
     configureServer(server) {
-      server.middlewares.use('/__life/save-positions', async (req, res, next) => {
+      server.middlewares.use('/__moodboard/save-positions', async (req, res, next) => {
         if (req.method !== 'POST') return next();
 
         try {
@@ -66,14 +66,14 @@ ${lines}
 ];
 `;
 
-          const filePath = path.resolve(process.cwd(), 'src/data/lifePositions.ts');
+          const filePath = path.resolve(process.cwd(), 'src/data/moodboard/positions.ts');
           fs.writeFileSync(filePath, fileContent, 'utf-8');
 
           res.statusCode = 200;
           res.setHeader('Content-Type', 'text/plain');
           res.end('OK');
         } catch (err) {
-          console.error('[life-positions] Error saving positions:', err);
+          console.error('[moodboard-positions] Error saving positions:', err);
           res.statusCode = 500;
           res.end('Internal server error');
         }

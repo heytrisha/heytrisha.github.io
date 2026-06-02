@@ -14,7 +14,7 @@ export interface ItemOffset {
 }
 
 export const defaultPositions: ItemOffset[] = [
-  { "x": -272, "y": -184, "rotate": -8 },
+  { "x": -221, "y": -186, "rotate": -4.6 },
   { "x": 285, "y": -264, "rotate": -6.2 },
   { "x": -212, "y": 95, "rotate": 12 },
   { "x": 218, "y": 190, "rotate": -9.3 },
