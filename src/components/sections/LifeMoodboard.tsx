@@ -1,11 +1,11 @@
 'use client';
 
 import { useRef, useState, useCallback, useEffect } from 'react';
-import { Polaroid } from '@/components/ui/Polaroid';
+import { MoodboardItemRenderer } from '@/components/moodboard/Registry';
 import {
-  polaroids,
+  moodboardItems,
   defaultPositions,
-  type PolaroidOffset,
+  type ItemOffset,
 } from '@/data/lifeData';
 
 interface DragState {
@@ -20,7 +20,7 @@ interface DragState {
 
 const STORAGE_KEY = 'life-moodboard-positions';
 
-function loadOffsets(): PolaroidOffset[] {
+function loadOffsets(): ItemOffset[] {
   if (typeof window === 'undefined') return defaultPositions;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -38,7 +38,7 @@ function loadOffsets(): PolaroidOffset[] {
           'rotate' in o
       )
     ) {
-      return parsed as PolaroidOffset[];
+      return parsed as ItemOffset[];
     }
   } catch {
     // ignore malformed storage
@@ -46,10 +46,10 @@ function loadOffsets(): PolaroidOffset[] {
   return defaultPositions;
 }
 
-function findPolaroidIndex(target: HTMLElement): number | null {
+function findItemIndex(target: HTMLElement): number | null {
   let el: HTMLElement | null = target;
   while (el) {
-    const idx = el.dataset.polaroid;
+    const idx = el.dataset.itemIndex;
     if (idx !== undefined) {
       const n = parseInt(idx, 10);
       if (!Number.isNaN(n)) return n;
@@ -65,7 +65,7 @@ interface LifeMoodboardProps {
 
 export function LifeMoodboard({ editor = false }: LifeMoodboardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [offsets, setOffsets] = useState<PolaroidOffset[]>(loadOffsets);
+  const [offsets, setOffsets] = useState<ItemOffset[]>(loadOffsets);
   const offsetsRef = useRef(offsets);
   offsetsRef.current = offsets;
   const dragStateRef = useRef<DragState | null>(null);
@@ -89,7 +89,7 @@ export function LifeMoodboard({ editor = false }: LifeMoodboardProps) {
       const container = containerRef.current;
       if (!container) return;
 
-      const index = findPolaroidIndex(e.target as HTMLElement);
+      const index = findItemIndex(e.target as HTMLElement);
       if (index === null) return;
 
       e.preventDefault();
@@ -202,19 +202,19 @@ export function LifeMoodboard({ editor = false }: LifeMoodboardProps) {
         onPointerMove={editor ? handlePointerMove : undefined}
         onPointerUp={editor ? handlePointerUp : undefined}
       >
-        {polaroids.map((item, index) => {
+        {moodboardItems.map((item, index) => {
           const offset = offsets[index] ?? defaultPositions[index];
           return (
             <div
               key={index}
-              data-polaroid={index}
+              data-item-index={index}
               className="absolute left-1/2 top-1/2"
               style={{
                 transform: `translate(calc(-50% + ${offset.x}px), calc(-50% + ${offset.y}px)) rotate(${offset.rotate}deg)`,
                 zIndex: activeIndex === index ? 20 : 10,
               }}
             >
-              <Polaroid color={item.color} caption={item.caption} />
+              <MoodboardItemRenderer item={item} />
             </div>
           );
         })}
