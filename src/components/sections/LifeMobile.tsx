@@ -8,7 +8,6 @@ export function LifeMobile() {
       {moodboardItems.map((item, index) => (
         <div
           key={index}
-          className="w-64 sm:w-72"
           style={{ transform: `rotate(${defaultPositions[index].rotate}deg)` }}
         >
           <MoodboardItemRenderer item={item} />
