@@ -2,11 +2,11 @@
 
 import { useRef, useState, useCallback, useEffect } from 'react';
 import { MoodboardItemRenderer } from '@/components/moodboard/Registry';
+import { moodboardItems } from '@/data/lifeData';
 import {
-  moodboardItems,
   defaultPositions,
   type ItemOffset,
-} from '@/data/lifeData';
+} from '@/data/lifePositions';
 
 interface DragState {
   mode: 'move' | 'rotate';
@@ -174,8 +174,18 @@ export function LifeMoodboard({ editor = false }: LifeMoodboardProps) {
   );
 
   const handleCopyPositions = useCallback(() => {
-    const json = JSON.stringify(offsetsRef.current, null, 2);
-    navigator.clipboard.writeText(json).catch(() => {});
+    const rounded = offsetsRef.current.map((o) => ({
+      x: Math.round(o.x),
+      y: Math.round(o.y),
+      rotate: Math.round(o.rotate * 10) / 10,
+    }));
+
+    const lines = rounded
+      .map((o) => `  { "x": ${o.x}, "y": ${o.y}, "rotate": ${o.rotate} }`)
+      .join(',\n');
+
+    const formatted = `[\n${lines}\n]`;
+    navigator.clipboard.writeText(formatted).catch(() => {});
     setCopyFeedback(true);
     if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
     copyTimeoutRef.current = setTimeout(() => setCopyFeedback(false), 2000);

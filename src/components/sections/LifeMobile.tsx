@@ -1,4 +1,5 @@
-import { moodboardItems, defaultPositions } from '@/data/lifeData';
+import { moodboardItems } from '@/data/lifeData';
+import { defaultPositions } from '@/data/lifePositions';
 import { MoodboardItemRenderer } from '@/components/moodboard/Registry';
 
 export function LifeMobile() {
