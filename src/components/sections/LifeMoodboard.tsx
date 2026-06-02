@@ -73,13 +73,16 @@ export function LifeMoodboard({ editor = false }: LifeMoodboardProps) {
 
   const [copyFeedback, setCopyFeedback] = useState(false);
   const [resetFeedback, setResetFeedback] = useState(false);
+  const [saveFeedback, setSaveFeedback] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const resetTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const saveTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     return () => {
       if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
       if (resetTimeoutRef.current) clearTimeout(resetTimeoutRef.current);
+      if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
     };
   }, []);
 
@@ -199,6 +202,34 @@ export function LifeMoodboard({ editor = false }: LifeMoodboardProps) {
     resetTimeoutRef.current = setTimeout(() => setResetFeedback(false), 2000);
   }, []);
 
+  const handleSaveToFile = useCallback(async () => {
+    setSaveFeedback('saving');
+    try {
+      const res = await fetch('/__life/save-positions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(offsetsRef.current),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setSaveFeedback('saved');
+      if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+      saveTimeoutRef.current = setTimeout(() => setSaveFeedback('idle'), 2000);
+    } catch {
+      setSaveFeedback('error');
+      if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+      saveTimeoutRef.current = setTimeout(() => setSaveFeedback('idle'), 2000);
+    }
+  }, []);
+
+  const saveLabel =
+    saveFeedback === 'saving'
+      ? 'Saving...'
+      : saveFeedback === 'saved'
+        ? 'Saved!'
+        : saveFeedback === 'error'
+          ? 'Error'
+          : 'Save to File';
+
   return (
     <div className="relative">
       <div
@@ -232,6 +263,12 @@ export function LifeMoodboard({ editor = false }: LifeMoodboardProps) {
 
       {editor && (
         <div className="mt-6 flex justify-center gap-4">
+          <button
+            onClick={handleSaveToFile}
+            className="rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
+          >
+            {saveLabel}
+          </button>
           <button
             onClick={handleCopyPositions}
             className="rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
