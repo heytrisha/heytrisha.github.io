@@ -1,0 +1,41 @@
+---
+interface Props {
+  url: string;
+  title: string;
+  variant?: 'mobile' | 'desktop';
+  maxHeight?: string;
+  maxWidth?: string;
+  fill?: boolean;
+}
+
+const { url, title, variant = 'mobile', maxHeight = '850px', maxWidth, fill } = Astro.props;
+
+// Convert any Figma URL to the embed format
+const embedUrl = `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(url)}`;
+
+const isMobile = variant === 'mobile';
+
+const wrapperStyle = [
+  !fill && maxWidth ? `max-width: ${maxWidth}` : null,
+  !fill && maxHeight ? `max-height: ${maxHeight}` : null,
+].filter(Boolean).join('; ');
+---
+
+<div class:list={['w-full', { 'h-full': fill, 'max-w-[430px]': isMobile && !maxWidth && !fill }]} style={wrapperStyle || undefined}>
+  <div
+    class:list={[
+      'overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]',
+      { 'h-full': fill, 'aspect-[9/19.5]': isMobile, 'aspect-video': !isMobile }
+    ]}
+    style={!fill && maxHeight ? `max-height: ${maxHeight}` : undefined}
+  >
+    <iframe
+      src={embedUrl}
+      title={title}
+      class="w-full h-full"
+      style="border: 0;"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
+</div>
