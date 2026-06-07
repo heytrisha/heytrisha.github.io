@@ -18,7 +18,11 @@
 
   // === Agent Overrides ===
   "agent": {
+    "plan": {
+      "model": "opencode-go/kimi-k2.6"
+    },
     "build": {
+      "model": "opencode-go/minimax-m2.7",
       "permission": {
         "bash": "ask"
       }
