@@ -1,9 +1,10 @@
 interface PolaroidProps {
   color: string;
   caption: string;
+  src?: string;
 }
 
-export function Polaroid({ color, caption }: PolaroidProps) {
+export function Polaroid({ color, caption, src }: PolaroidProps) {
   return (
     <div
       className="relative w-44 bg-white sm:w-48"
@@ -26,7 +27,18 @@ export function Polaroid({ color, caption }: PolaroidProps) {
         />
       </div>
 
-      <div className="aspect-[3/4] w-full" style={{ backgroundColor: color }} />
+      <div className="aspect-[3/4] w-full overflow-hidden">
+        {src ? (
+          <img
+            src={src}
+            alt={caption}
+            className="h-full w-full object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <div className="h-full w-full" style={{ backgroundColor: color }} />
+        )}
+      </div>
 
       <p
         className="mt-2 text-center text-3xl lowercase text-neutral-900"
