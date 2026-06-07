@@ -1,4 +1,5 @@
 {
   "imageHoverScale": true,
-  "skillHoverScale": true
+  "skillHoverScale": true,
+  "underConstructionSign": true
 }

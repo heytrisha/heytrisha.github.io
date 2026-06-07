@@ -1,9 +1,25 @@
 ---
 import { site } from '@/data/site';
+import UnderConstructionSign from '@/components/UnderConstructionSign.tsx';
+import features from '@/config/features.json';
 ---
 
 <section class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-6 py-20 text-center">
-  <div class="mx-auto max-w-3xl">
+  <div class="relative mx-auto max-w-3xl">
+    <!-- Under Construction Sign -->
+    {features.underConstructionSign && (
+      <>
+        {/* Mobile: centered, static, smaller */}
+        <div class="md:hidden mb-4">
+          <UnderConstructionSign client:load mobile />
+        </div>
+        {/* Desktop: absolute positioned, swinging */}
+        <div class="hidden md:block absolute -top-26 right-0 md:-right-12 z-10">
+          <UnderConstructionSign client:load />
+        </div>
+      </>
+    )}
+
     <p class="text-sm font-medium tracking-widest text-muted-foreground uppercase">
       {site.title}
     </p>
