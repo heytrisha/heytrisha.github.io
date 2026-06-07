@@ -5,12 +5,33 @@ import Work from '@/components/sections/Work.astro';
 import { Skills } from '@/components/sections/Skills';
 import { Life } from '@/components/sections/Life';
 import Connect from '@/components/sections/Connect.tsx';
+import { moodboardItems } from '@/data/moodboard/items';
+
+// Import all life images at build time
+const lifeImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/life/*.{jpeg,jpg,png,webp}', { eager: true });
+
+// Resolve image URLs for moodboard items
+const resolvedMoodboardItems = moodboardItems.map(item => {
+  if (item.type === 'polaroid' && item.props.src) {
+    const imageModule = lifeImages[item.props.src];
+    if (imageModule) {
+      return {
+        ...item,
+        props: {
+          ...item.props,
+          src: imageModule.default.src
+        }
+      };
+    }
+  }
+  return item;
+});
 ---
 
 <Layout>
   <Hero />
   <Work />
   <Skills client:visible />
-  <Life client:visible />
+  <Life items={resolvedMoodboardItems} client:visible />
   <Connect client:visible />
 </Layout>

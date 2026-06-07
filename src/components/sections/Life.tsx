@@ -3,8 +3,13 @@
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { MoodboardDesktop } from './MoodboardDesktop';
 import { MoodboardMobile } from './MoodboardMobile';
+import type { MoodboardItem } from '@/data/moodboard/items';
 
-export function Life() {
+interface LifeProps {
+  items: MoodboardItem[];
+}
+
+export function Life({ items }: LifeProps) {
   const isDesktop = useMediaQuery('(min-width: 768px)');
   const isDev = import.meta.env.DEV;
 
@@ -20,9 +25,9 @@ export function Life() {
           </p>
         </div>
         {isDesktop ? (
-          <MoodboardDesktop editor={isDev} />
+          <MoodboardDesktop items={items} editor={isDev} />
         ) : (
-          <MoodboardMobile />
+          <MoodboardMobile items={items} />
         )}
       </div>
     </section>

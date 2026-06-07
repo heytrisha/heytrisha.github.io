@@ -2,7 +2,7 @@
 
 import { useRef, useState, useCallback, useEffect } from 'react';
 import { MoodboardItemRenderer } from '@/components/moodboard/ItemRenderer';
-import { moodboardItems } from '@/data/moodboard/items';
+import type { MoodboardItem } from '@/data/moodboard/items';
 import {
   defaultPositions,
   type ItemOffset,
@@ -60,10 +60,11 @@ function findItemIndex(target: HTMLElement): number | null {
 }
 
 interface MoodboardDesktopProps {
+  items: MoodboardItem[];
   editor?: boolean;
 }
 
-export function MoodboardDesktop({ editor = false }: MoodboardDesktopProps) {
+export function MoodboardDesktop({ items, editor = false }: MoodboardDesktopProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [offsets, setOffsets] = useState<ItemOffset[]>(loadOffsets);
   const offsetsRef = useRef(offsets);
@@ -243,7 +244,7 @@ export function MoodboardDesktop({ editor = false }: MoodboardDesktopProps) {
         onPointerMove={editor ? handlePointerMove : undefined}
         onPointerUp={editor ? handlePointerUp : undefined}
       >
-        {moodboardItems.map((item, index) => {
+        {items.map((item, index) => {
           const offset = offsets[index] ?? defaultPositions[index];
           return (
             <div
