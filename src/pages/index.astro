@@ -1,11 +1,38 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/sections/Hero.astro';
-import Work from '@/components/sections/Work.astro';
+import { getCollection } from 'astro:content';
+import type { ImageMetadata } from 'astro';
+import { Work } from '@/components/sections/Work';
 import { Skills } from '@/components/sections/Skills';
 import { Life } from '@/components/sections/Life';
 import Connect from '@/components/sections/Connect.tsx';
 import { moodboardItems } from '@/data/moodboard/items';
+
+const basePath = import.meta.env.BASE_PATH || '';
+
+// Load and sort featured projects
+let workProjects: Awaited<ReturnType<typeof getCollection<'projects'>>> = [];
+try {
+  workProjects = await getCollection('projects');
+  workProjects = workProjects.filter((p) => p.data.featured);
+  workProjects.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+} catch {
+  // No projects yet
+}
+
+// Resolve project thumbnail images
+const workImageGlob = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/*.{png,jpg,jpeg,webp}',
+  { eager: true }
+);
+const workImages: Record<string, ImageMetadata> = {};
+for (const project of workProjects) {
+  const filename = project.data.thumbnail.split('/').pop();
+  const path = `/src/assets/images/${filename}`;
+  const mod = workImageGlob[path];
+  if (mod) workImages[project.id] = mod.default;
+}
 
 // Import all life images at build time
 const lifeImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/life/*.{jpeg,jpg,png,webp}', { eager: true });
@@ -30,7 +57,7 @@ const resolvedMoodboardItems = moodboardItems.map(item => {
 
 <Layout>
   <Hero />
-  <Work />
+  <Work client:visible projects={workProjects} basePath={basePath} images={workImages} />
   <Skills client:visible />
   <Life items={resolvedMoodboardItems} client:visible />
   <Connect client:visible />
