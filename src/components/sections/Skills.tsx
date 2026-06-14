@@ -6,10 +6,10 @@ import { useState } from 'react';
 
 const skills = [
   'User Research',
-  'Interaction',
   'Visual Design',
   'Design Systems',
   'Prototyping',
+  'Product Thinking',
 ];
 
 function SkillItem({ skill, index, activeIndex }: { skill: string; index: number; activeIndex: number }) {

@@ -1,0 +1,152 @@
+---
+// src/components/case-studies/IATree.astro
+// Information Architecture tree diagram — static, top-down, responsive
+
+interface TreeNode {
+  label: string;
+  children?: TreeNode[];
+}
+
+interface Props {
+  data: TreeNode;
+}
+
+const { data } = Astro.props;
+
+const rootClasses =
+  'px-5 py-2.5 rounded-xl border text-[#fafafa] font-bold text-xs tracking-wider text-center';
+
+const l1Classes =
+  'px-2 py-1 rounded-lg border text-[#fafafa] font-semibold text-[10px] leading-tight text-center whitespace-nowrap';
+
+const l2Classes =
+  'px-1.5 py-0.5 rounded-md border border-white/5 text-gray-400 text-[9px] leading-tight text-center whitespace-nowrap';
+
+const l3Classes =
+  'px-1 py-0.5 rounded border border-white/5 text-gray-500 text-[8px] leading-tight text-center whitespace-nowrap';
+
+const vLine = 'w-px bg-white/20';
+const hLine = 'h-px bg-white/20';
+---
+
+{/* Desktop: top-down tree diagram */}
+<div class="hidden md:block w-full">
+  <div class="flex flex-col items-center py-6">
+    {/* Root node */}
+    <div class={rootClasses}>{data.label}</div>
+
+    {/* Vertical line down from root */}
+    <div class={`${vLine} h-6`}></div>
+
+    {/* Connector + branches */}
+    <div class="relative w-full px-6">
+      {/* Horizontal line spanning all branches */}
+      {data.children.length > 1 && (
+        <div
+          class={`absolute top-0 ${hLine}`}
+          style={`left: ${100 / (data.children.length * 2)}%; right: ${100 / (data.children.length * 2)}%`}
+        ></div>
+      )}
+
+      {/* Vertical drops from horizontal line to each branch */}
+      {data.children.map((_, i) => (
+        <div
+          class={`absolute top-0 ${vLine} h-6`}
+          style={`left: ${((2 * i + 1) / (data.children.length * 2)) * 100}%`}
+        ></div>
+      ))}
+
+      {/* Branches */}
+      <div class="flex pt-6 w-full">
+        {data.children.map((branch) => (
+          <div class="flex-1 flex flex-col items-center px-0 min-w-0">
+            {/* Level 1 node */}
+            <div class={l1Classes}>{branch.label}</div>
+
+            {/* Vertical line to children */}
+            <div class={`${vLine} h-4`}></div>
+
+            {/* Level 2 nodes */}
+            {branch.children.length === 2 && branch.children.every(c => c.children && c.children.length > 0) ? (
+              <div class="w-full flex flex-col items-center">
+                {/* Horizontal connector + side-by-side children */}
+                <div class="relative w-full flex justify-center gap-3">
+                  {/* Horizontal line spanning the two children */}
+                  <div class={`absolute top-0 ${hLine}`} style="left: 25%; right: 25%;"></div>
+
+                  {/* Vertical drops */}
+                  <div class={`absolute top-0 ${vLine} h-3`} style="left: 25%;"></div>
+                  <div class={`absolute top-0 ${vLine} h-3`} style="right: 25%;"></div>
+
+                  <div class="flex gap-1 pt-3 w-full">
+                    {branch.children.map((child) => (
+                      <div class="flex flex-col items-center flex-1">
+                        <div class={l2Classes}>{child.label}</div>
+                        <div class={`${vLine} h-3`}></div>
+                        <div class="flex flex-col items-center gap-1">
+                          {child.children.map((grandchild) => (
+                            <div class={l3Classes}>{grandchild.label}</div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div class="flex flex-col items-center gap-1.5">
+                {branch.children.map((child) => (
+                  <div class="flex flex-col items-center">
+                    <div class={l2Classes}>{child.label}</div>
+
+                    {child.children && (
+                      <>
+                        <div class={`${vLine} h-3`}></div>
+                        <div class="flex flex-col items-center gap-1">
+                          {child.children.map((grandchild) => (
+                            <div class={l3Classes}>{grandchild.label}</div>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+{/* Mobile: card stack */}
+<div class="md:hidden flex flex-col gap-4">
+  {/* Root node */}
+  <div class={`${rootClasses} text-center`}>{data.label}</div>
+
+  {/* Branch cards */}
+  <div class="flex flex-col gap-3">
+    {data.children.map((branch) => (
+      <div class="rounded-xl border border-white/10 bg-white/[0.02] p-3">
+        <div class="text-[#fafafa] font-semibold text-xs mb-2 pb-2 border-b border-white/10">
+          {branch.label}
+        </div>
+        <div class="flex flex-col gap-1.5">
+          {branch.children.map((child) => (
+            <div class="flex flex-col gap-1">
+              <div class="text-gray-400 text-[11px] font-medium">{child.label}</div>
+              {child.children && (
+                <div class="pl-2.5 flex flex-col gap-0.5 border-l border-white/10">
+                  {child.children.map((grandchild) => (
+                    <div class="text-gray-500 text-[10px]">{grandchild.label}</div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

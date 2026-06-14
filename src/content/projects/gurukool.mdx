@@ -2,16 +2,80 @@
 title: "Gurukool"
 description: "Turning homework into teamwork, a platform helping parents confidently support their children's learning through guided homework assistance, AI-powered help, and a trusted parent community."
 type: "case-study"
-pubDate: 2024-03-15
+pubDate: 2025-09-21
 thumbnail: "../../assets/images/gurukool.png"
 tags: ["Education", "Mobile App", "Community", "UX Design"]
 featured: true
-order: 1
+order: 2
 client: "GuruKool Inc."
-year: 2024
+year: 2025
 ---
 
+import { Image } from 'astro:assets';
+import screen01 from '../../assets/images/projects/gurukool/screen-01.png';
+import screen02 from '../../assets/images/projects/gurukool/screen-02.png';
+import screen03 from '../../assets/images/projects/gurukool/screen-03.png';
 import FigmaEmbed from '@/components/case-studies/FigmaEmbed.astro';
+import IATree from '@/components/case-studies/IATree.astro';
+
+export const iaData = {
+  label: 'GURUKOOL',
+  children: [
+    {
+      label: 'HOME',
+      children: [
+        { label: 'Profile' },
+        { label: 'Recent Activity' },
+        { label: 'Community Updates' },
+        { label: 'New Videos' },
+        { label: 'Chat With GURU' },
+      ],
+    },
+    {
+      label: 'GUIDED HELP',
+      children: [
+        { label: 'Topic Related Videos' },
+        { label: 'Mini Practice Sheets' },
+        { label: 'Printable Worksheets' },
+        { label: 'Comment Section' },
+      ],
+    },
+    {
+      label: 'COMMUNITY',
+      children: [
+        {
+          label: 'Groups',
+          children: [
+            { label: 'My Groups' },
+            { label: 'Create Group' },
+            { label: 'Discover Groups' },
+          ],
+        },
+        {
+          label: 'Questions',
+          children: [
+            { label: 'Your Questions' },
+            { label: 'Top Questions' },
+            { label: 'Community Questions' },
+            { label: 'Ask a Question' },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'TOOL KIT',
+      children: [
+        { label: 'Calendar' },
+        { label: 'Timer' },
+        { label: 'Checklist' },
+        { label: 'Study Tips' },
+        { label: 'Doodle Pad' },
+        { label: 'Saved / Bookmarked' },
+        { label: 'My Syllabus' },
+      ],
+    },
+  ],
+};
 
 <div class="max-w-4xl mx-auto">
 
@@ -196,7 +260,7 @@ import FigmaEmbed from '@/components/case-studies/FigmaEmbed.astro';
             <td class="py-3 pr-4 font-medium text-gray-300">AI-Powered Help</td>
             <td class="py-3 px-4 text-center text-[#E06100] font-bold">✓</td>
             <td class="py-3 px-4 text-center text-gray-600">—</td>
-            <td class="py-3 px-4 text-center text-gray-600">—</td>
+            <td class="py-3 px-4 text-center text-gray-400">✓</td>
             <td class="py-3 px-4 text-center text-gray-600">—</td>
             <td class="py-3 pl-4 text-center text-gray-600">—</td>
           </tr>
@@ -220,25 +284,25 @@ import FigmaEmbed from '@/components/case-studies/FigmaEmbed.astro';
             <td class="py-3 pr-4 font-medium text-gray-300">Community Support</td>
             <td class="py-3 px-4 text-center text-[#E06100] font-bold">✓</td>
             <td class="py-3 px-4 text-center text-gray-600">—</td>
-            <td class="py-3 px-4 text-center text-gray-600">—</td>
-            <td class="py-3 px-4 text-center text-gray-600">—</td>
-            <td class="py-3 pl-4 text-center text-gray-600">—</td>
+            <td class="py-3 px-4 text-center text-gray-400">✓</td>
+            <td class="py-3 px-4 text-center text-gray-400">✓</td>
+            <td class="py-3 pl-4 text-center text-gray-400">✓</td>
           </tr>
           <tr class="border-b border-white/5">
             <td class="py-3 pr-4 font-medium text-gray-300">Curriculum Mapping</td>
             <td class="py-3 px-4 text-center text-[#E06100] font-bold">✓</td>
+            <td class="py-3 px-4 text-center text-gray-400">✓</td>
             <td class="py-3 px-4 text-center text-gray-600">—</td>
-            <td class="py-3 px-4 text-center text-gray-600">—</td>
-            <td class="py-3 px-4 text-center text-gray-600">—</td>
-            <td class="py-3 pl-4 text-center text-gray-600">—</td>
+            <td class="py-3 px-4 text-center text-gray-400">✓</td>
+            <td class="py-3 pl-4 text-center text-gray-400">✓</td>
           </tr>
           <tr>
             <td class="py-3 pr-4 font-medium text-gray-300">History & Saved Content</td>
             <td class="py-3 px-4 text-center text-[#E06100] font-bold">✓</td>
+            <td class="py-3 px-4 text-center text-gray-400">✓</td>
             <td class="py-3 px-4 text-center text-gray-600">—</td>
-            <td class="py-3 px-4 text-center text-gray-600">—</td>
-            <td class="py-3 px-4 text-center text-gray-600">—</td>
-            <td class="py-3 pl-4 text-center text-gray-600">—</td>
+            <td class="py-3 px-4 text-center text-gray-400">✓</td>
+            <td class="py-3 pl-4 text-center text-gray-400">✓</td>
           </tr>
         </tbody>
       </table>
@@ -294,12 +358,12 @@ import FigmaEmbed from '@/components/case-studies/FigmaEmbed.astro';
   </div>
 </section>
 
-{/* Placeholder: Information Architecture */}
+{/* Information Architecture */}
 <section class="mb-20">
   <span class="text-sm font-medium tracking-wider uppercase text-[#E06100]">Information Architecture</span>
   <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-12 text-[#fafafa]">Structuring the experience</h2>
-  <div class="aspect-video w-full rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 text-lg">
-    To be added: Information Architecture
+  <div class="rounded-2xl bg-[#14100a] grain-texture p-4 md:p-8">
+    <IATree data={iaData} />
   </div>
 </section>
 
@@ -312,20 +376,35 @@ import FigmaEmbed from '@/components/case-studies/FigmaEmbed.astro';
   </div>
 </section>
 
-{/* Placeholder: Hi-Fi Mockups */}
+{/* Hi-Fi Mockups */}
 <section class="mb-20">
   <span class="text-sm font-medium tracking-wider uppercase text-[#E06100]">Hi-Fi Mockups</span>
   <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-12 text-[#fafafa]">The final designs</h2>
 
   <div class="grid grid-cols-3 gap-6">
-    <div class="aspect-[9/19.5] w-full rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 text-sm">
-      Mockup 01
+    <div class="not-prose overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]">
+      <Image
+        src={screen01}
+        alt="Gurukool mockup — Home"
+        width={657}
+        class="h-auto w-full"
+      />
     </div>
-    <div class="aspect-[9/19.5] w-full rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 text-sm">
-      Mockup 02
+    <div class="not-prose overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]">
+      <Image
+        src={screen02}
+        alt="Gurukool mockup — Guided Help"
+        width={657}
+        class="h-auto w-full"
+      />
     </div>
-    <div class="aspect-[9/19.5] w-full rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 text-sm">
-      Mockup 03
+    <div class="not-prose overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]">
+      <Image
+        src={screen03}
+        alt="Gurukool mockup — Community"
+        width={657}
+        class="h-auto w-full"
+      />
     </div>
   </div>
 </section>
