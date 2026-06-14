@@ -86,49 +86,11 @@ year: 2026
       </div>
       <p className="text-sm text-gray-400 mb-2">Indian adults who are financially literate. Global average: ~33%</p>
       <p className="text-xs text-gray-600">Source: NCFE / SEBI FLIS</p>
-    </div>
-  </div>
-
-  <p className="text-gray-300 leading-relaxed max-w-3xl mb-16">
-    More people are downloading investment apps than investing through them. More people are registering SIPs than sustaining them. More people are learning about finance than acting on it. The gap is not knowledge, access, or even motivation. It is the experience of standing at the decision threshold — informed, ready, and finding nothing in the product that helps you cross it with personalised guidance.
-  </p>
-
-  {/* Existing Landscape */}
-  <h2 className="text-4xl font-bold mt-16 mb-4">Existing landscape</h2>
-  <p className="text-gray-400 text-lg mb-8">Four leading platforms — one shared assumption about their user</p>
-
-  <div className="grid md:grid-cols-2 gap-6 mb-12">
-    <div className="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
-      <h3 className="text-lg font-bold text-[#fafafa] mb-2">Groww</h3>
-      <p className="text-gray-400 text-sm leading-relaxed mb-3">Smoothest onboarding in the market. Simplifies the mechanics of investing — but presents fund selection as a catalogue. Assumes the user already knows what they want.</p>
-      <span className="text-xs font-medium text-amber-400">Gap: Starts where the user's friction begins</span>
-    </div>
-    <div className="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
-      <h3 className="text-lg font-bold text-[#fafafa] mb-2">ET Money</h3>
-      <p className="text-gray-400 text-sm leading-relaxed mb-3">Closest to the problem. Behavioural quiz leads to a fund recommendation — but built for users optimising an existing portfolio, not building the confidence to start one.</p>
-      <span className="text-xs font-medium text-amber-400">Gap: Designed for portfolio refinement</span>
-    </div>
-    <div className="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
-      <h3 className="text-lg font-bold text-[#fafafa] mb-2">INDmoney</h3>
-      <p className="text-gray-400 text-sm leading-relaxed mb-3">Powerful net worth aggregator across SIPs, stocks, FDs, and loans. That power becomes overwhelming for a user who has nothing to aggregate yet.</p>
-      <span className="text-xs font-medium text-amber-400">Gap: Requires an existing portfolio</span>
-    </div>
-    <div className="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
-      <h3 className="text-lg font-bold text-[#fafafa] mb-2">Zerodha</h3>
-      <p className="text-gray-400 text-sm leading-relaxed mb-3">Best financial education in India through Varsity — 10M+ learners. But Varsity is a separate app from Kite. Learning and doing are architecturally separated.</p>
-      <span className="text-xs font-medium text-amber-400">Gap: Education and action in different products</span>
-    </div>
-  </div>
-
-  <div className="max-w-3xl text-gray-400 leading-relaxed">
-    <p className="mb-6">
-      Groww, ET Money, INDmoney, and Zerodha all assume their user has already decided to invest. They ask: "Which fund?" or "How much?" None helps you cross from "I know" to "I'll do it." The gap is not in the product's sophistication — it is in what the product assumes about the person using it.
-    </p>
-    <p>
-      For someone who knows what a SIP is, has completed KYC, and still closes the app when faced with 200 fund options, the friction is not knowledge. It is confidence. No existing app provides personalised, risk-based portfolio guidance from day one — with a debt/equity split adapted to their financial situation and risk tolerance. No app is designed for the moment before the first investment.
-    </p>
+</div>
   </div>
 </section>
+
+
 
 
 
@@ -251,112 +213,66 @@ year: 2026
   </div>
 </section>
 
-
-
-{/* 04 · Current Experience */}
+{/* 04 · Product Philosophy */}
 <section className="max-w-6xl mx-auto px-6 py-20">
-  <span className="text-sm font-medium tracking-wider uppercase text-amber-400">04 · Current Experience</span>
-  <h2 className="text-4xl font-bold mt-4 mb-4">What Rohan's life looks like today</h2>
-  <p className="text-gray-400 text-lg mb-12">Five phases. One painful loop. The drop-off happens not at awareness — but at action.</p>
+  <span className="text-sm font-medium tracking-wider uppercase text-amber-400">04 · Product Philosophy</span>
+  <h2 className="text-4xl font-bold mt-4 mb-4">Six principles that shape every decision</h2>
+  <p className="text-gray-400 text-lg mb-12">Every Indian investment app is built for someone who has already decided to invest. Sumpatti is built for someone who is still deciding.</p>
 
-  {/* Journey Table */}
-  <div className="overflow-x-auto mb-12">
-    <table className="w-full text-left border-collapse">
-      <thead>
-        <tr className="border-b border-white/10">
-          <th className="py-4 pr-4 text-sm font-medium text-gray-500 uppercase tracking-wider w-1/5">Trigger</th>
-          <th className="py-4 px-4 text-sm font-medium text-gray-500 uppercase tracking-wider w-1/5">Research</th>
-          <th className="py-4 px-4 text-sm font-medium text-gray-500 uppercase tracking-wider w-1/5">App attempt</th>
-          <th className="py-4 px-4 text-sm font-medium text-gray-500 uppercase tracking-wider w-1/5">Decision point</th>
-          <th className="py-4 pl-4 text-sm font-medium text-gray-500 uppercase tracking-wider w-1/5">Action</th>
-        </tr>
-      </thead>
-      <tbody className="text-gray-400 text-sm">
-        <tr className="border-b border-white/5">
-          <td className="py-4 pr-4 align-top">
-            <p className="leading-relaxed">Colleague mentions SIP returns. Instagram reel shows ₹500/month = ₹14L. Feels behind peers.</p>
-          </td>
-          <td className="py-4 px-4 align-top">
-            <p className="leading-relaxed">Googles "best SIP India." Watches 2 videos. Saves 6 articles. Reads about debt vs equity but doesn't know how to apply to himself.</p>
-          </td>
-          <td className="py-4 px-4 align-top">
-            <p className="leading-relaxed">Opens Sumpatti. Answers 2 questions: User Type (A — Income only), Risk (Averse). Sees personalised 70D/30E split. ₹5,000/month → ₹3,500 debt + ₹1,500 equity.</p>
-          </td>
-          <td className="py-4 px-4 align-top">
-            <p className="leading-relaxed">Sees projected returns: ₹14.2L in 10 years at ~10% blended return. Understands exactly where money goes. Trust signals shown: SEBI registration, fund house, withdrawal terms.</p>
-          </td>
-          <td className="py-4 pl-4 align-top">
-            <p className="leading-relaxed">Taps "Confirm & Invest." First SIP started. Feels capable, not just active.</p>
-          </td>
-        </tr>
-        <tr className="border-b border-white/5">
-          <td className="py-4 pr-4 align-top">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-400 text-xs font-medium">Motivated</span>
-          </td>
-          <td className="py-4 px-4 align-top">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-400 text-xs font-medium">Hopeful</span>
-          </td>
-          <td className="py-4 px-4 align-top">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-400 text-xs font-medium">Cautious but guided</span>
-          </td>
-          <td className="py-4 px-4 align-top">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-400 text-xs font-medium">Informed</span>
-          </td>
-          <td className="py-4 pl-4 align-top">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-400 text-xs font-medium">Confident</span>
-          </td>
-        </tr>
-        <tr className="border-b border-white/5">
-          <td className="py-4 pr-4 align-top">
-            <p className="text-gray-500 leading-relaxed">Social pressure creates urgency with no clarity on where to start</p>
-          </td>
-          <td className="py-4 px-4 align-top">
-            <p className="text-gray-500 leading-relaxed">Every source gives different advice. No single trusted voice.</p>
-          </td>
-          <td className="py-4 px-4 align-top">
-            <p className="text-gray-500 leading-relaxed">Product treats him as someone who already decided — not someone deciding</p>
-          </td>
-          <td className="py-4 px-4 align-top">
-            <p className="text-gray-500 leading-relaxed">No trust signal at the moment he needs it. SEBI badge is in the footer.</p>
-          </td>
-          <td className="py-4 pl-4 align-top">
-            <p className="text-gray-500 leading-relaxed">No low-stakes, reversible first step is ever offered</p>
-          </td>
-        </tr>
-        <tr>
-          <td className="py-4 pr-4 align-top">
-            <p className="text-gray-300 leading-relaxed">Meet him at the trigger with a clear, personal entry point</p>
-          </td>
-          <td className="py-4 px-4 align-top">
-            <p className="text-gray-300 leading-relaxed">Replace infinite research with one curated recommendation</p>
-          </td>
-          <td className="py-4 px-4 align-top">
-            <p className="text-gray-300 leading-relaxed">Guided flow matched to his situation — not a product catalogue</p>
-          </td>
-          <td className="py-4 px-4 align-top">
-            <p className="text-gray-300 leading-relaxed">Trust scaffolding woven into the flow before the payment screen</p>
-          </td>
-          <td className="py-4 pl-4 align-top">
-            <p className="text-gray-300 leading-relaxed">Frame the first investment as a trial — pause anytime, no exit fees</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  {/* Principle 01 */}
+  <div className="mb-12">
+    <div className="flex items-baseline gap-4 mb-3">
+      <span className="text-xs font-medium tracking-wider uppercase text-amber-400">Principle 01</span>
+    </div>
+    <h3 className="text-2xl font-bold text-[#fafafa] mb-3">One recommendation, not a catalogue</h3>
+    <p className="text-gray-400 leading-relaxed">Groww shows you 200 funds. Zerodha gives you a search bar. ET Money runs a quiz and hands you a list. All of them assume you know what to pick. Sumpatti assumes you don't. Two questions — your financial situation and how you react to risk — produce a personalised portfolio split. Debt and equity, in a ratio that makes sense for you. One clear starting point, with the reasoning visible. No scrolling. No comparing. No guessing.</p>
+  </div>
+
+  {/* Principle 02 */}
+  <div className="mb-12">
+    <div className="flex items-baseline gap-4 mb-3">
+      <span className="text-xs font-medium tracking-wider uppercase text-amber-400">Principle 02</span>
+    </div>
+    <h3 className="text-2xl font-bold text-[#fafafa] mb-3">Trust before the money screen</h3>
+    <p className="text-gray-400 leading-relaxed">On most platforms, SEBI registration is in the footer. Fund house details are behind a link. Withdrawal terms are in terms and conditions nobody reads. Sumpatti shows these where they matter — in the flow, before the payment screen. Where your money goes. Which fund house holds it. What SEBI registration means. When you can withdraw. By the time you enter your PIN, you have already seen five trust signals in the right order, at the right moment.</p>
+  </div>
+
+  {/* Principle 03 */}
+  <div className="mb-12">
+    <div className="flex items-baseline gap-4 mb-3">
+      <span className="text-xs font-medium tracking-wider uppercase text-amber-400">Principle 03</span>
+    </div>
+    <h3 className="text-2xl font-bold text-[#fafafa] mb-3">The first step should feel reversible</h3>
+    <p className="text-gray-400 leading-relaxed">Most investment apps frame the first SIP as a serious financial commitment. The language is formal. The amounts feel permanent. Sumpatti does the opposite. Start with ₹100. Pause anytime. Stop anytime. The biggest barrier to a first investment is not the money — it is the feeling that you are making a decision you cannot undo. Sumpatti frames it as a trial, not a commitment. You are not signing a contract. You are trying something.</p>
+  </div>
+
+  {/* Principle 04 */}
+  <div className="mb-12">
+    <div className="flex items-baseline gap-4 mb-3">
+      <span className="text-xs font-medium tracking-wider uppercase text-amber-400">Principle 04</span>
+    </div>
+    <h3 className="text-2xl font-bold text-[#fafafa] mb-3">Explain things where they matter, not in a glossary</h3>
+    <p className="text-gray-400 leading-relaxed">"Exit load: 1% if redeemed before 1 year." Every app shows this. None of them explain what it means for you. Sumpatti does. One tap, and you see the answer — ₹5 on your ₹500 SIP, in plain language. Collapsible, inline, gone after you have read it. The information lives exactly where the question lives. Not in a separate FAQ. Not in a blog post you'll never find. Right there, when you need it, and nowhere else.</p>
+  </div>
+
+  {/* Principle 05 */}
+  <div className="mb-12">
+    <div className="flex items-baseline gap-4 mb-3">
+      <span className="text-xs font-medium tracking-wider uppercase text-amber-400">Principle 05</span>
+    </div>
+    <h3 className="text-2xl font-bold text-[#fafafa] mb-3">Your numbers, not generic projections</h3>
+    <p className="text-gray-400 leading-relaxed">Every platform shows compounding calculators. Enter ₹5,000, select 10 years, see a number. That number feels like it belongs to someone else. Sumpatti calculates from your income, your age, and your allocation. "₹3,000 per month starting at 23 could become ₹38 lakh by 40." That is not a marketing illustration. It is your number. When the projection is personal, the future stops being abstract. That is the moment investing stops feeling like something other people do.</p>
+  </div>
+
+  {/* Principle 06 */}
+  <div className="mb-12">
+    <div className="flex items-baseline gap-4 mb-3">
+      <span className="text-xs font-medium tracking-wider uppercase text-amber-400">Principle 06</span>
+    </div>
+    <h3 className="text-2xl font-bold text-[#fafafa] mb-3">Guidance that learns, not a one-time recommendation</h3>
+    <p className="text-gray-400 leading-relaxed">On most platforms, the experience ends the moment you start a SIP. You get a confirmation screen, and then you are on your own. Sumpatti treats the first investment as the beginning, not the end. As you invest consistently, the system adapts. Your portfolio grows with you — from first SIP to multiple goals. Recommendations evolve based on your behaviour, not a static plan you set once and forget. Other apps help you start. Sumpatti helps you continue.</p>
   </div>
 </section>
-
-
-
-{/* Placeholder: Design Principles */}
-<section className="max-w-6xl mx-auto px-6 py-20">
-  <span className="text-sm font-medium tracking-wider uppercase text-amber-400">Design Principles</span>
-  <h2 className="text-4xl font-bold mt-4 mb-8">Core principles</h2>
-  <div className="aspect-video w-full rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 text-lg">
-    To be added — Design Principles
-  </div>
-</section>
-
-
 
 {/* Placeholder: Key Flows */}
 <section className="max-w-6xl mx-auto px-6 py-20">
