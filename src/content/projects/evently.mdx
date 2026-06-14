@@ -11,19 +11,24 @@ client: "Evently"
 year: 2025
 ---
 
-<div class="max-w-4xl mx-auto px-6 py-12">
+import { Image } from 'astro:assets';
+import hero from '../../assets/images/projects/evently/hero.png';
+import screen01 from '../../assets/images/projects/evently/screen-01.jpeg';
+import screen02 from '../../assets/images/projects/evently/screen-02.jpeg';
+import screen03 from '../../assets/images/projects/evently/screen-03.jpeg';
+
+<div class="max-w-4xl mx-auto px-6 py-4 mb-20">
   {/* Hero Section */}
   <div class="mb-16">
-    <div class="aspect-video w-full rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 text-lg">
-      Hero Image — Evently App Interface
-    </div>
+    <Image
+      src={hero}
+      alt="Evently — Discover, Create, Belong"
+      class="w-full h-auto rounded-xl"
+    />
   </div>
 
   {/* Project Overview */}
   <div class="mb-16">
-    <p class="text-3xl md:text-4xl font-bold text-[#fafafa] mb-6 leading-tight text-center">
-      Discover, Create, Belong!
-    </p>
     <p class="text-2xl md:text-3xl text-gray-300 leading-relaxed font-light mb-8">
       Evently is an event discovery platform designed to make finding and hosting experiences more joyful, personalized, and efficient for two key personas: <strong class="text-[#fafafa]">Explorers</strong> and <strong class="text-[#fafafa]">Creators / Hosts</strong>.
     </p>
@@ -224,50 +229,46 @@ year: 2025
       Insights from research were translated into design principles, wireframes, and interaction flows. This section documents the process from problem framing to solution concepts.
     </p>
 
-    <div class="grid md:grid-cols-2 gap-4">
-      <div class="aspect-video rounded-xl bg-gray-800 flex items-center justify-center text-gray-500">
-        Wireframes — Discovery Flow Exploration
-      </div>
-      <div class="aspect-video rounded-xl bg-gray-800 flex items-center justify-center text-gray-500">
-        Wireframes — Host Dashboard Flow
-      </div>
+    <div class="aspect-video w-full rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 mb-6">
+      Wireframes — Low-Fidelity Exploration
     </div>
-    <p class="text-gray-500 text-sm mt-3 text-center">Early wireframes exploring explorer discovery and host management flows.</p>
-  </div>
 
-  {/* Results / Impact */}
-  <div class="mb-16">
-    <h2 class="text-sm uppercase tracking-widest text-violet-400 mb-4">Results / Impact</h2>
-    <h3 class="text-3xl md:text-4xl font-bold text-[#fafafa] mb-6 leading-tight">
-      Outcomes and feedback
-    </h3>
-    <p class="text-gray-400 text-lg leading-relaxed mb-8">
-      Testing and launch metrics to be added once the product is live and user data is available.
+    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+      The validated flows were then translated into high-fidelity mockups, applying the visual system, real content, and motion.
     </p>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 border border-white/10 rounded-xl p-6 bg-white/[0.02] mb-8">
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-gray-600 mb-1">—</div>
-        <p class="text-gray-500 text-sm">Metric to be added</p>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-gray-600 mb-1">—</div>
-        <p class="text-gray-500 text-sm">Metric to be added</p>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-gray-600 mb-1">—</div>
-        <p class="text-gray-500 text-sm">Metric to be added</p>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-gray-600 mb-1">—</div>
-        <p class="text-gray-500 text-sm">Metric to be added</p>
-      </div>
+    <div class="grid gap-4">
+      <figure>
+        <Image
+          src={screen01}
+          alt="Evently — Explorer discovery flow"
+          class="w-full h-auto rounded-xl"
+        />
+        <figcaption class="text-gray-500 text-sm mt-3 text-center">
+          Discovery flow for explorers — browsing, filtering, and surfacing events that match personal interests.
+        </figcaption>
+      </figure>
+      <figure>
+        <Image
+          src={screen02}
+          alt="Evently — Explorer booking journey"
+          class="w-full h-auto rounded-xl"
+        />
+        <figcaption class="text-gray-500 text-sm mt-3 text-center">
+          Booking journey for explorers — from event details to a confident, low-friction reservation.
+        </figcaption>
+      </figure>
+      <figure>
+        <Image
+          src={screen03}
+          alt="Evently — Host dashboard"
+          class="w-full h-auto rounded-xl"
+        />
+        <figcaption class="text-gray-500 text-sm mt-3 text-center">
+          Host dashboard — high-level overview, per-event metrics & controls, and host profile management.
+        </figcaption>
+      </figure>
     </div>
-
-    <div class="aspect-video w-full rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 text-lg mb-3">
-      Results / Impact — Screenshots and Analytics Dashboard
-    </div>
-    <p class="text-gray-500 text-sm text-center">Placeholder for results visuals and analytics dashboards.</p>
   </div>
 
   {/* Key Learnings */}
