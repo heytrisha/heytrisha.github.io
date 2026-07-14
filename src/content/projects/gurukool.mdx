@@ -15,6 +15,7 @@ import { Image } from 'astro:assets';
 import screen01 from '../../assets/images/projects/gurukool/screen-01.png';
 import screen02 from '../../assets/images/projects/gurukool/screen-02.png';
 import screen03 from '../../assets/images/projects/gurukool/screen-03.png';
+import userJourney from '../../assets/images/projects/gurukool/User journey-gurukool.jpg';
 import FigmaEmbed from '@/components/case-studies/FigmaEmbed.astro';
 import IATree from '@/components/case-studies/IATree.astro';
 
@@ -367,12 +368,16 @@ export const iaData = {
   </div>
 </section>
 
-{/* Placeholder: User Flow */}
+{/* User Flow */}
 <section class="mb-20">
   <span class="text-sm font-medium tracking-wider uppercase text-[#E06100]">User Flow</span>
   <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-12 text-[#fafafa]">Mapping the journey</h2>
-  <div class="aspect-video w-full rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 text-lg">
-    To be added: User Flow
+  <div class="not-prose">
+    <Image
+      src={userJourney}
+      alt="Gurukool user journey flow"
+      class="w-full h-auto rounded-xl"
+    />
   </div>
 </section>
 
