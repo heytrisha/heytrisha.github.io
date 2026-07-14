@@ -10,6 +10,5 @@ export const moodboardItems: MoodboardItem[] = [
   { type: 'polaroid', props: { color: '#c4c8e8', caption: 'my escape', src: '/src/assets/images/life/trekking.jpeg' } },
   { type: 'polaroid', props: { color: '#e8c4d4', caption: 'Coffee', src: '/src/assets/images/life/coffee.jpeg' } },
   { type: 'polaroid', props: { color: '#c4e8d8', caption: 'Travel', src: '/src/assets/images/life/srilanka.jpeg' } },
-  { type: 'stickyNote', props: { text: 'Ideas here', color: '#fef3c7' } },
-  { type: 'stickyNote', props: { text: "Don't forget", color: '#dbeafe' } },
+
 ];
