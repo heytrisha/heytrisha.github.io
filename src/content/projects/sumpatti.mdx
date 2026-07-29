@@ -11,13 +11,15 @@ client: "Sampatti Financial"
 year: 2026
 ---
 
+import { Image } from 'astro:assets';
+import hero from '../../assets/images/projects/sumpatti/hero.png';
+import overview from '../../assets/images/projects/sumpatti/overview.png';
+
 <div className="min-h-screen bg-[#0a0a0a] text-[#fafafa]">
 
 {/* Hero */}
 <section className="max-w-6xl mx-auto px-6 pt-20 pb-20">
-  <div className="aspect-video w-full rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 text-lg">
-    Hero Image — Sampatti App Overview
-  </div>
+  <Image src={hero} alt="Sampatti App Overview" className="w-full h-auto rounded-xl" />
 </section>
 
 {/* Opening */}
@@ -37,9 +39,7 @@ year: 2026
 
 {/* Image placeholder after Overview */}
 <section className="max-w-6xl mx-auto px-6 py-20">
-  <div className="aspect-video w-full rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 text-lg">
-    Overview Image
-  </div>
+  <Image src={overview} alt="Sampatti Overview" className="w-full h-auto rounded-xl" />
 </section>
 
 {/* The Problem */}
