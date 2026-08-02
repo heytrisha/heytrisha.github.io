@@ -4,18 +4,13 @@ export default function Connect() {
   return (
     <section id="connect" tabIndex={-1} className="px-6 py-24">
       <div className="mx-auto max-w-3xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
-          Let's connect
-        </h2>
+        <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">Let's connect</h2>
 
-        <p className="mt-4 text-muted-foreground">
+        <p className="text-muted-foreground mt-4">
           Currently open for collaborations and new opportunities
         </p>
 
-        <a
-          href={`mailto:${site.email}`}
-          className="cta-primary mt-8"
-        >
+        <a href={`mailto:${site.email}`} className="cta-primary mt-8">
           Say hello
         </a>
 
@@ -25,7 +20,7 @@ export default function Connect() {
               href={site.socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground text-sm transition-colors"
             >
               GitHub
             </a>
@@ -35,7 +30,7 @@ export default function Connect() {
               href={site.socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground text-sm transition-colors"
             >
               LinkedIn
             </a>
@@ -45,7 +40,7 @@ export default function Connect() {
               href={site.socials.behance}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground text-sm transition-colors"
             >
               Behance
             </a>

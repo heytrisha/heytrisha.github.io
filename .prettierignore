@@ -1,0 +1,10 @@
+dist
+.astro
+node_modules
+pnpm-lock.yaml
+package-lock.json
+public
+.chrome-agent-profile
+.playwright-mcp
+.impeccable
+.opencode

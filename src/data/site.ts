@@ -10,11 +10,13 @@ export const site = {
     behance: 'https://www.behance.net/trishaagarwal4',
   },
 
-  get fullName() { return `${this.firstName} ${this.lastName}`; },
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
 
   get resumeDownloadName() {
     const year = new Date().getFullYear();
-    const ext = this.resumeUrl.split('.').pop() || 'pdf';
-    return `${this.firstName}_${this.lastName}_Resume_${year}.${ext}`;
+    const extension = this.resumeUrl.split('.').pop() || 'pdf';
+    return `${this.firstName}_${this.lastName}_Resume_${year}.${extension}`;
   },
 };

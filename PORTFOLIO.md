@@ -95,7 +95,7 @@ The visual system is specified in `DESIGN.md` at the project root and implemente
 These principles govern how styling decisions are made. They are drawn from mature Tailwind-based design systems (shadcn/ui, Radix, Headless UI, Catalyst).
 
 1. **Open code — own the presentation layer.** Build and adapt UI primitives directly in the source tree. For complex, error-prone behavior — focus management, keyboard navigation, ARIA patterns — use proven headless primitives rather than reinventing. Style everything yourself.
-2. **Headless behavior, styled presentation.** Separate what a component *does* from how it *looks*. Behavior is handled by structure and headless primitives; presentation is handled by Tailwind utilities and design tokens.
+2. **Headless behavior, styled presentation.** Separate what a component _does_ from how it _looks_. Behavior is handled by structure and headless primitives; presentation is handled by Tailwind utilities and design tokens.
 3. **Single source of truth.** The `@theme` block is the only place where colors, spacing, typography, radii, shadows, and motion are defined. No hardcoded values in scoped styles. No parallel token files.
 4. **Utilities for layout, components for patterns.** One-off layout concerns are expressed with Tailwind utilities directly in markup. Recurring visual patterns are expressed as component-level classes in `@layer components`.
 5. **Inheritance over restatement.** The base layer sets the foundation: font family, color, line-height, antialiasing. Components only override when they genuinely diverge. Restating is a code smell.
@@ -115,7 +115,7 @@ These principles govern how styling decisions are made. They are drawn from matu
 
 ```css
 /* src/styles/main.css */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   /* Tokens: colors, spacing, typography, radius, shadows, motion */
@@ -158,18 +158,18 @@ Content Collections use Zod schemas for type safety. The exact schema and loader
 
 Reusable components for composing case studies in MDX. Each accepts props and renders styled HTML. They are imported into MDX files and arranged freely.
 
-| Component | Purpose |
-|---|---|
-| **HeroSection** | Full-width hero image with title/subtitle overlay |
-| **StatsBar** | Row of big-number metrics |
-| **ProcessTimeline** | Vertical timeline with dates, titles, descriptions |
-| **AlternatingCards** | Image-left/text-right, then swap, repeating |
-| **ImageGallery** | Grid of images with captions |
-| **Testimonial** | Quote card with author attribution |
-| **PullQuote** | Large styled inline quote |
-| **SideBySide** | Two-column comparison |
-| **CodeShowcase** | Code block + live preview |
-| **FigmaEmbed** | Responsive Figma iframe embed |
+| Component            | Purpose                                            |
+| -------------------- | -------------------------------------------------- |
+| **HeroSection**      | Full-width hero image with title/subtitle overlay  |
+| **StatsBar**         | Row of big-number metrics                          |
+| **ProcessTimeline**  | Vertical timeline with dates, titles, descriptions |
+| **AlternatingCards** | Image-left/text-right, then swap, repeating        |
+| **ImageGallery**     | Grid of images with captions                       |
+| **Testimonial**      | Quote card with author attribution                 |
+| **PullQuote**        | Large styled inline quote                          |
+| **SideBySide**       | Two-column comparison                              |
+| **CodeShowcase**     | Code block + live preview                          |
+| **FigmaEmbed**       | Responsive Figma iframe embed                      |
 
 ### D.5 Coded Project Structure
 
@@ -198,28 +198,28 @@ The dynamic route detects if a project is coded (via `type: 'coded'` in frontmat
 
 These are the proven defaults. Divergence is allowed when there is a reason, but the burden of proof is on the alternative.
 
-| Layer | Technology | Rationale |
-|---|---|---|
-| **Framework** | Astro 5.x | Static output, file-based routing, Content Collections, Islands architecture, MDX support, zero JS by default |
-| **Styling** | Tailwind CSS v4 | Utility-first CSS with `@theme` tokens. Single source of truth for all visual values |
-| **Language** | TypeScript | Type safety for config, components, and content schema |
-| **Content** | MDX | Enables importing and composing Astro components directly in case study files for flexible layouts |
-| **Interactive islands** | React | Only for components that need client-side interactivity. Ships JS only for explicitly hydrated components |
-| **Accessibility primitives** | Radix UI | Headless behavior for complex interactions: dialogs, dropdowns, tabs, focus trapping, keyboard navigation |
-| **Animation** | Motion One (default); CSS + IntersectionObserver (minimalist option) | Motion One (~3 KB) for sequences, spring physics, and scroll-triggered reveals. CSS transitions for hover states and simple opacity/transform animations |
-| **Icons** | Lucide React | Tree-shakeable, consistent weight, actively maintained. Replaces scattered inline SVGs |
-| **Component patterns** | Shadcn UI | Copyable starting points for common patterns (Button, Card, Dialog). Uses Radix for behavior + Tailwind for styling. Not a package dependency |
-| **Hosting** | GitHub Pages | Free, automated deployment via GitHub Actions |
+| Layer                        | Technology                                                           | Rationale                                                                                                                                                |
+| ---------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Framework**                | Astro 5.x                                                            | Static output, file-based routing, Content Collections, Islands architecture, MDX support, zero JS by default                                            |
+| **Styling**                  | Tailwind CSS v4                                                      | Utility-first CSS with `@theme` tokens. Single source of truth for all visual values                                                                     |
+| **Language**                 | TypeScript                                                           | Type safety for config, components, and content schema                                                                                                   |
+| **Content**                  | MDX                                                                  | Enables importing and composing Astro components directly in case study files for flexible layouts                                                       |
+| **Interactive islands**      | React                                                                | Only for components that need client-side interactivity. Ships JS only for explicitly hydrated components                                                |
+| **Accessibility primitives** | Radix UI                                                             | Headless behavior for complex interactions: dialogs, dropdowns, tabs, focus trapping, keyboard navigation                                                |
+| **Animation**                | Motion One (default); CSS + IntersectionObserver (minimalist option) | Motion One (~3 KB) for sequences, spring physics, and scroll-triggered reveals. CSS transitions for hover states and simple opacity/transform animations |
+| **Icons**                    | Lucide React                                                         | Tree-shakeable, consistent weight, actively maintained. Replaces scattered inline SVGs                                                                   |
+| **Component patterns**       | Shadcn UI                                                            | Copyable starting points for common patterns (Button, Card, Dialog). Uses Radix for behavior + Tailwind for styling. Not a package dependency            |
+| **Hosting**                  | GitHub Pages                                                         | Free, automated deployment via GitHub Actions                                                                                                            |
 
 ### E.2 Animation Strategy
 
 Animation is tiered by complexity and bundle cost:
 
-| Tier | Tool | Use Case | Cost |
-|---|---|---|---|
-| **Default** | Motion One | Scroll-triggered reveals, choreographed sequences, spring physics | ~3 KB gzipped |
-| **Minimalist** | CSS transitions + IntersectionObserver | Hover states, simple reveals, opacity/transform transitions | 0 KB |
-| **Complex** | Framer Motion | Layout animations (shared element transitions), AnimatePresence | ~30 KB gzipped |
+| Tier           | Tool                                   | Use Case                                                          | Cost           |
+| -------------- | -------------------------------------- | ----------------------------------------------------------------- | -------------- |
+| **Default**    | Motion One                             | Scroll-triggered reveals, choreographed sequences, spring physics | ~3 KB gzipped  |
+| **Minimalist** | CSS transitions + IntersectionObserver | Hover states, simple reveals, opacity/transform transitions       | 0 KB           |
+| **Complex**    | Framer Motion                          | Layout animations (shared element transitions), AnimatePresence   | ~30 KB gzipped |
 
 Start with Motion One for any animation beyond a simple hover state. Use CSS only when the project explicitly targets zero runtime dependencies. Reserve Framer Motion for projects that genuinely need layout animations — the bundle cost must be justified by the experience gain.
 
@@ -266,6 +266,7 @@ portfolio/
 Astro configuration includes framework integrations (React, MDX), site metadata for canonical URLs, and the Tailwind CSS Vite plugin. Exact configuration is specified in `REQUIREMENTS.md`.
 
 Key considerations:
+
 - `site` — required for canonical URLs and sitemaps
 - `base` — prefixes all asset paths for GitHub Pages subdirectory hosting (omit if using a custom domain)
 
@@ -286,10 +287,10 @@ Automated deployment via GitHub Actions on push to `main`. The exact workflow co
 
 ### E.7 Client Directive Reference
 
-| Directive | Hydration Timing | Use Case |
-|---|---|---|
-| `client:load` | Immediately on page load | Critical interactive UI (navigation, text rotator) |
-| `client:idle` | When browser is idle | Lower-priority interactive elements |
-| `client:visible` | When element enters viewport | Scroll-triggered content, below-fold interactive sections |
-| `client:media` | When CSS media query matches | Mobile-only or desktop-only interactivity |
-| `client:only` | Skip SSR, render on client only | Components that depend on browser APIs |
+| Directive        | Hydration Timing                | Use Case                                                  |
+| ---------------- | ------------------------------- | --------------------------------------------------------- |
+| `client:load`    | Immediately on page load        | Critical interactive UI (navigation, text rotator)        |
+| `client:idle`    | When browser is idle            | Lower-priority interactive elements                       |
+| `client:visible` | When element enters viewport    | Scroll-triggered content, below-fold interactive sections |
+| `client:media`   | When CSS media query matches    | Mobile-only or desktop-only interactivity                 |
+| `client:only`    | Skip SSR, render on client only | Components that depend on browser APIs                    |

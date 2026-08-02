@@ -9,6 +9,7 @@ This document specifies exact implementation requirements. It is paired with `PO
 ### R.1.1 Version Selection Criteria
 
 All dependencies must satisfy:
+
 - **Latest major version** — stay current with the latest stable release
 - **At least one month old** — avoid freshly published packages that may have undiscovered issues
 - **No known security advisories** — check `pnpm audit` and GitHub security advisories before adding
@@ -199,6 +200,7 @@ The `index.astro` page renders sections in this order:
 ### R.6.2 Dynamic Route
 
 `/projects/[slug].astro` renders project detail pages:
+
 - Case studies: renders MDX content with prose styling
 - Coded projects: dynamically imports from `src/projects/[slug]/index.astro`
 - Includes back navigation to home
@@ -206,6 +208,7 @@ The `index.astro` page renders sections in this order:
 ### R.6.3 Layout Shell
 
 `Layout.astro` wraps all pages:
+
 - Loads `main.css` (Tailwind + tokens)
 - Loads Google Fonts with preconnect
 - Renders Header and Footer around `<main>` content
@@ -219,6 +222,7 @@ The `index.astro` page renders sections in this order:
 
 **Desktop:** Fixed header with logo (left) and anchor navigation links (right)
 **Mobile:** Hamburger menu
+
 - Three bars that animate to an X when checked
 - Clicking a nav link auto-closes the menu
 - Gradient fade overlay at the top of the page behind the header
@@ -230,6 +234,7 @@ The `index.astro` page renders sections in this order:
 ### R.8.1 Default Approach: Motion One
 
 For new projects following this spec, use Motion One as the default animation library. It handles:
+
 - Scroll-triggered entrance animations
 - Spring physics for natural motion
 - Choreographed sequences with staggered delays
@@ -240,11 +245,13 @@ For new projects following this spec, use Motion One as the default animation li
 When zero runtime dependencies are preferred, use this exact pattern:
 
 **Timing:**
+
 - Duration: 0.7s
 - Easing: `cubic-bezier(0.23, 1, 0.32, 1)`
 - Properties: `opacity` and `transform` only
 
 **Variants:**
+
 - `fade-up`: `translateY(30px)` → `translateY(0)`
 - `fade-in`: opacity only
 - `slide-left`: `translateX(-40px)` → `translateX(0)`
@@ -252,6 +259,7 @@ When zero runtime dependencies are preferred, use this exact pattern:
 - `scale-up`: `scale(0.95)` → `scale(1)`
 
 **Observer config:**
+
 - `threshold`: 0.1 (configurable per element)
 - `rootMargin`: `'0px 0px -40px 0px'`
 - Trigger once, then unobserve

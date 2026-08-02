@@ -6,7 +6,7 @@ import type { CollectionEntry } from 'astro:content';
 import type { ImageMetadata } from 'astro';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
-interface Props {
+interface Properties {
   project: CollectionEntry<'projects'>;
   index: number;
   basePath: string;
@@ -14,7 +14,7 @@ interface Props {
   imageModule: ImageMetadata;
 }
 
-export function ProjectCard({ project, index, basePath, active, imageModule }: Props) {
+export function ProjectCard({ project, index, basePath, active, imageModule }: Properties) {
   const [hovered, setHovered] = useState(false);
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const projectNumber = String(index + 1).padStart(2, '0');
@@ -49,9 +49,7 @@ export function ProjectCard({ project, index, basePath, active, imageModule }: P
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
       <div className="absolute bottom-6 left-6">
-        <span className="text-sm font-medium text-muted-foreground">
-          {projectNumber}
-        </span>
+        <span className="text-muted-foreground text-sm font-medium">{projectNumber}</span>
         <h3 className="mt-1 text-xl font-semibold tracking-tight text-white">
           {project.data.title}
         </h3>

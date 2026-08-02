@@ -16,7 +16,7 @@ A UX/UI design portfolio that showcases Trisha Agarwal's product design work in 
 
 ## Positioning
 
-**Decisions before deliverables.** Every case study on this site leads with the *why* — the problem framing, the constraints, the trade-offs considered — and only then shows what shipped. A neighbouring portfolio can truthfully copy the deliverables; it cannot copy the discipline of putting the decision in front of the artifact. That ordering is the product's honest differentiator and is reflected in case-study structure (problem → reasoning → outcome) and in the prose voice (observational, not promotional).
+**Decisions before deliverables.** Every case study on this site leads with the _why_ — the problem framing, the constraints, the trade-offs considered — and only then shows what shipped. A neighbouring portfolio can truthfully copy the deliverables; it cannot copy the discipline of putting the decision in front of the artifact. That ordering is the product's honest differentiator and is reflected in case-study structure (problem → reasoning → outcome) and in the prose voice (observational, not promotional).
 
 ## Operating Context
 
@@ -30,11 +30,13 @@ A UX/UI design portfolio that showcases Trisha Agarwal's product design work in 
 ## Capabilities and Constraints
 
 **Capabilities (confirmed by repo and docs):**
+
 - Case studies authored as MDX, composed from a shared section-component library.
 - Coded design-engineering projects rendered as Astro routes under the same layout shell (infrastructure ready; no coded projects currently deployed).
 - GitHub Actions deploy pipeline with staging and production environments on GitHub Pages.
 
 **Constraints:**
+
 - GitHub Pages static output — no server, no DB, no edge functions.
 - Astro `base` must be prefixed on all internal links for subdirectory hosting (or set via `BASE_PATH` env var).
 - Content Collection schema is the contract for case-study frontmatter; changes require a dev server restart.
@@ -42,9 +44,10 @@ A UX/UI design portfolio that showcases Trisha Agarwal's product design work in 
 - **Undecided (recorded, not invented):** the portfolio currently has no testimonials, no press coverage, and no external case-study links. Future work must not fabricate these.
 
 **Current visual implementation (provisional, not a binding commitment):**
+
 - Dark-only theme — chosen during the build phase to reduce token surface area and remove theme-switching concerns. The owner has indicated this may be replaced by a deliberate visual world once the presentation layer is finalized. Visual-world decisions are owned by `new-work`, not `init`.
 - Type families currently in use: Inter (400/500/600/700), JetBrains Mono (400/500), with Geist Sans also installed via `@fontsource-variable/geist`. Reconciliation between Inter and Geist is undecided and is part of the visual-world review, not product truth.
-- Accent colour and token definitions live in `src/styles/main.css` `@theme` block (per `PORTFOLIO.md` C.3 / C.4). These tokens describe the *current* implementation; they are not recorded as product commitments in this file.
+- Accent colour and token definitions live in `src/styles/main.css` `@theme` block (per `PORTFOLIO.md` C.3 / C.4). These tokens describe the _current_ implementation; they are not recorded as product commitments in this file.
 
 ## Brand Commitments
 
@@ -55,6 +58,7 @@ A UX/UI design portfolio that showcases Trisha Agarwal's product design work in 
 ## Evidence on Hand
 
 **Case studies (real client work, in `src/content/projects/`):**
+
 - `sumpatti.mdx` — Fintech, India market, designing for the first-time investor. Featured.
 - `gurukool.mdx` — Education product case study.
 - `evently.mdx` — Event platform case study.

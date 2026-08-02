@@ -1,10 +1,10 @@
-interface PolaroidProps {
+interface PolaroidProperties {
   color: string;
   caption: string;
   src?: string;
 }
 
-export function Polaroid({ color, caption, src }: PolaroidProps) {
+export function Polaroid({ color, caption, src }: PolaroidProperties) {
   return (
     <div
       className="relative w-44 bg-white sm:w-48"
@@ -16,7 +16,7 @@ export function Polaroid({ color, caption, src }: PolaroidProps) {
       {/* Pushpin — also serves as rotation handle in dev mode */}
       <div
         data-rotate-handle
-        className="absolute left-1/2 top-2 z-10 -translate-x-1/2 cursor-ew-resize"
+        className="absolute top-2 left-1/2 z-10 -translate-x-1/2 cursor-ew-resize"
       >
         <div
           className="h-8 w-8 rounded-full"
@@ -29,19 +29,14 @@ export function Polaroid({ color, caption, src }: PolaroidProps) {
 
       <div className="aspect-[3/4] w-full overflow-hidden">
         {src ? (
-          <img
-            src={src}
-            alt={caption}
-            className="h-full w-full object-cover"
-            loading="lazy"
-          />
+          <img src={src} alt={caption} className="h-full w-full object-cover" loading="lazy" />
         ) : (
           <div className="h-full w-full" style={{ backgroundColor: color }} />
         )}
       </div>
 
       <p
-        className="mt-2 text-center text-3xl lowercase text-neutral-900"
+        className="mt-2 text-center text-3xl text-neutral-900 lowercase"
         style={{
           fontFamily: "'Caveat', cursive",
           fontWeight: 700,

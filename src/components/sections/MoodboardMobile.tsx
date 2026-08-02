@@ -3,7 +3,7 @@ import { defaultPositions } from '@/data/moodboard/positions';
 import { MoodboardItemRenderer } from '@/components/moodboard/ItemRenderer';
 import type { MoodboardItem } from '@/data/moodboard/items';
 
-interface MoodboardMobileProps {
+interface MoodboardMobileProperties {
   items: MoodboardItem[];
 }
 
@@ -11,18 +11,18 @@ const COMPOSITION_WIDTH = 900;
 const COMPOSITION_HEIGHT = 640;
 const SCALE = 0.5;
 
-export function MoodboardMobile({ items }: MoodboardMobileProps) {
-  const scrollRef = useRef<HTMLDivElement>(null);
+export function MoodboardMobile({ items }: MoodboardMobileProperties) {
+  const scrollReference = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2;
+    const element = scrollReference.current;
+    if (!element) return;
+    element.scrollLeft = (element.scrollWidth - element.clientWidth) / 2;
   }, []);
 
   return (
     <div
-      ref={scrollRef}
+      ref={scrollReference}
       className="overflow-x-auto py-8"
       style={{ touchAction: 'pan-x', WebkitOverflowScrolling: 'touch' }}
     >
@@ -47,7 +47,7 @@ export function MoodboardMobile({ items }: MoodboardMobileProps) {
             return (
               <div
                 key={index}
-                className="absolute left-1/2 top-1/2"
+                className="absolute top-1/2 left-1/2"
                 style={{
                   transform: `translate(calc(-50% + ${offset.x}px), calc(-50% + ${offset.y}px)) rotate(${offset.rotate}deg)`,
                 }}

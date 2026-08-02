@@ -15,30 +15,27 @@ import {
 /*  Staggered Grid Reveal                                               */
 /* ------------------------------------------------------------------ */
 function StaggeredGrid() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const reference = useRef<HTMLDivElement>(null);
+  const isInView = useInView(reference, { once: true, margin: '-50px' });
 
-  const cells = Array.from({ length: 25 }, (_, i) => i);
+  const cells = Array.from({ length: 25 }, (_, index) => index);
 
   return (
     <section className="space-y-4">
       <h2 className="text-xl font-semibold">1. Staggered Grid Reveal</h2>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         Cells animate in with staggered delays when they scroll into view.
       </p>
-      <div
-        ref={ref}
-        className="grid grid-cols-5 gap-2 sm:gap-3"
-      >
-        {cells.map((i) => (
+      <div ref={reference} className="grid grid-cols-5 gap-2 sm:gap-3">
+        {cells.map((index) => (
           <motion.div
-            key={i}
-            className="aspect-square rounded-md bg-muted"
+            key={index}
+            className="bg-muted aspect-square rounded-md"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{
               duration: 0.4,
-              delay: i * 0.03,
+              delay: index * 0.03,
               ease: 'easeOut',
             }}
           />
@@ -61,14 +58,14 @@ function SpringCards() {
   return (
     <section className="space-y-4">
       <h2 className="text-xl font-semibold">2. Hover-Driven Spring Physics</h2>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         Hover over the cards to see spring-based scale and color transitions.
       </p>
       <div className="flex flex-wrap gap-4">
         {cards.map((card) => (
           <motion.div
             key={card.label}
-            className={`flex h-32 w-32 items-center justify-center rounded-xl text-sm font-medium text-primary-foreground ${card.color}`}
+            className={`text-primary-foreground flex h-32 w-32 items-center justify-center rounded-xl text-sm font-medium ${card.color}`}
             whileHover={{
               scale: 1.15,
               rotate: 3,
@@ -96,12 +93,12 @@ function DraggableBox() {
   return (
     <section className="space-y-4">
       <h2 className="text-xl font-semibold">3. Gesture-Based Drag</h2>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         Drag the box within its bounds — it snaps back smoothly on release.
       </p>
-      <div className="relative h-64 w-full overflow-hidden rounded-xl border border-border bg-muted/30">
+      <div className="border-border bg-muted/30 relative h-64 w-full overflow-hidden rounded-xl border">
         <motion.div
-          className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 cursor-grab rounded-xl bg-primary shadow-lg active:cursor-grabbing"
+          className="bg-primary absolute top-1/2 left-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 cursor-grab rounded-xl shadow-lg active:cursor-grabbing"
           drag
           dragConstraints={{
             left: -100,
@@ -123,9 +120,9 @@ function DraggableBox() {
 /*  Scroll-Driven Parallax                                              */
 /* ------------------------------------------------------------------ */
 function ParallaxLayers() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerReference = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: containerReference,
     offset: ['start end', 'end start'],
   });
 
@@ -134,22 +131,22 @@ function ParallaxLayers() {
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -180]);
 
   return (
-    <section className="space-y-4" ref={containerRef}>
+    <section className="space-y-4" ref={containerReference}>
       <h2 className="text-xl font-semibold">4. Scroll-Driven Parallax</h2>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         Three layers move at different speeds as you scroll past this section.
       </p>
-      <div className="relative h-64 w-full overflow-hidden rounded-xl border border-border bg-muted/30">
+      <div className="border-border bg-muted/30 relative h-64 w-full overflow-hidden rounded-xl border">
         <motion.div
-          className="absolute left-[15%] top-8 h-16 w-16 rounded-lg bg-chart-1"
+          className="bg-chart-1 absolute top-8 left-[15%] h-16 w-16 rounded-lg"
           style={{ y: y1 }}
         />
         <motion.div
-          className="absolute left-[45%] top-16 h-20 w-20 rounded-lg bg-chart-3"
+          className="bg-chart-3 absolute top-16 left-[45%] h-20 w-20 rounded-lg"
           style={{ y: y2 }}
         />
         <motion.div
-          className="absolute left-[75%] top-10 h-14 w-14 rounded-lg bg-chart-5"
+          className="bg-chart-5 absolute top-10 left-[75%] h-14 w-14 rounded-lg"
           style={{ y: y3 }}
         />
       </div>
@@ -171,25 +168,25 @@ function OrchestratedSequence() {
     await animate(
       scope.current.querySelectorAll('.seq-item'),
       { opacity: 0, y: 20, scale: 0.8 },
-      { duration: 0.2 }
+      { duration: 0.2 },
     );
 
     await animate(
       scope.current.querySelector('.seq-1'),
       { opacity: 1, y: 0, scale: 1 },
-      { duration: 0.5, ease: 'easeOut' }
+      { duration: 0.5, ease: 'easeOut' },
     );
 
     await animate(
       scope.current.querySelector('.seq-2'),
       { opacity: 1, y: 0, scale: 1 },
-      { duration: 0.5, ease: 'easeOut' }
+      { duration: 0.5, ease: 'easeOut' },
     );
 
     await animate(
       scope.current.querySelector('.seq-3'),
       { opacity: 1, y: 0, scale: 1 },
-      { duration: 0.5, ease: 'easeOut' }
+      { duration: 0.5, ease: 'easeOut' },
     );
 
     setIsPlaying(false);
@@ -198,26 +195,25 @@ function OrchestratedSequence() {
   return (
     <section className="space-y-4">
       <h2 className="text-xl font-semibold">5. Orchestrated Sequence</h2>
-      <p className="text-sm text-muted-foreground">
-        Click the button to trigger a choreographed multi-element animation
-        sequence.
+      <p className="text-muted-foreground text-sm">
+        Click the button to trigger a choreographed multi-element animation sequence.
       </p>
-      <div className="rounded-xl border border-border bg-muted/30 p-6">
+      <div className="border-border bg-muted/30 rounded-xl border p-6">
         <div ref={scope} className="mb-6 flex flex-wrap items-center gap-4">
           <motion.div
-            className="seq-item seq-1 flex h-16 w-16 items-center justify-center rounded-lg bg-chart-2 text-xs font-bold text-background"
+            className="seq-item seq-1 bg-chart-2 text-background flex h-16 w-16 items-center justify-center rounded-lg text-xs font-bold"
             initial={{ opacity: 1, y: 0, scale: 1 }}
           >
             1
           </motion.div>
           <motion.div
-            className="seq-item seq-2 flex h-16 w-16 items-center justify-center rounded-lg bg-chart-4 text-xs font-bold text-background"
+            className="seq-item seq-2 bg-chart-4 text-background flex h-16 w-16 items-center justify-center rounded-lg text-xs font-bold"
             initial={{ opacity: 1, y: 0, scale: 1 }}
           >
             2
           </motion.div>
           <motion.div
-            className="seq-item seq-3 flex h-16 w-16 items-center justify-center rounded-lg bg-chart-1 text-xs font-bold text-background"
+            className="seq-item seq-3 bg-chart-1 text-background flex h-16 w-16 items-center justify-center rounded-lg text-xs font-bold"
             initial={{ opacity: 1, y: 0, scale: 1 }}
           >
             3
@@ -226,7 +222,7 @@ function OrchestratedSequence() {
         <button
           onClick={runSequence}
           disabled={isPlaying}
-          className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
+          className="bg-primary text-primary-foreground inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 disabled:opacity-50"
         >
           {isPlaying ? 'Playing…' : 'Run Sequence'}
         </button>
@@ -239,20 +235,17 @@ function OrchestratedSequence() {
 /*  6. SVG Path Draw                                                    */
 /* ------------------------------------------------------------------ */
 function SvgPathDraw() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const reference = useRef<HTMLDivElement>(null);
+  const isInView = useInView(reference, { once: true, margin: '-100px' });
 
   return (
-    <section className="space-y-4" ref={ref}>
+    <section className="space-y-4" ref={reference}>
       <h2 className="text-xl font-semibold">6. SVG Path Draw</h2>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         An SVG stroke animates from 0% to 100% length as it enters the viewport.
       </p>
-      <div className="flex items-center justify-center rounded-xl border border-border bg-muted/30 p-8">
-        <svg
-          viewBox="0 0 200 100"
-          className="h-24 w-full max-w-xs overflow-visible"
-        >
+      <div className="border-border bg-muted/30 flex items-center justify-center rounded-xl border p-8">
+        <svg viewBox="0 0 200 100" className="h-24 w-full max-w-xs overflow-visible">
           <motion.path
             d="M10,90 Q50,10 90,90 T170,90"
             fill="none"
@@ -273,14 +266,14 @@ function SvgPathDraw() {
 /*  8. Magnetic Button                                                  */
 /* ------------------------------------------------------------------ */
 function MagneticButton() {
-  const ref = useRef<HTMLButtonElement>(null);
+  const reference = useRef<HTMLButtonElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 150, damping: 15 });
   const springY = useSpring(y, { stiffness: 150, damping: 15 });
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = ref.current?.getBoundingClientRect();
+    const rect = reference.current?.getBoundingClientRect();
     if (!rect) return;
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
@@ -296,16 +289,16 @@ function MagneticButton() {
   return (
     <section className="space-y-4">
       <h2 className="text-xl font-semibold">7. Magnetic Button</h2>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         Move your cursor near the button — it subtly pulls toward you via spring physics.
       </p>
-      <div className="flex h-40 items-center justify-center rounded-xl border border-border bg-muted/30">
+      <div className="border-border bg-muted/30 flex h-40 items-center justify-center rounded-xl border">
         <motion.button
-          ref={ref}
+          ref={reference}
           style={{ x: springX, y: springY }}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-8 text-sm font-semibold text-primary-foreground"
+          className="bg-primary text-primary-foreground inline-flex h-12 items-center justify-center rounded-full px-8 text-sm font-semibold"
         >
           Magnetic
         </motion.button>
@@ -321,12 +314,12 @@ function MorphingBlob() {
   return (
     <section className="space-y-4">
       <h2 className="text-xl font-semibold">8. Morphing Blob</h2>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         A single shape continuously morphing its border-radius.
       </p>
-      <div className="flex h-64 items-center justify-center rounded-xl border border-border bg-muted/30">
+      <div className="border-border bg-muted/30 flex h-64 items-center justify-center rounded-xl border">
         <motion.div
-          className="h-32 w-32 bg-accent"
+          className="bg-accent h-32 w-32"
           animate={{
             borderRadius: [
               '60% 40% 30% 70% / 60% 30% 70% 40%',

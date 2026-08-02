@@ -24,21 +24,24 @@ try {
 // Resolve project thumbnail images
 const workImageGlob = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/images/*.{png,jpg,jpeg,webp}',
-  { eager: true }
+  { eager: true },
 );
 const workImages: Record<string, ImageMetadata> = {};
 for (const project of workProjects) {
   const filename = project.data.thumbnail.split('/').pop();
   const path = `/src/assets/images/${filename}`;
-  const mod = workImageGlob[path];
-  if (mod) workImages[project.id] = mod.default;
+  const module_ = workImageGlob[path];
+  if (module_) workImages[project.id] = module_.default;
 }
 
 // Import all life images at build time
-const lifeImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/life/*.{jpeg,jpg,png,webp}', { eager: true });
+const lifeImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/life/*.{jpeg,jpg,png,webp}',
+  { eager: true },
+);
 
 // Resolve image URLs for moodboard items
-const resolvedMoodboardItems = moodboardItems.map(item => {
+const resolvedMoodboardItems = moodboardItems.map((item) => {
   if (item.type === 'polaroid' && item.props.src) {
     const imageModule = lifeImages[item.props.src];
     if (imageModule) {
@@ -46,8 +49,8 @@ const resolvedMoodboardItems = moodboardItems.map(item => {
         ...item,
         props: {
           ...item.props,
-          src: imageModule.default.src
-        }
+          src: imageModule.default.src,
+        },
       };
     }
   }

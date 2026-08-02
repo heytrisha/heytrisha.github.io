@@ -1,0 +1,21 @@
+name: Quality
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint: { uses: ./.github/workflows/reusable-lint.yml }
+  check: { uses: ./.github/workflows/reusable-check.yml }
+  audit: { uses: ./.github/workflows/reusable-audit.yml }
+  secrets: { uses: ./.github/workflows/reusable-secrets.yml }
