@@ -24,6 +24,16 @@ permissions:
   contents: write
 
 jobs:
+  # Hard gate: same 4 quality checks as the PR-time `quality.yml`, but
+  # invoked locally so `build` can `needs:` them. Each `uses:` is a
+  # reusable-workflow call (workflow_call trigger), which counts as a
+  # job with no dependencies — satisfying the "at least one root job"
+  # GitHub Actions requirement.
+  lint: { uses: ./.github/workflows/reusable-lint.yml }
+  check: { uses: ./.github/workflows/reusable-check.yml }
+  audit: { uses: ./.github/workflows/reusable-audit.yml }
+  secrets: { uses: ./.github/workflows/reusable-secrets.yml }
+
   build:
     needs: [lint, check, audit, secrets]
     runs-on: ubuntu-latest
