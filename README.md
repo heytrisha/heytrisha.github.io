@@ -4,9 +4,13 @@ Personal site built with Astro, React, MDX, and Tailwind CSS v4.
 
 ## Initial Setup
 
+This project uses [pnpm](https://pnpm.io/) (pinned via Corepack in `package.json`).
+
 ```bash
 make install
 ```
+
+The Makefile invokes pnpm through corepack, so no global pnpm install is required. If you want `pnpm` available directly in your shell (e.g. for `pnpm dlx shadcn add …`), run `corepack enable` once.
 
 ## Run Development Server
 

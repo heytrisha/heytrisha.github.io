@@ -10,19 +10,19 @@ help:
 	@echo "  make clean      Remove dist/ and .astro/"
 
 install:
-	npm install
+	corepack pnpm install
 
 dev:
-	npm run dev
+	corepack pnpm dev
 
 build:
-	npm run build
+	corepack pnpm run build
 
 build-staging:
-	BASE_PATH=/staging npm run build
+	BASE_PATH=/staging corepack pnpm run build
 
 preview:
-	npm run preview
+	corepack pnpm run preview
 
 clean:
 	rm -rf dist/ .astro/
