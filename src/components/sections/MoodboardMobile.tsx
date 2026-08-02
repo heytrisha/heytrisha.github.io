@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { defaultPositions } from '@/data/moodboard/positions';
 import { MoodboardItemRenderer } from '@/components/moodboard/ItemRenderer';
 import type { MoodboardItem } from '@/data/moodboard/items';
@@ -11,8 +12,17 @@ const COMPOSITION_HEIGHT = 640;
 const SCALE = 0.5;
 
 export function MoodboardMobile({ items }: MoodboardMobileProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2;
+  }, []);
+
   return (
     <div
+      ref={scrollRef}
       className="overflow-x-auto py-8"
       style={{ touchAction: 'pan-x', WebkitOverflowScrolling: 'touch' }}
     >

@@ -14,11 +14,15 @@ const skills = [
 ];
 
 function SkillItem({ skill, index, activeIndex, reducedMotion }: { skill: string; index: number; activeIndex: number; reducedMotion: boolean }) {
-  const isActive = reducedMotion || index === activeIndex;
+  const isActive = index === activeIndex;
 
   return (
     <motion.div
-      initial={false}
+      initial={{
+        opacity: 0.3,
+        scale: 0.95,
+        color: 'var(--muted-foreground)',
+      }}
       animate={{
         opacity: isActive ? 1 : 0.3,
         scale: isActive ? 1 : 0.95,
@@ -47,7 +51,6 @@ export function Skills() {
   });
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    if (reducedMotion) return;
     const newIndex = Math.min(
       skills.length - 1,
       Math.floor(latest * skills.length)
