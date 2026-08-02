@@ -112,7 +112,7 @@ Re-runs the same gates as reusable workflows:
 
 - `reusable-lint.yml` — format + lint
 - `reusable-check.yml` — `astro check`
-- `reusable-audit.yml` — `pnpm audit`
+- `reusable-audit.yml` — `pnpm audit` (currently `--audit-level=critical`; restore to `high` when the Astro upgrade bumps `sharp >= 0.35.0`)
 - `reusable-secrets.yml` — gitleaks full-history scan
 
 `deploy.yml` requires the `lint`, `check`, `audit`, `secrets` jobs to pass before building, so a failing quality check blocks deployment.
