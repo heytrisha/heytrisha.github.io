@@ -5,13 +5,13 @@ import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import { site } from '@/data/site';
 
-interface Props {
+interface Properties {
   title?: string;
   description?: string;
 }
 
+const { title, description } = Astro.props as Properties;
 const basePath = import.meta.env.BASE_PATH || '';
-const { title, description } = Astro.props;
 const pageTitle = title ? `${title} | ${site.fullName}` : site.fullName;
 ---
 
@@ -25,13 +25,16 @@ const pageTitle = title ? `${title} | ${site.fullName}` : site.fullName;
     {description && <meta name="description" content={description} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>{pageTitle}</title>
   </head>
-  <body class="min-h-screen bg-background text-foreground antialiased">
+  <body class="bg-background text-foreground min-h-screen antialiased">
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+      class="focus:bg-primary focus:text-primary-foreground sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:px-4 focus:py-2 focus:text-sm focus:font-medium"
     >
       Skip to main content
     </a>

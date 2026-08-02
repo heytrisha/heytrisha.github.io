@@ -13,7 +13,17 @@ const skills = [
   'Product Thinking',
 ];
 
-function SkillItem({ skill, index, activeIndex, reducedMotion }: { skill: string; index: number; activeIndex: number; reducedMotion: boolean }) {
+function SkillItem({
+  skill,
+  index,
+  activeIndex,
+  reducedMotion,
+}: {
+  skill: string;
+  index: number;
+  activeIndex: number;
+  reducedMotion: boolean;
+}) {
   const isActive = index === activeIndex;
 
   return (
@@ -41,20 +51,17 @@ function SkillItem({ skill, index, activeIndex, reducedMotion }: { skill: string
 }
 
 export function Skills() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerReference = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
 
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: containerReference,
     offset: ['start center', 'end center'],
   });
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    const newIndex = Math.min(
-      skills.length - 1,
-      Math.floor(latest * skills.length)
-    );
+    const newIndex = Math.min(skills.length - 1, Math.floor(latest * skills.length));
     setActiveIndex(newIndex);
   });
 
@@ -63,14 +70,20 @@ export function Skills() {
       <div className="mx-auto max-w-5xl">
         <div className="mb-16 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Skills</h2>
-          <p className="mt-3 text-muted-foreground">
+          <p className="text-muted-foreground mt-3">
             Core capabilities that drive my design practice
           </p>
         </div>
 
-        <div ref={containerRef} className="flex flex-col items-center">
+        <div ref={containerReference} className="flex flex-col items-center">
           {skills.map((skill, index) => (
-            <SkillItem key={skill} skill={skill} index={index} activeIndex={activeIndex} reducedMotion={reducedMotion} />
+            <SkillItem
+              key={skill}
+              skill={skill}
+              index={index}
+              activeIndex={activeIndex}
+              reducedMotion={reducedMotion}
+            />
           ))}
         </div>
       </div>

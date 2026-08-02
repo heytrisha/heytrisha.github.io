@@ -1,52 +1,56 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { IncomingMessage, ServerResponse } from 'node:http';
+import type { Plugin, ViteDevServer } from 'vite';
 
-export default function moodboardPositionsPlugin() {
+export default function moodboardPositionsPlugin(): Plugin {
   return {
     name: 'moodboard-positions',
-    configureServer(server) {
-      server.middlewares.use('/__moodboard/save-positions', async (req, res, next) => {
-        if (req.method !== 'POST') return next();
+    configureServer(server: ViteDevServer) {
+      server.middlewares.use(
+        '/__moodboard/save-positions',
+        async (request: IncomingMessage, res: ServerResponse, next: (err?: unknown) => void) => {
+          if (request.method !== 'POST') return next();
 
-        try {
-          let body = '';
-          for await (const chunk of req) {
-            body += chunk;
-          }
+          try {
+            let body = '';
+            for await (const chunk of request) {
+              body += chunk;
+            }
 
-          const positions = JSON.parse(body);
-          if (!Array.isArray(positions) || positions.length === 0) {
-            res.statusCode = 400;
-            res.end('Invalid positions: expected non-empty array');
-            return;
-          }
+            const positions = JSON.parse(body);
+            if (!Array.isArray(positions) || positions.length === 0) {
+              res.statusCode = 400;
+              res.end('Invalid positions: expected non-empty array');
+              return;
+            }
 
-          const valid = positions.every(
-            (p) =>
-              typeof p === 'object' &&
-              p !== null &&
-              typeof p.x === 'number' &&
-              typeof p.y === 'number' &&
-              typeof p.rotate === 'number'
-          );
+            const valid = positions.every(
+              (p) =>
+                typeof p === 'object' &&
+                p !== null &&
+                typeof p.x === 'number' &&
+                typeof p.y === 'number' &&
+                typeof p.rotate === 'number',
+            );
 
-          if (!valid) {
-            res.statusCode = 400;
-            res.end('Invalid positions: each item must have x, y, rotate as numbers');
-            return;
-          }
+            if (!valid) {
+              res.statusCode = 400;
+              res.end('Invalid positions: each item must have x, y, rotate as numbers');
+              return;
+            }
 
-          const rounded = positions.map((o) => ({
-            x: Math.round(o.x),
-            y: Math.round(o.y),
-            rotate: Math.round(o.rotate * 10) / 10,
-          }));
+            const rounded = positions.map((o) => ({
+              x: Math.round(o.x),
+              y: Math.round(o.y),
+              rotate: Math.round(o.rotate * 10) / 10,
+            }));
 
-          const lines = rounded
-            .map((o) => `  { "x": ${o.x}, "y": ${o.y}, "rotate": ${o.rotate} }`)
-            .join(',\n');
+            const lines = rounded
+              .map((o) => `  { "x": ${o.x}, "y": ${o.y}, "rotate": ${o.rotate} }`)
+              .join(',\n');
 
-          const fileContent = `// Source of truth for moodboard layout positions.
+            const fileContent = `// Source of truth for moodboard layout positions.
 //
 // Workflow:
 // 1. Arrange items in dev mode (drag body to move, drag pin/tape to rotate).
@@ -66,18 +70,19 @@ ${lines}
 ];
 `;
 
-          const filePath = path.resolve(process.cwd(), 'src/data/moodboard/positions.ts');
-          fs.writeFileSync(filePath, fileContent, 'utf-8');
+            const filePath = path.resolve(process.cwd(), 'src/data/moodboard/positions.ts');
+            fs.writeFileSync(filePath, fileContent, 'utf-8');
 
-          res.statusCode = 200;
-          res.setHeader('Content-Type', 'text/plain');
-          res.end('OK');
-        } catch (err) {
-          console.error('[moodboard-positions] Error saving positions:', err);
-          res.statusCode = 500;
-          res.end('Internal server error');
-        }
-      });
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'text/plain');
+            res.end('OK');
+          } catch (error) {
+            console.error('[moodboard-positions] Error saving positions:', error);
+            res.statusCode = 500;
+            res.end('Internal server error');
+          }
+        },
+      );
     },
   };
 }

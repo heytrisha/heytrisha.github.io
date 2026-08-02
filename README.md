@@ -48,7 +48,7 @@ The following setup enables AI-assisted design creation, canvas editing, and des
 
 ### Prerequisites
 
-* **Figma Desktop App** installed on macOS (Works on both Free and Paid accounts).
+- **Figma Desktop App** installed on macOS (Works on both Free and Paid accounts).
 
 ### Step 1: Initialize Local Server Directory (One-Time Setup)
 
@@ -62,22 +62,22 @@ Once the terminal output shows the server start logs, press `Ctrl + C` to stop i
 
 ### Step 2: Import the Desktop Bridge Plugin into Figma (One-Time Setup)
 
-* Open the Figma Desktop App.
-* Press `Cmd + P` to open Figma's Quick Actions bar.
-* Type "Import plugin from manifest",  hit Enter.  
-* When the macOS File Finder window opens, press `Cmd + Shift + G`, paste this in the path `~/.figma-console-mcp/plugin`, press Enter.
-* Select the manifest.json file inside that folder and click Open.
-* The plugin will now appear in your Figma menu as Figma Desktop Bridge.
+- Open the Figma Desktop App.
+- Press `Cmd + P` to open Figma's Quick Actions bar.
+- Type "Import plugin from manifest", hit Enter.
+- When the macOS File Finder window opens, press `Cmd + Shift + G`, paste this in the path `~/.figma-console-mcp/plugin`, press Enter.
+- Select the manifest.json file inside that folder and click Open.
+- The plugin will now appear in your Figma menu as Figma Desktop Bridge.
 
 ### Step 3: Daily Workflow
 
-* Open this project in OpenCode
-* **Open Figma:** Open your target design file in Figma Desktop App.
-* **Launch Plugin:** Right-click the canvas → Plugins → Development → Figma Desktop Bridge.
-* **Verify Connection:** Ensure the plugin indicator turns Green / READY. Keep the small plugin window open while designing.
+- Open this project in OpenCode
+- **Open Figma:** Open your target design file in Figma Desktop App.
+- **Launch Plugin:** Right-click the canvas → Plugins → Development → Figma Desktop Bridge.
+- **Verify Connection:** Ensure the plugin indicator turns Green / READY. Keep the small plugin window open while designing.
 
 ### Example OpenCode Prompts
 
-* **Design Creation:** "Create a responsive 2-column hero card with Auto Layout in my active Figma document."
-* **Design Token Management:** "In Figma, Create a color variable collection called Brand Colors with Primary (#0F172A) and Accent (#3B82F6)."
-* **Token Extraction:** "Extract all variables from my Figma file and write them to tailwind.config.js."
+- **Design Creation:** "Create a responsive 2-column hero card with Auto Layout in my active Figma document."
+- **Design Token Management:** "In Figma, Create a color variable collection called Brand Colors with Primary (#0F172A) and Accent (#3B82F6)."
+- **Token Extraction:** "Extract all variables from my Figma file and write them to tailwind.config.js."

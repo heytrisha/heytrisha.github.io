@@ -7,7 +7,6 @@ import astroPlugin from 'eslint-plugin-astro';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
-import unicorn from 'eslint-plugin-unicorn';
 import prettier from 'eslint-config-prettier';
 import globals from 'globals';
 
@@ -16,6 +15,10 @@ export default [
     ignores: [
       'dist/**',
       '.astro/**',
+      '.opencode/**',
+      '.playwright-mcp/**',
+      '.impeccable/**',
+      '.chrome-agent-profile/**',
       'node_modules/**',
       'pnpm-lock.yaml',
       'public/**',
@@ -35,22 +38,19 @@ export default [
       },
     },
     rules: {
-      'unicorn/no-array-callback-reference': 'off',
-      'unicorn/no-array-method-this-argument': 'off',
-      'unicorn/no-null': 'off',
-      'unicorn/prefer-ternary': 'off',
       'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
       '@typescript-eslint/no-unused-vars': [
         'warn',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
+      '@typescript-eslint/no-unused-expressions': 'off',
       '@typescript-eslint/consistent-type-imports': [
         'error',
         { prefer: 'type-imports', fixStyle: 'separate-type-imports' },
       ],
     },
   },
-  ...jsxA11y.flatConfigs.recommended,
+  jsxA11y.flatConfigs.recommended,
   {
     files: ['**/*.{ts,tsx}'],
     plugins: {
@@ -62,10 +62,13 @@ export default [
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    },
+  },
+  {
+    files: ['src/components/ui/**/*.tsx'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
     },
   },
   ...astroPlugin.configs.recommended,
@@ -75,6 +78,11 @@ export default [
       'no-undef': 'off',
     },
   },
-  unicorn.configs.recommended,
+  {
+    files: ['src/env.d.ts'],
+    rules: {
+      '@typescript-eslint/triple-slash-reference': 'off',
+    },
+  },
   prettier,
 ];

@@ -22,63 +22,63 @@ if (project.data.type === 'case-study') {
 }
 
 const modulePath = `/src/projects/${project.id}/index.astro`;
-const CodedComponent = project.data.type === 'coded'
-  ? (codedModules[modulePath] as any)?.default
-  : null;
+const CodedComponent =
+  project.data.type === 'coded'
+    ? (codedModules[modulePath] as { default?: (props: Record<string, unknown>) => unknown })
+        ?.default
+    : null;
 
-const showHeader = !project.data.hideDefaultHeader;
+const isShowHeader = !project.data.hideDefaultHeader;
 const containerClass = project.data.type === 'coded' ? 'max-w-5xl' : 'max-w-4xl';
 ---
 
 <Layout title={project.data.title} description={project.data.description}>
   <article class="px-6 py-24">
     <div class={`mx-auto ${containerClass}`}>
-      {showHeader && (
-        <>
-          <!-- Back link -->
-          <a
-            href={`${basePath}/#work`}
-            class="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            ← Back to work
-          </a>
+      {
+        isShowHeader && (
+          <>
+            <a
+              href={`${basePath}/#work`}
+              class="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-2 text-sm transition-colors"
+            >
+              ← Back to work
+            </a>
 
-          <!-- Header -->
-          <header class="mb-12">
-            <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
-              {project.data.title}
-            </h1>
-            <p class="mt-4 text-lg text-muted-foreground">
-              {project.data.description}
-            </p>
-            <div class="mt-6 flex flex-wrap gap-2">
-              {project.data.tags.map((tag: string) => (
-                <span class="rounded-md bg-muted px-2.5 py-1 text-xs text-muted-foreground">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            {project.data.heroImage && (
-              <img
-                src={project.data.heroImage}
-                alt={project.data.title}
-                class="mt-8 aspect-video w-full rounded-xl object-cover"
-              />
-            )}
-          </header>
-        </>
-      )}
+            <header class="mb-12">
+              <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">{project.data.title}</h1>
+              <p class="text-muted-foreground mt-4 text-lg">{project.data.description}</p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                {project.data.tags.map((tag: string) => (
+                  <span class="bg-muted text-muted-foreground rounded-md px-2.5 py-1 text-xs">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              {project.data.heroImage && (
+                <img
+                  src={project.data.heroImage}
+                  alt={project.data.title}
+                  class="mt-8 aspect-video w-full rounded-xl object-cover"
+                />
+              )}
+            </header>
+          </>
+        )
+      }
 
       <!-- Content -->
-      {project.data.type === 'case-study' && Content ? (
-        <div class="prose prose-invert max-w-none">
-          <Content />
-        </div>
-      ) : CodedComponent ? (
-        <CodedComponent />
-      ) : (
-        <p class="text-muted-foreground">Project not found.</p>
-      )}
+      {
+        project.data.type === 'case-study' && Content ? (
+          <div class="prose prose-invert max-w-none">
+            <Content />
+          </div>
+        ) : CodedComponent ? (
+          <CodedComponent />
+        ) : (
+          <p class="text-muted-foreground">Project not found.</p>
+        )
+      }
     </div>
   </article>
 </Layout>

@@ -5,7 +5,7 @@ import { animate, inView } from 'motion';
 
 type Variant = 'fade-up' | 'fade-in' | 'slide-left' | 'slide-right' | 'scale-up';
 
-interface AnimateProps {
+interface AnimateProperties {
   children: ReactNode;
   variant?: Variant;
   delay?: number;
@@ -42,23 +42,23 @@ export function Animate({
   delay = 0,
   duration = 0.7,
   className = '',
-}: AnimateProps) {
-  const ref = useRef<HTMLDivElement>(null);
+}: AnimateProperties) {
+  const reference = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    const element = reference.current;
+    if (!element) return;
 
     const { from, to } = variants[variant];
 
     // Set initial state
-    Object.assign(el.style, from);
+    Object.assign(element.style, from);
 
-    const stop = inView(el, () => {
-      animate(el, to, {
+    const stop = inView(element, () => {
+      animate(element, { ...to } as Record<string, string | number>, {
         duration,
         delay,
-        easing: [0.23, 1, 0.32, 1],
+        ease: [0.23, 1, 0.32, 1],
       });
       // Trigger once, then unobserve
       return () => {};
@@ -68,7 +68,7 @@ export function Animate({
   }, [variant, delay, duration]);
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={reference} className={className}>
       {children}
     </div>
   );

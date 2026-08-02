@@ -1,12 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { MenuIcon } from 'lucide-react';
 import { site } from '@/data/site';
@@ -16,25 +11,21 @@ interface NavLink {
   href: string;
 }
 
-interface MobileMenuProps {
+interface MobileMenuProperties {
   links: NavLink[];
   basePath: string;
 }
 
-export function MobileMenu({ links, basePath }: MobileMenuProps) {
+export function MobileMenu({ links, basePath }: MobileMenuProperties) {
   const [open, setOpen] = useState(false);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger
-        render={
-          <Button variant="ghost" size="icon" className="md:hidden" />
-        }
-      >
+      <DialogTrigger render={<Button variant="ghost" size="icon" className="md:hidden" />}>
         <MenuIcon className="size-5" />
         <span className="sr-only">Open menu</span>
       </DialogTrigger>
-      <DialogContent className="fixed inset-0 top-0 left-0 z-50 h-full max-w-none translate-x-0 translate-y-0 rounded-none bg-background/95 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-top-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2">
+      <DialogContent className="bg-background/95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-top-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2 fixed inset-0 top-0 left-0 z-50 h-full max-w-none translate-x-0 translate-y-0 rounded-none backdrop-blur-sm">
         <DialogTitle className="sr-only">Menu</DialogTitle>
         <div className="flex h-full flex-col p-6">
           <nav className="mt-8 flex flex-col gap-2">
@@ -43,7 +34,7 @@ export function MobileMenu({ links, basePath }: MobileMenuProps) {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-4 py-3 text-lg font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+                className="text-foreground/80 hover:bg-muted hover:text-foreground rounded-lg px-4 py-3 text-lg font-medium transition-colors"
               >
                 {link.label}
               </a>
@@ -52,7 +43,7 @@ export function MobileMenu({ links, basePath }: MobileMenuProps) {
               href={`${basePath}/resume.pdf`}
               download={site.resumeDownloadName}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-4 py-3 text-lg font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+              className="text-foreground/80 hover:bg-muted hover:text-foreground rounded-lg px-4 py-3 text-lg font-medium transition-colors"
             >
               Resume
             </a>

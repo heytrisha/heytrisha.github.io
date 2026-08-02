@@ -1,9 +1,9 @@
-interface StickyNoteProps {
+interface StickyNoteProperties {
   text: string;
   color: string;
 }
 
-export function StickyNote({ text, color }: StickyNoteProps) {
+export function StickyNote({ text, color }: StickyNoteProperties) {
   return (
     <div
       className="relative w-40 p-4 sm:w-44"
@@ -27,9 +27,7 @@ export function StickyNote({ text, color }: StickyNoteProps) {
         />
       </div>
 
-      <p className="mt-3 text-center text-sm font-medium text-neutral-800">
-        {text}
-      </p>
+      <p className="mt-3 text-center text-sm font-medium text-neutral-800">{text}</p>
     </div>
   );
 }

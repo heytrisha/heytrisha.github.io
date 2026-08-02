@@ -1,10 +1,7 @@
 // Prettier config for Astro 6 + Tailwind v4
 // https://prettier.io/docs/configuration
 
-import astroPlugin from 'prettier-plugin-astro';
-import tailwindPlugin from 'prettier-plugin-tailwindcss';
-
-/** @type {import('prettier').Config} */
+/** @type {import("prettier").Config} */
 export default {
   printWidth: 100,
   singleQuote: true,
@@ -15,7 +12,7 @@ export default {
   arrowParens: 'always',
   endOfLine: 'lf',
   bracketSpacing: true,
-  plugins: [astroPlugin, tailwindPlugin],
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
   overrides: [
     {
       files: '*.astro',
