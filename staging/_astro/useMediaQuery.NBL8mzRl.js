@@ -1,0 +1,1 @@
+import{a as n}from"./index.C_IhlS6f.js";function r(e,t){const a=globalThis.matchMedia(e);return a.addEventListener("change",t),()=>a.removeEventListener("change",t)}function i(e){return n.useSyncExternalStore(t=>r(e,t),()=>globalThis.matchMedia(e).matches,()=>!1)}export{i as u};
