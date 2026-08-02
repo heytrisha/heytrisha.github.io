@@ -16,11 +16,11 @@ make dev
 
 The site will be available at http://localhost:4321.
 
-## Adding Projects
+## ✨ Adding Projects
 
 See [NEW_PROJECT_GUIDE.md](NEW_PROJECT_GUIDE.md) for step-by-step instructions on adding new case studies or coded projects.
 
-## AI Assisted Development
+## 🤖 AI Assisted Development
 
 This project includes AI-assisted skills to help non-technical contributors work safely with the codebase. Invoke skills in opencode with `/<skill-name>`. Run `/skills` to see all available skills.
 
@@ -48,7 +48,7 @@ npx -y figma-console-mcp@latest
 
 Once the terminal output shows the server start logs, press Ctrl + C to stop it.
 
-### Step 2: Import the Desktop Bridge Plugin into Figma (macOS)
+### Step 2: Import the Desktop Bridge Plugin into Figma (One-Time Setup)
 
 * Open the Figma Desktop App.
 * Press `Cmd + P` to open Figma's Quick Actions bar.
