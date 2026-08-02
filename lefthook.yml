@@ -5,7 +5,15 @@ pre-commit:
   parallel: true
   jobs:
     - name: secrets
-      run: pnpm dlx gitleaks protect --staged --redact --no-banner
+      # Requires `gitleaks` on PATH. Install with: brew install gitleaks
+      # (https://github.com/gitleaks/gitleaks). If missing, the hook is a no-op;
+      # the CI `reusable-secrets` job still catches secrets remotely.
+      run: |
+        if command -v gitleaks >/dev/null 2>&1; then
+          gitleaks protect --staged --redact --no-banner
+        else
+          echo "⚠️  gitleaks not installed; skipping local secret scan (CI still scans)."
+        fi
     - name: lint
       glob: '*.{ts,tsx,astro,js,mjs,cjs}'
       run: pnpm exec eslint --fix {staged_files}

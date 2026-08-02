@@ -96,7 +96,7 @@ Runs on `git commit` against staged files only (fast, ~1-3s):
 
 - `pnpm exec eslint --fix` (auto-fixes + re-stages)
 - `pnpm exec prettier --write` (formats + re-stages)
-- `pnpm dlx gitleaks protect --staged` (scans staged hunks for secrets)
+- `gitleaks protect --staged` (scans staged hunks for secrets; requires `brew install gitleaks` — if missing, the hook is a no-op and the CI `reusable-secrets` job catches it remotely)
 
 ### Local — pre-push (lefthook)
 
