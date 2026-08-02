@@ -83,3 +83,58 @@ Visual tokens live in `src/styles/main.css` inside the `@theme` block. The desig
 The `@playwright/mcp` server writes screenshots to `.playwright-mcp/screenshots/` (configured via `--output-dir` in `.opencode/opencode.jsonc`). The directory is gitignored.
 
 **Lifecycle:** screenshots are transient. After reading or interpreting a screenshot, delete it. If the directory is empty after cleanup, remove the empty directory too. Do not leave screenshots behind in the working tree once they have served their purpose.
+
+---
+
+## 8. Quality Gates
+
+The repo enforces a quality pipeline at three levels. **Never skip them** unless the user explicitly asks you to.
+
+### Local — pre-commit (lefthook, `.lefthook.yml`)
+
+Runs on `git commit` against staged files only (fast, ~1-3s):
+
+- `pnpm exec eslint --fix` (auto-fixes + re-stages)
+- `pnpm exec prettier --write` (formats + re-stages)
+- `pnpm dlx gitleaks protect --staged` (scans staged hunks for secrets)
+
+### Local — pre-push (lefthook)
+
+Runs on `git push` against the full project (slower, catches what pre-commit can't see):
+
+- `pnpm run check` — `astro check` (TS + `.astro` validation)
+- `pnpm run lint` — full eslint
+- `pnpm run format` — full prettier check
+
+### Remote — CI (`.github/workflows/quality.yml`)
+
+Re-runs the same gates as reusable workflows:
+
+- `reusable-lint.yml` — format + lint
+- `reusable-check.yml` — `astro check`
+- `reusable-audit.yml` — `pnpm audit`
+- `reusable-secrets.yml` — gitleaks full-history scan
+
+`deploy.yml` requires the `lint`, `check`, `audit`, `secrets` jobs to pass before building, so a failing quality check blocks deployment.
+
+### Manual commands (Make or pnpm)
+
+| Task | Make | pnpm |
+|---|---|---|
+| Install | `make install` | `pnpm install` |
+| Lint | `make lint` | `pnpm run lint` |
+| Lint (auto-fix) | `pnpm run lint:fix` | `pnpm run lint:fix` |
+| Format check | `make format` | `pnpm run format` |
+| Format (write) | `make format-fix` | `pnpm run format:fix` |
+| Type + .astro check | `make check` | `pnpm run check` |
+
+### Hooks lifecycle
+
+- `pnpm install` auto-runs `prepare` → `lefthook install`, which writes the hook scripts into `.git/hooks/`.
+- If hooks ever go missing (e.g. after `corepack` shenanigans), re-run `pnpm run prepare`.
+- To bypass hooks in an emergency: `LEFTHOOK=0 git commit ...` (or `--no-verify`). Use sparingly.
+
+### Adding new tools that need postinstall
+
+pnpm 11+ blocks postinstall scripts by default. If you add a new dev dependency that needs to run a postinstall (binary download, native build), append it to `pnpm-workspace.yaml` under `allowBuilds`. Existing entries: `esbuild`, `sharp`, `lefthook`.
+

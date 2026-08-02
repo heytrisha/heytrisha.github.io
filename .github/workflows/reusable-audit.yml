@@ -1,0 +1,26 @@
+name: Reusable / Audit
+
+on:
+  workflow_call:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22.13'
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Audit production dependencies
+        run: pnpm audit --prod --audit-level=high
+
+      - name: Audit dev dependencies (warning only)
+        continue-on-error: true
+        run: pnpm audit --audit-level=moderate

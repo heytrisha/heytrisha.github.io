@@ -1,0 +1,34 @@
+# Lefthook config: https://lefthook.dev/configuration/
+# Runs locally on commit and push. The CI `quality` workflow enforces the same gates remotely.
+
+pre-commit:
+  parallel: true
+  commands:
+    secrets:
+      run: pnpm dlx gitleaks protect --staged --redact --no-banner
+    lint:
+      glob: "*.{ts,tsx,astro,js,mjs,cjs}"
+      run: pnpm exec eslint --fix {staged_files}
+      stage_fixed: true
+    format:
+      glob: "*.{ts,tsx,astro,js,mjs,cjs,json,md,mdx,css,yml,yaml}"
+      run: pnpm exec prettier --write {staged_files}
+      stage_fixed: true
+  jobs:
+    - secrets
+    - lint
+    - format
+
+pre-push:
+  parallel: true
+  commands:
+    check:
+      run: pnpm run check
+    lint:
+      run: pnpm run lint
+    format:
+      run: pnpm run format
+  jobs:
+    - check
+    - lint
+    - format

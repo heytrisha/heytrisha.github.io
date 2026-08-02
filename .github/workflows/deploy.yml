@@ -25,6 +25,7 @@ permissions:
 
 jobs:
   build:
+    needs: [lint, check, audit, secrets]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6

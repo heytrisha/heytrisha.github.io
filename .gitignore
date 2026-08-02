@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # Impeccable design tool local cache (critique snapshots, live-edit scratch)
 .impeccable/
+
+# Lefthook local cache
+.lefthook/

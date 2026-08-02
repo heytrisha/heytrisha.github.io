@@ -1,0 +1,23 @@
+# Gitleaks config
+# https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml
+
+title = "Personal site gitleaks config"
+
+[extend]
+useDefault = true
+
+# Allowlist patterns that are obviously not real secrets
+[allowlist]
+description = "Local tool caches and lockfiles that may contain non-secret base64 blobs"
+paths = [
+  '''node_modules/''',
+  '''dist/''',
+  '''.astro/''',
+  '''.opencode/''',
+  '''.playwright-mcp/''',
+  '''.impeccable/''',
+  '''.chrome-agent-profile/''',
+  '''pnpm-lock.yaml''',
+  '''public/''',
+  '''.lefthook/''',
+]
