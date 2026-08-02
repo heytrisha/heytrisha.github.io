@@ -284,16 +284,16 @@ help:
 	@echo "  make promote           Promote staging to production"
 
 install:
-	npm install
+	pnpm install
 
 dev:
-	npm run dev
+	pnpm run dev
 
 build:
-	npm run build
+	pnpm run build
 
 preview:
-	npm run preview
+	pnpm run preview
 
 clean:
 	rm -rf dist/ .astro/
