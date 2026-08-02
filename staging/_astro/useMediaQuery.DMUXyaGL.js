@@ -1,0 +1,1 @@
+import{r as n}from"./index.DJPy1P0u.js";function i(t){const[r,s]=n.useState(!1);return n.useEffect(()=>{const e=window.matchMedia(t);s(e.matches);const a=c=>s(c.matches);return e.addEventListener("change",a),()=>e.removeEventListener("change",a)},[t]),r}export{i as u};
