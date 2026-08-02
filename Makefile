@@ -10,19 +10,19 @@ help:
 	@echo "  make clean      Remove dist/ and .astro/"
 
 install:
-	npm install
+	pnpm install
 
 dev:
-	npm run dev
+	pnpm run dev
 
 build:
-	npm run build
+	pnpm run build
 
 build-staging:
-	BASE_PATH=/staging npm run build
+	BASE_PATH=/staging pnpm run build
 
 preview:
-	npm run preview
+	pnpm run preview
 
 clean:
 	rm -rf dist/ .astro/

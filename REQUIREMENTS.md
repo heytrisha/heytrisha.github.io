@@ -11,7 +11,7 @@ This document specifies exact implementation requirements. It is paired with `PO
 All dependencies must satisfy:
 - **Latest major version** — stay current with the latest stable release
 - **At least one month old** — avoid freshly published packages that may have undiscovered issues
-- **No known security advisories** — check `npm audit` and GitHub security advisories before adding
+- **No known security advisories** — check `pnpm audit` and GitHub security advisories before adding
 
 Once dependencies are selected and verified, **pin exact versions in `package.json`** (no `^` or `~` prefixes). This prevents unexpected updates from breaking the build and ensures reproducibility across environments.
 

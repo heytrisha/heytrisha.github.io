@@ -4,7 +4,10 @@ Personal site built with Astro, React, MDX, and Tailwind CSS v4.
 
 ## Initial Setup
 
+This project uses [pnpm](https://pnpm.io/) (pinned via Corepack in `package.json`).
+
 ```bash
+corepack enable
 make install
 ```
 
