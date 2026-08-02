@@ -11,7 +11,7 @@ const projects = defineCollection({
     pubDate: z.coerce.date(),
     heroImage: z.string().optional(),
     thumbnail: z.string(),
-    figmaUrl: z.string().url().optional(),
+    figmaUrl: z.url().optional(),
     tags: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
     order: z.number().default(0),
