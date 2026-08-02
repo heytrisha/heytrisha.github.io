@@ -1,25 +1,9 @@
 ---
 import { site } from '@/data/site';
-import UnderConstructionSign from '@/components/UnderConstructionSign.tsx';
-import features from '@/config/features.json';
 ---
 
 <section class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-6 py-20 text-center">
   <div class="relative mx-auto max-w-3xl">
-    <!-- Under Construction Sign -->
-    {features.underConstructionSign && (
-      <>
-        {/* Mobile: centered, static, smaller */}
-        <div class="md:hidden mb-4">
-          <UnderConstructionSign client:load mobile />
-        </div>
-        {/* Desktop: absolute positioned, swinging */}
-        <div class="hidden md:block absolute -top-26 right-0 md:-right-12 z-10">
-          <UnderConstructionSign client:load />
-        </div>
-      </>
-    )}
-
     <p class="text-sm font-medium tracking-widest text-muted-foreground uppercase">
       {site.title}
     </p>
@@ -27,23 +11,11 @@ import features from '@/config/features.json';
       {site.fullName}
     </h1>
     <p class="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
-      I design digital experiences that are intuitive, accessible, and
-      delightful. Currently focused on creating products that make everyday life
-      a little bit easier.
+      I design for the moment before the decision.
     </p>
     <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-      <a
-        href="#work"
-        class="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-      >
-        View my work
-      </a>
-      <a
-        href="#connect"
-        class="inline-flex h-10 items-center justify-center px-6 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
-      >
-        Get in touch
-      </a>
+      <a href="#work" class="cta-primary">View my work</a>
+      <a href="#connect" class="cta-secondary">Get in touch</a>
     </div>
   </div>
 </section>

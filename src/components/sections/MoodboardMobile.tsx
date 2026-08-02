@@ -6,17 +6,48 @@ interface MoodboardMobileProps {
   items: MoodboardItem[];
 }
 
+const COMPOSITION_WIDTH = 900;
+const COMPOSITION_HEIGHT = 640;
+const SCALE = 0.5;
+
 export function MoodboardMobile({ items }: MoodboardMobileProps) {
   return (
-    <div className="flex flex-col items-center gap-10 py-8">
-      {items.map((item, index) => (
+    <div
+      className="overflow-x-auto py-8"
+      style={{ touchAction: 'pan-x', WebkitOverflowScrolling: 'touch' }}
+    >
+      <div
+        className="relative mx-auto"
+        style={{
+          width: COMPOSITION_WIDTH * SCALE,
+          height: COMPOSITION_HEIGHT * SCALE,
+        }}
+      >
         <div
-          key={index}
-          style={{ transform: `rotate(${defaultPositions[index].rotate}deg)` }}
+          className="relative"
+          style={{
+            width: COMPOSITION_WIDTH,
+            height: COMPOSITION_HEIGHT,
+            transform: `scale(${SCALE})`,
+            transformOrigin: 'top left',
+          }}
         >
-          <MoodboardItemRenderer item={item} />
+          {items.map((item, index) => {
+            const offset = defaultPositions[index];
+            return (
+              <div
+                key={index}
+                className="absolute left-1/2 top-1/2"
+                style={{
+                  transform: `translate(calc(-50% + ${offset.x}px), calc(-50% + ${offset.y}px)) rotate(${offset.rotate}deg)`,
+                }}
+              >
+                <MoodboardItemRenderer item={item} />
+              </div>
+            );
+          })}
         </div>
-      ))}
+      </div>
     </div>
   );
 }

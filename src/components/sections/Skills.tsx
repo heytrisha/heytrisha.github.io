@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
 import { useState } from 'react';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const skills = [
   'User Research',
@@ -12,23 +13,19 @@ const skills = [
   'Product Thinking',
 ];
 
-function SkillItem({ skill, index, activeIndex }: { skill: string; index: number; activeIndex: number }) {
-  const isActive = index === activeIndex;
+function SkillItem({ skill, index, activeIndex, reducedMotion }: { skill: string; index: number; activeIndex: number; reducedMotion: boolean }) {
+  const isActive = reducedMotion || index === activeIndex;
 
   return (
     <motion.div
-      initial={{
-        opacity: 0.3,
-        scale: 0.95,
-        color: 'var(--muted-foreground)',
-      }}
+      initial={false}
       animate={{
         opacity: isActive ? 1 : 0.3,
         scale: isActive ? 1 : 0.95,
         color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)',
       }}
       transition={{
-        duration: 0.5,
+        duration: reducedMotion ? 0 : 0.5,
         ease: [0.23, 1, 0.32, 1],
       }}
       className="py-8 text-4xl tracking-tight uppercase sm:text-5xl md:text-6xl lg:text-7xl"
@@ -42,6 +39,7 @@ function SkillItem({ skill, index, activeIndex }: { skill: string; index: number
 export function Skills() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -49,6 +47,7 @@ export function Skills() {
   });
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    if (reducedMotion) return;
     const newIndex = Math.min(
       skills.length - 1,
       Math.floor(latest * skills.length)
@@ -57,7 +56,7 @@ export function Skills() {
   });
 
   return (
-    <section id="skills" className="px-6 py-24">
+    <section id="skills" tabIndex={-1} className="px-6 py-24">
       <div className="mx-auto max-w-5xl">
         <div className="mb-16 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Skills</h2>
@@ -68,7 +67,7 @@ export function Skills() {
 
         <div ref={containerRef} className="flex flex-col items-center">
           {skills.map((skill, index) => (
-            <SkillItem key={skill} skill={skill} index={index} activeIndex={activeIndex} />
+            <SkillItem key={skill} skill={skill} index={index} activeIndex={activeIndex} reducedMotion={reducedMotion} />
           ))}
         </div>
       </div>

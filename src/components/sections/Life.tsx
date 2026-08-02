@@ -14,7 +14,7 @@ export function Life({ items }: LifeProps) {
   const isDev = import.meta.env.DEV;
 
   return (
-    <section id="life" className="px-6 py-24">
+    <section id="life" tabIndex={-1} className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">

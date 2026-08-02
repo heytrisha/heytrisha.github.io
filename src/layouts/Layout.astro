@@ -29,8 +29,14 @@ const pageTitle = title ? `${title} | ${site.fullName}` : site.fullName;
     <title>{pageTitle}</title>
   </head>
   <body class="min-h-screen bg-background text-foreground antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+    >
+      Skip to main content
+    </a>
     <Header />
-    <main class="pt-16">
+    <main id="main" class="pt-16">
       <slot />
     </main>
     <Footer />
