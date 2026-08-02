@@ -16,50 +16,48 @@ import hero from '../../assets/images/projects/sumpatti/hero.png';
 import overview from '../../assets/images/projects/sumpatti/overview.png';
 import solution from '../../assets/images/projects/sumpatti/solution.png';
 
-<div className="min-h-screen bg-[#0a0a0a] text-[#fafafa]">
+<div class="max-w-4xl mx-auto bg-[#0a0a0a] text-[#fafafa]">
 
 {/* Hero */}
-<section className="max-w-6xl mx-auto px-6 pt-20 pb-20">
+<section className="mb-20">
   <Image src={hero} alt="Sampatti App Overview" className="w-full h-auto rounded-xl" />
 </section>
 
 {/* Opening */}
-<section className="max-w-6xl mx-auto px-6 pt-6 pb-4">
-  <blockquote className="border-l-2 border-amber-400 pl-4 py-1 max-w-3xl mb-3 [&_p]:before:content-none [&_p]:after:content-none">
-    <p className="text-lg text-gray-300 italic leading-relaxed">
-      "Every major Indian investment app is designed for the moment after the decision to invest. Sampatti designs for the moment before it."
-    </p>
+<section class="mb-20">
+  <blockquote class="text-xl md:text-2xl text-gray-400 italic leading-relaxed mb-8">
+    "Every major Indian investment app is designed for the moment after the decision to invest. Sampatti designs for the moment before it."
   </blockquote>
 
-  <div className="max-w-3xl text-gray-400 leading-relaxed">
-    <p className="text-base">
+  <div class="text-gray-400 leading-relaxed">
+    <p class="text-base">
       40 million first-time investors entered the Indian market between 2020 and 2023. The apps are polished, the intent is real, and the infrastructure exists. Yet most of them never make their first investment. This case study is about why — and what happens when you design for the user who is still deciding.
     </p>
   </div>
 </section>
 
 {/* Image placeholder after Overview */}
-<section className="max-w-6xl mx-auto px-6 py-20">
+<section className="mb-20">
   <Image src={overview} alt="Sampatti Overview" className="w-full h-auto rounded-xl" />
 </section>
 
 {/* The Problem */}
-<section className="max-w-6xl mx-auto px-6 py-20">
-  <span className="text-sm font-medium tracking-wider uppercase text-amber-400">The Problem</span>
-  <h2 className="text-4xl font-bold mt-4 mb-4">40 million first-time investors. Most never make their first investment.</h2>
+<section class="mb-20">
+  <span class="text-sm font-medium tracking-wider uppercase text-amber-400">The Problem</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">40 million first-time investors. Most never make their first investment.</h2>
 
-  <p className="text-gray-400 text-lg leading-relaxed mb-12">
+  <p class="text-gray-400 text-lg leading-relaxed mb-8">
     The apps are polished. The intent is real. The infrastructure exists. Yet the gap between knowing and doing keeps widening.
   </p>
 
-  <div className="mb-12">
+  <div class="mb-8">
     <h3 className="text-xl font-bold text-[#fafafa] mb-3">The gap is not knowledge — it is confidence</h3>
     <p className="text-gray-400 leading-relaxed">
       Every major Indian investment app is designed for the moment after the decision to invest. None are designed for the moment before it. Users arrive informed, ready, and find nothing that helps them cross the threshold with personalised guidance.
     </p>
   </div>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
     <div className="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
       <span className="text-3xl font-bold text-amber-400">35M</span>
       <p className="text-sm text-gray-400 mt-2">Active SIP accounts despite 40M new investors joining since 2020</p>
@@ -78,7 +76,7 @@ import solution from '../../assets/images/projects/sumpatti/solution.png';
     </div>
   </div>
 
-  <div className="border border-amber-400/30 rounded-xl p-6 bg-amber-400/5 mb-12">
+  <div class="border border-amber-400/30 rounded-xl p-6 bg-amber-400/5 mb-8">
     <h3 className="text-xl font-bold text-[#fafafa] mb-3">Who this product is for</h3>
     <p className="text-gray-300 text-sm leading-relaxed mb-3">
       <strong>Rohan Mehta, 23 — Software developer, Bangalore</strong>. 8 months into his first job. ₹42,000/month take-home. Has watched 50+ SIP videos, downloaded Groww, completed KYC — but closed the app when he saw 200 fund options.
@@ -90,20 +88,19 @@ import solution from '../../assets/images/projects/sumpatti/solution.png';
 </section>
 
 {/* The Solution */}
-<section className="max-w-6xl mx-auto px-6 py-20">
-  <span className="text-sm font-medium tracking-wider uppercase text-amber-400">The Solution</span>
-  <h2 className="text-4xl font-bold mt-4 mb-4">Sampatti is built for the user who is still deciding.</h2>
+<section class="mb-20">
+  <span class="text-sm font-medium tracking-wider uppercase text-amber-400">The Solution</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Sampatti is built for the user who is still deciding.</h2>
 
   {/* Summary of Principles 01, 03, 04, 05, 06 */}
-  <div className="mb-12">
-    
-    <p className="text-gray-400 leading-relaxed">Sampatti replaces the overwhelming fund catalogue with a single personalised recommendation based on two questions about your financial situation and risk tolerance. The first SIP starts at ₹100 — pause anytime, stop anytime, no exit fees. Every term is explained in plain language where it appears, not buried in a glossary. Projections are calculated from your actual income and age, not generic calculators. And the guidance adapts as you invest, growing with you from first SIP to multiple goals.</p>
+  <div class="mb-8">
+    <p class="text-gray-400 leading-relaxed">Sampatti replaces the overwhelming fund catalogue with a single personalised recommendation based on two questions about your financial situation and risk tolerance. The first SIP starts at ₹100 — pause anytime, stop anytime, no exit fees. Every term is explained in plain language where it appears, not buried in a glossary. Projections are calculated from your actual income and age, not generic calculators. And the guidance adapts as you invest, growing with you from first SIP to multiple goals.</p>
   </div>
 </section>
 
 {/* Image placeholder after Solution */}
-<section className="max-w-6xl mx-auto px-6 py-20">
-  <Image src={solution} alt="Sampatti Solution" className="w-full h-auto rounded-xl" />
+<section class="mb-20">
+  <Image src={solution} alt="Sampatti Solution" class="w-full rounded-xl mt-8" />
 </section>
 
 </div>
