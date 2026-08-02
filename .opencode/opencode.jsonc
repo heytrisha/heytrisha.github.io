@@ -41,6 +41,11 @@
         "--output-dir=./.playwright-mcp/screenshots"
       ],
       "enabled": true
+    },
+    "figma-console": {
+      "type": "local",
+      "command": ["npx", "-y", "figma-console-mcp@latest"],
+      "enabled": true
     }
   },
 
