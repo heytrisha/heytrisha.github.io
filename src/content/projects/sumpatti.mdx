@@ -14,6 +14,7 @@ year: 2026
 import { Image } from 'astro:assets';
 import hero from '../../assets/images/projects/sumpatti/hero.png';
 import overview from '../../assets/images/projects/sumpatti/overview.png';
+import solution from '../../assets/images/projects/sumpatti/solution.png';
 
 <div className="min-h-screen bg-[#0a0a0a] text-[#fafafa]">
 
@@ -102,9 +103,7 @@ import overview from '../../assets/images/projects/sumpatti/overview.png';
 
 {/* Image placeholder after Solution */}
 <section className="max-w-6xl mx-auto px-6 py-20">
-  <div className="aspect-video w-full rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 text-lg">
-    Solution Image
-  </div>
+  <Image src={solution} alt="Sampatti Solution" className="w-full h-auto rounded-xl" />
 </section>
 
 </div>
