@@ -40,7 +40,7 @@ export function Work({ projects, basePath, images }: Props) {
   });
 
   return (
-    <section id="work" className="py-24">
+    <section id="work" tabIndex={-1} className="py-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-16 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Work</h2>

@@ -21,3 +21,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Playwright MCP local profile
+.chrome-agent-profile/
+.playwright-mcp/
+
+# Impeccable design tool local cache (critique snapshots, live-edit scratch)
+.impeccable/

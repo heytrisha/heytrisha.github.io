@@ -75,3 +75,11 @@ Visual tokens live in `src/styles/main.css` inside the `@theme` block. The desig
 ## 6. Path Aliases
 
 `@/*` maps to `src/*`. Use it for all internal imports.
+
+## 7. Tooling Conventions
+
+### Playwright MCP screenshots
+
+The `@playwright/mcp` server writes screenshots to `.playwright-mcp/screenshots/` (configured via `--output-dir` in `.opencode/opencode.jsonc`). The directory is gitignored.
+
+**Lifecycle:** screenshots are transient. After reading or interpreting a screenshot, delete it. If the directory is empty after cleanup, remove the empty directory too. Do not leave screenshots behind in the working tree once they have served their purpose.

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import type { CollectionEntry } from 'astro:content';
 import type { ImageMetadata } from 'astro';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -13,20 +14,14 @@ interface Props {
   imageModule: ImageMetadata;
 }
 
-const colors = [
-  '#5eead4',
-  '#c4b5fd',
-  '#fdba74',
-  '#f9a8d4',
-  '#7dd3fc',
-  '#86efac',
-];
-
 export function ProjectCard({ project, index, basePath, active, imageModule }: Props) {
   const [hovered, setHovered] = useState(false);
-  const color = colors[index % colors.length];
+  const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const projectNumber = String(index + 1).padStart(2, '0');
   const isActive = active || hovered;
+  const transition = reducedMotion
+    ? { duration: 0 }
+    : { duration: 0.7, ease: [0.23, 1, 0.32, 1] as const };
 
   return (
     <a
@@ -37,7 +32,7 @@ export function ProjectCard({ project, index, basePath, active, imageModule }: P
     >
       <motion.div
         animate={{ filter: isActive ? 'grayscale(0)' : 'grayscale(100%)' }}
-        transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+        transition={transition}
         className="absolute inset-0 size-full scale-[1.1]"
       >
         <img
@@ -51,17 +46,10 @@ export function ProjectCard({ project, index, basePath, active, imageModule }: P
         />
       </motion.div>
 
-      <motion.div
-        animate={{ opacity: isActive ? 0 : 1 }}
-        transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-        className="pointer-events-none absolute inset-0 mix-blend-overlay"
-        style={{ background: `linear-gradient(to top, ${color} 0%, ${color} 6%, transparent 20%)` }}
-      />
-
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
       <div className="absolute bottom-6 left-6">
-        <span className="text-sm font-medium" style={{ color }}>
+        <span className="text-sm font-medium text-muted-foreground">
           {projectNumber}
         </span>
         <h3 className="mt-1 text-xl font-semibold tracking-tight text-white">
