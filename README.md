@@ -30,6 +30,14 @@ Handles common Git workflows with safety checks at every step. You can save work
 
 Example: type `/git` and say "I want to build a new feature", "save my work" or "push to GitHub".
 
+### `/impeccable` — Frontend Design & Craft
+
+Design, redesign, critique, audit, or polish any frontend surface in this project. Covers UX, visual hierarchy, accessibility, typography, layout, motion, and design tokens. Describe what you want in plain English.
+
+Example: type `/impeccable` and say "redesign the hero section", "audit the projects page for accessibility", or "make the home page more polished".
+
+For a cheatsheet of available commands and what each one does, see the [language section of the impeccable site](https://impeccable.style/#language).
+
 ## 🎨 Designing with Figma
 
 The following setup enables AI-assisted design creation, canvas editing, and design token extraction directly inside Figma.
@@ -46,7 +54,7 @@ Run the initialization command once in your terminal to ensure `figma-console-mc
 npx -y figma-console-mcp@latest
 ```
 
-Once the terminal output shows the server start logs, press Ctrl + C to stop it.
+Once the terminal output shows the server start logs, press `Ctrl + C` to stop it.
 
 ### Step 2: Import the Desktop Bridge Plugin into Figma (One-Time Setup)
 
@@ -60,12 +68,12 @@ Once the terminal output shows the server start logs, press Ctrl + C to stop it.
 ### Step 3: Daily Workflow
 
 * Open this project in OpenCode
-* Open Figma: Open your target design file in Figma Desktop App.
-* Launch Plugin: Right-click the canvas → Plugins → Development → Figma Desktop Bridge.
-* Verify Connection: Ensure the plugin indicator turns Green / READY. Keep the small plugin window open while designing.
+* **Open Figma:** Open your target design file in Figma Desktop App.
+* **Launch Plugin:** Right-click the canvas → Plugins → Development → Figma Desktop Bridge.
+* **Verify Connection:** Ensure the plugin indicator turns Green / READY. Keep the small plugin window open while designing.
 
 ### Example OpenCode Prompts
 
-* Design Creation: "Create a responsive 2-column hero card with Auto Layout in my active Figma document."
-* Design Token Management: "In Figma, Create a color variable collection called Brand Colors with Primary (#0F172A) and Accent (#3B82F6)."
-* Token Extraction: "Extract all variables from my Figma file and write them to tailwind.config.js."
+* **Design Creation:** "Create a responsive 2-column hero card with Auto Layout in my active Figma document."
+* **Design Token Management:** "In Figma, Create a color variable collection called Brand Colors with Primary (#0F172A) and Accent (#3B82F6)."
+* **Token Extraction:** "Extract all variables from my Figma file and write them to tailwind.config.js."
