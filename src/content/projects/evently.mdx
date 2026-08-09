@@ -13,323 +13,165 @@ year: 2025
 
 import { Image } from 'astro:assets';
 import hero from '../../assets/images/projects/evently/hero.png';
-import screen01 from '../../assets/images/projects/evently/screen-01.jpeg';
-import screen02 from '../../assets/images/projects/evently/screen-02.jpeg';
-import screen03 from '../../assets/images/projects/evently/screen-03.jpeg';
+import solution01 from '../../assets/images/projects/evently/screen-01.jpeg';
+import solution02 from '../../assets/images/projects/evently/screen-02.jpeg';
+import solution03 from '../../assets/images/projects/evently/screen-03.jpeg';
 
-<div class="max-w-4xl mx-auto px-6 py-4 mb-20">
-  {/* Hero Section */}
-  <div class="mb-16">
-    <Image
-      src={hero}
-      alt="Evently — Discover, Create, Belong"
-      class="w-full h-auto rounded-xl"
-    />
+<div class="max-w-4xl mx-auto bg-[#0a0a0a] text-[#fafafa]">
+
+{/* Hero */}
+
+<section class="mb-20">
+  <Image src={hero} alt="Evently App Overview" class="h-auto w-full rounded-xl" />
+</section>
+
+{/* Overview */}
+
+<section class="mb-20">
+  <blockquote class="text-xl md:text-2xl text-gray-400 italic leading-relaxed mb-8">
+    "Evently turns overwhelming event listings into a personal, joyful discovery experience for the people attending and the people hosting."
+  </blockquote>
+
+  <div class="border border-white/10 rounded-xl p-6 bg-white/[0.02] mb-8">
+    <ul class="space-y-4">
+      <li>
+        <h3 class="text-lg font-semibold text-[#fafafa]">Personalized Discovery</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Smart recommendations and intuitive filters that surface events worth attending.</p>
+      </li>
+      <li>
+        <h3 class="text-lg font-semibold text-[#fafafa]">Two-sided Platform</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Designed for Explorers seeking inspiration and Creators seeking visibility.</p>
+      </li>
+      <li>
+        <h3 class="text-lg font-semibold text-[#fafafa]">Emotionally Engaging</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">An experience that feels creative and lively, not transactional.</p>
+      </li>
+    </ul>
   </div>
+</section>
 
-{/* Project Overview */}
+{/* The Problem */}
 
-<div class="mb-16">
-  <p class="mb-8 text-2xl leading-relaxed font-light text-gray-300 md:text-3xl">
-    Evently is an event discovery platform designed to make finding and hosting experiences more
-    joyful, personalized, and efficient for two key personas:{' '}
-    <strong class="text-[#fafafa]">Explorers</strong> and{' '}
-    <strong class="text-[#fafafa]">Creators / Hosts</strong>.
-  </p>
-  <p class="mb-8 text-lg leading-relaxed text-gray-400">
-    The platform focuses on improving discovery through personalization, intuitive filters, and
-    creator-focused tools, while making the overall experience feel more engaging and human.
-  </p>
-</div>
+<section class="mb-20">
+  <span class="text-sm font-medium tracking-wider uppercase text-violet-400">The Problem</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Event discovery is broken — for both sides.</h2>
 
-{/* Challenges */}
+<p class="mb-8 text-lg leading-relaxed text-gray-400">
+  Event platforms today feel like endless catalogues. For Explorers, it's decision fatigue: hundreds
+  of listings, no personalization, and no way to interact with hosts before committing. For
+  Creators, it's invisibility: even great events struggle to be seen, forcing them to promote on
+  social media instead of using built-in tools.
+</p>
 
-  <div class="mb-16">
-    <h2 class="text-sm uppercase tracking-widest text-violet-400 mb-4">Challenges</h2>
-    <h3 class="text-3xl md:text-4xl font-bold text-[#fafafa] mb-8 leading-tight">
-      Where It Hurt
-    </h3>
-
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="border-l-2 border-l-violet-500 pl-6">
-        <h4 class="text-xl font-semibold text-[#fafafa] mb-2">Overwhelming discovery</h4>
-        <p class="text-gray-400 leading-relaxed">
-          Users often face endless event listings without meaningful personalization, making it hard to surface what's relevant.
-        </p>
-      </div>
-      <div class="border-l-2 border-l-violet-500 pl-6">
-        <h4 class="text-xl font-semibold text-[#fafafa] mb-2">Limited filtering</h4>
-        <p class="text-gray-400 leading-relaxed">
-          Most platforms rely on basic filters like location and date, making it difficult to narrow down relevant events.
-        </p>
-      </div>
-      <div class="border-l-2 border-l-violet-500 pl-6">
-        <h4 class="text-xl font-semibold text-[#fafafa] mb-2">Decision fatigue</h4>
-        <p class="text-gray-400 leading-relaxed">
-          With too many options and little guidance, users struggle to choose events confidently and abandon the search.
-        </p>
-      </div>
-      <div class="border-l-2 border-l-cyan-500 pl-6">
-        <h4 class="text-xl font-semibold text-[#fafafa] mb-2">Low visibility for creators</h4>
-        <p class="text-gray-400 leading-relaxed">
-          Hosts often rely on social media promotion to reach audiences, with few built-in tools to grow their community.
-        </p>
-      </div>
-      <div class="border-l-2 border-l-cyan-500 pl-6">
-        <h4 class="text-xl font-semibold text-[#fafafa] mb-2">Communication gap</h4>
-        <p class="text-gray-400 leading-relaxed">
-          Users cannot easily ask questions or interact with hosts before booking, reducing trust and commitment.
-        </p>
-      </div>
-      <div class="border-l-2 border-l-violet-500 pl-6">
-        <h4 class="text-xl font-semibold text-[#fafafa] mb-2">Lack of emotional engagement</h4>
-        <p class="text-gray-400 leading-relaxed">
-          Existing platforms feel transactional rather than inspiring, missing the excitement that drives attendance.
-        </p>
-      </div>
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
+    <div class="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
+      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Listings, zero relevance</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Most platforms surface every event equally, leaving users to do the filtering themselves.</p>
     </div>
-
+    <div class="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
+      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Filters, still no match</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Date, location, price — niche interests are still buried under generic categories.</p>
+    </div>
+    <div class="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
+      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Abandoned searches</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Users drop off when overwhelmed by options and lack of guidance.</p>
+    </div>
+    <div class="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
+      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Promotion scattered across channels</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Hosts juggle Instagram, email, and DMs because the platform gives them no built-in reach.</p>
+    </div>
   </div>
+</section>
 
-{/* Goals */}
+{/* The Solution */}
 
-<div class="mb-16">
-  <h2 class="mb-4 text-sm tracking-widest text-violet-400 uppercase">Goals</h2>
-  <h3 class="mb-8 text-3xl leading-tight font-bold text-[#fafafa] md:text-4xl">
-    What I Optimized For
-  </h3>
-  <div class="grid gap-4 md:grid-cols-3">
+<section class="mb-20">
+  <span class="text-sm font-medium tracking-wider uppercase text-violet-400">The Solution</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Evently is event discovery designed for the person, not the listing.</h2>
+
+<p class="mb-8 text-lg leading-relaxed text-gray-400">
+  Six design choices, each tied to a real problem Explorers and Hosts face.
+</p>
+
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
     <div class="rounded-lg bg-white/[0.02] p-6">
       <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500/10">
         <span class="text-xl font-bold text-violet-400">01</span>
       </div>
-      <p class="text-lg leading-relaxed text-gray-300">
-        Make event discovery more personalized and enjoyable.
-      </p>
+      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Personalized Discovery</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Smart recommendations that surface events worth attending.</p>
     </div>
     <div class="rounded-lg bg-white/[0.02] p-6">
       <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500/10">
         <span class="text-xl font-bold text-violet-400">02</span>
       </div>
-      <p class="text-lg leading-relaxed text-gray-300">
-        Reduce the time users spend searching for relevant events.
-      </p>
+      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Faster Search</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Less time browsing, more time finding the right event.</p>
     </div>
     <div class="rounded-lg bg-white/[0.02] p-6">
       <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500/10">
         <span class="text-xl font-bold text-violet-400">03</span>
       </div>
-      <p class="text-lg leading-relaxed text-gray-300">
-        Provide smarter filtering tools for better discovery.
-      </p>
+      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Smarter Filtering</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Tools that go beyond date and location to match real interests.</p>
     </div>
     <div class="rounded-lg bg-white/[0.02] p-6">
       <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500/10">
         <span class="text-xl font-bold text-violet-400">04</span>
       </div>
-      <p class="text-lg leading-relaxed text-gray-300">
-        Help creators reach the right audience more effectively.
-      </p>
+      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Built-in Reach</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Creators get visibility without juggling Instagram and email.</p>
     </div>
     <div class="rounded-lg bg-white/[0.02] p-6">
       <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500/10">
         <span class="text-xl font-bold text-violet-400">05</span>
       </div>
-      <p class="text-lg leading-relaxed text-gray-300">
-        Enable direct interaction between explorers and hosts.
-      </p>
+      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Direct Interaction</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Explorers and hosts can connect before committing.</p>
     </div>
     <div class="rounded-lg bg-white/[0.02] p-6">
       <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500/10">
         <span class="text-xl font-bold text-violet-400">06</span>
       </div>
-      <p class="text-lg leading-relaxed text-gray-300">
-        Design an interface that feels creative, lively, and immersive.
-      </p>
+      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Creative, Lively UI</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">An interface that feels like the events it surfaces.</p>
     </div>
   </div>
-</div>
+</section>
 
-{/* Research */}
+{/* Solution images */}
 
-  <div class="bg-slate-900/50 -mx-6 px-6 py-16 mb-16">
-    <h2 class="text-sm uppercase tracking-widest text-violet-400 mb-4">Research</h2>
-    <h3 class="text-3xl md:text-4xl font-bold text-[#fafafa] mb-6 leading-tight">
-      Dual Perspectives
-    </h3>
-    <p class="text-gray-400 text-lg leading-relaxed mb-16">
-      To understand both sides of the platform, qualitative user research was conducted with two user groups: event explorers and event hosts.
-    </p>
-
-    {/* User Interviews */}
-    <div class="mb-20">
-      <h4 class="text-2xl font-bold text-[#fafafa] mb-4">User Interviews</h4>
-      <p class="text-gray-400 leading-relaxed mb-8">
-        Each focus area is paired with the insight it directly uncovered, creating a clear thread from question to discovery.
-      </p>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="rounded-lg p-5 bg-white/[0.02]">
-          <p class="text-violet-400/80 text-sm mb-3">How users discover events</p>
-          <p class="text-gray-300 text-lg leading-relaxed">Recommendations from friends are often more trusted than algorithmic platform suggestions.</p>
-        </div>
-        <div class="rounded-lg p-5 bg-white/[0.02]">
-          <p class="text-violet-400/80 text-sm mb-3">What excites them about attending</p>
-          <p class="text-gray-300 text-lg leading-relaxed">Discovery needs to feel personal, generic category lists feel cold and transactional.</p>
-        </div>
-        <div class="rounded-lg p-5 bg-white/[0.02]">
-          <p class="text-violet-400/80 text-sm mb-3">Pain points when browsing event platforms</p>
-          <p class="text-gray-300 text-lg leading-relaxed">Users feel overwhelmed by long event listings and want smarter suggestions instead of manual browsing.</p>
-        </div>
-        <div class="rounded-lg p-5 bg-white/[0.02]">
-          <p class="text-violet-400/80 text-sm mb-3">Challenges hosts face while promoting events</p>
-          <p class="text-gray-300 text-lg leading-relaxed">Hosts struggle with event visibility and promotion, relying on external channels to reach audiences.</p>
-        </div>
-      </div>
-    </div>
-
-    {/* Empathy Mapping */}
-    <div class="mb-20">
-      <h4 class="text-2xl font-bold text-[#fafafa] mb-4">Empathy Mapping</h4>
-      <p class="text-gray-400 leading-relaxed mb-8">
-        Distilling emotional and behavioral patterns into two clear archetypes to guide design decisions.
-      </p>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="pl-6 border-l-2 border-l-violet-500">
-          <h5 class="text-xl font-semibold text-[#fafafa] mb-4">Explorer</h5>
-          <p class="text-gray-300 italic text-lg mb-4">"I feel overwhelmed with too many options and nothing feels right."</p>
-          <p class="text-gray-400 text-base leading-relaxed">
-            Feels overwhelmed with too many event options, often abandons searches due to decision fatigue, and wants recommendations that feel trustworthy and relevant.
-          </p>
-        </div>
-
-        <div class="pl-6 border-l-2 border-l-cyan-500">
-          <h5 class="text-xl font-semibold text-[#fafafa] mb-4">Host</h5>
-          <p class="text-gray-300 italic text-lg mb-4">"I spend more time promoting than planning my events."</p>
-          <p class="text-gray-400 text-base leading-relaxed">
-            Finds promotion time-consuming and fragmented across channels, worries about attendance and cancellations, and needs simple tools to manage events and reach audiences.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    {/* Competitive Observation */}
-    <div>
-      <h4 class="text-2xl font-bold text-[#fafafa] mb-4">Competitive Observation</h4>
-      <p class="text-gray-300 leading-relaxed mb-8">
-        Many existing event platforms focus heavily on ticket transactions rather than experience discovery.
-      </p>
-
-      <div class="max-w-3xl">
-        <p class="text-gray-300 text-lg leading-relaxed mb-4">
-          The competitive landscape revealed three common gaps that create friction for both explorers and hosts.
-        </p>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="border-l-2 border-l-violet-500/30 pl-4">
-            <p class="text-gray-300 text-base leading-relaxed">Limited personalization, one-size-fits-all lists</p>
-          </div>
-          <div class="border-l-2 border-l-violet-500/30 pl-4">
-            <p class="text-gray-300 text-base leading-relaxed">Overreliance on long event lists without smart filtering</p>
-          </div>
-          <div class="border-l-2 border-l-violet-500/30 pl-4">
-            <p class="text-gray-300 text-base leading-relaxed">Niche interests buried under generic listings</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
+<section class="mb-20">
+  <div class="grid gap-4">
+    <figure>
+      <Image
+        src={solution01}
+        alt="Evently — Explorer discovery flow"
+        class="h-auto w-full rounded-xl"
+      />
+      <figcaption class="mt-3 text-center text-sm text-gray-500">
+        Discovery flow for explorers — browsing, filtering, and surfacing events that match personal
+        interests.
+      </figcaption>
+    </figure>
+    <figure>
+      <Image
+        src={solution02}
+        alt="Evently — Explorer booking journey"
+        class="h-auto w-full rounded-xl"
+      />
+      <figcaption class="mt-3 text-center text-sm text-gray-500">
+        Booking journey for explorers — from event details to a confident, low-friction reservation.
+      </figcaption>
+    </figure>
+    <figure>
+      <Image src={solution03} alt="Evently — Host dashboard" class="h-auto w-full rounded-xl" />
+      <figcaption class="mt-3 text-center text-sm text-gray-500">
+        Host dashboard — high-level overview, per-event metrics & controls, and host profile
+        management.
+      </figcaption>
+    </figure>
   </div>
-
-{/* Design Process */}
-
-  <div class="mb-16">
-    <h2 class="text-sm uppercase tracking-widest text-violet-400 mb-4">Design Process</h2>
-    <h3 class="text-3xl md:text-4xl font-bold text-[#fafafa] mb-6 leading-tight">
-      From research to interface
-</h3>
-    <p class="text-gray-400 text-lg leading-relaxed mb-8">
-      Insights from research were shaped into design principles, wireframes, and interaction flows, then refined into high-fidelity mockups with a cohesive visual system, real content, and motion.
-    </p>
-
-    <div class="grid gap-4">
-      <figure>
-        <Image
-          src={screen01}
-          alt="Evently — Explorer discovery flow"
-          class="w-full h-auto rounded-xl"
-        />
-        <figcaption class="text-gray-500 text-sm mt-3 text-center">
-          Discovery flow for explorers — browsing, filtering, and surfacing events that match personal interests.
-        </figcaption>
-      </figure>
-      <figure>
-        <Image
-          src={screen02}
-          alt="Evently — Explorer booking journey"
-          class="w-full h-auto rounded-xl"
-        />
-        <figcaption class="text-gray-500 text-sm mt-3 text-center">
-          Booking journey for explorers — from event details to a confident, low-friction reservation.
-        </figcaption>
-      </figure>
-      <figure>
-        <Image
-          src={screen03}
-          alt="Evently — Host dashboard"
-          class="w-full h-auto rounded-xl"
-        />
-        <figcaption class="text-gray-500 text-sm mt-3 text-center">
-          Host dashboard — high-level overview, per-event metrics & controls, and host profile management.
-        </figcaption>
-      </figure>
-    </div>
-
-  </div>
-
-{/* Key Learnings */}
-
-  <div class="bg-slate-900/50 -mx-6 px-6 py-16 mb-16">
-    <h2 class="text-sm uppercase tracking-widest text-violet-400 mb-4">Key Learnings</h2>
-    <h3 class="text-3xl md:text-4xl font-bold text-[#fafafa] mb-8 leading-tight">
-      Lessons in Discovery
-    </h3>
-
-    <div class="grid md:grid-cols-3 gap-4">
-      <div class="rounded-lg p-5 bg-white/[0.02]">
-        <h4 class="text-lg font-semibold text-[#fafafa] mb-2">Emotion matters</h4>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Experiences should feel exciting, not purely functional. Emotional engagement drives discovery and loyalty.
-        </p>
-      </div>
-      <div class="rounded-lg p-5 bg-white/[0.02]">
-        <h4 class="text-lg font-semibold text-[#fafafa] mb-2">Reduce cognitive load</h4>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Discovery products must not force users to scroll endlessly. Smart filtering and personalization are essential.
-        </p>
-      </div>
-      <div class="rounded-lg p-5 bg-white/[0.02]">
-        <h4 class="text-lg font-semibold text-[#fafafa] mb-2">Balance both sides</h4>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Designing for two user groups requires careful balance, explorers want inspiration, while creators want control and visibility.
-        </p>
-      </div>
-    </div>
-
-  </div>
-
-{/* Reflection */}
-
-<div class="mb-8">
-  <h2 class="mb-4 text-sm tracking-widest text-violet-400 uppercase">Reflection</h2>
-  <p class="text-lg leading-relaxed text-gray-400">
-    Evently reinforced how thoughtful UX design can transform everyday tasks like event discovery
-    into meaningful experiences. By designing for two distinct user groups, explorers seeking
-    inspiration and creators seeking visibility, the project highlighted the importance of balancing
-    emotional engagement with practical utility. The biggest takeaway was that reducing cognitive
-    load through smarter personalization and filtering is not just a convenience, but the core of a
-    joyful discovery experience.
-  </p>
-</div>
+</section>
 
 </div>
