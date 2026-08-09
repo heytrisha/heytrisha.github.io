@@ -3,7 +3,7 @@ title: 'Sampatti'
 description: ''
 type: 'case-study'
 pubDate: 2026-06-07
-thumbnail: '../../assets/images/sumpatti.png'
+thumbnail: '../../assets/images/sampatti.png'
 tags: ['Product design', 'Fintech', 'India market', 'User research', 'Information architecture']
 featured: true
 order: 1
@@ -12,9 +12,10 @@ year: 2026
 ---
 
 import { Image } from 'astro:assets';
-import hero from '../../assets/images/projects/sumpatti/hero.png';
-import overview from '../../assets/images/projects/sumpatti/overview.png';
-import solution from '../../assets/images/projects/sumpatti/solution.png';
+import hero from '../../assets/images/projects/sampatti/hero.png';
+import overview from '../../assets/images/projects/sampatti/overview.png';
+import screenshot01 from '../../assets/images/projects/sampatti/screenshots_01.jpeg';
+import screenshot02 from '../../assets/images/projects/sampatti/screenshots_02.jpeg';
 
 <div class="max-w-4xl mx-auto bg-[#0a0a0a] text-[#fafafa]">
 
@@ -120,7 +121,16 @@ import solution from '../../assets/images/projects/sumpatti/solution.png';
 {/* Image placeholder after Solution */}
 
 <section class="mb-20">
-  <Image src={solution} alt="Sampatti Solution" class="mt-8 w-full rounded-xl" />
+  <Image
+    src={screenshot01}
+    alt="Sampatti Solution — Onboarding flow"
+    class="mt-8 h-auto w-full rounded-xl"
+  />
+  <Image
+    src={screenshot02}
+    alt="Sampatti Solution — Personalised guidance"
+    class="mt-6 h-auto w-full rounded-xl"
+  />
 </section>
 
 </div>

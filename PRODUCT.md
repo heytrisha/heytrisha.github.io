@@ -59,14 +59,14 @@ A UX/UI design portfolio that showcases Trisha Agarwal's product design work in 
 
 **Case studies (real client work, in `src/content/projects/`):**
 
-- `sumpatti.mdx` — Fintech, India market, designing for the first-time investor. Featured.
+- `sampatti.mdx` — Fintech, India market, designing for the first-time investor. Featured.
 - `gurukool.mdx` — Education product case study.
 - `evently.mdx` — Event platform case study.
 - `demo-motion.mdx` — Motion demonstration, not a client project.
 
-**Structural evidence:** The four case studies confirm the "decisions before deliverables" positioning is real, not aspirational — `sumpatti.mdx` opens with a pull quote and a problem frame before any artifact is shown.
+**Structural evidence:** The four case studies confirm the "decisions before deliverables" positioning is real, not aspirational — `sampatti.mdx` opens with a pull quote and a problem frame before any artifact is shown.
 
-**Assets present:** `src/assets/images/` (project thumbnails, including `sumpatti.png`); resume PDF at `public/resume.pdf` (path per `site.ts`); moodboard assets in `src/data/moodboard/` and `src/components/moodboard/`.
+**Assets present:** `src/assets/images/` (project thumbnails, including `sampatti.png`); resume PDF at `public/resume.pdf` (path per `site.ts`); moodboard assets in `src/data/moodboard/` and `src/components/moodboard/`.
 
 **Assets absent (must not be fabricated):** client logos, testimonials, press mentions, third-party case-study writeups, awards, speaking engagements, employer names. Any of these added later must come from Trisha, not be invented to fill a section.
 
