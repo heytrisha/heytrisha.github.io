@@ -86,6 +86,22 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  --case-accent: #fbbf24;
+  --case-accent-soft: color-mix(in oklab, var(--case-accent) 5%, transparent);
+  --case-accent-border: color-mix(in oklab, var(--case-accent) 30%, transparent);
+}
+
+[data-accent='amber'] {
+  --case-accent: #fbbf24;
+}
+
+[data-accent='violet'] {
+  --case-accent: #a78bfa;
+}
+
+[data-accent='orange'] {
+  --case-accent: #e06100;
 }
 
 @layer components {

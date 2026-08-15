@@ -94,7 +94,7 @@ function DraggableBox() {
     <section className="space-y-4">
       <h2 className="text-xl font-semibold">3. Gesture-Based Drag</h2>
       <p className="text-muted-foreground text-sm">
-        Drag the box within its bounds — it snaps back smoothly on release.
+        Drag the box within its bounds: it snaps back smoothly on release.
       </p>
       <div className="border-border bg-muted/30 relative h-64 w-full overflow-hidden rounded-xl border">
         <motion.div
@@ -290,7 +290,7 @@ function MagneticButton() {
     <section className="space-y-4">
       <h2 className="text-xl font-semibold">7. Magnetic Button</h2>
       <p className="text-muted-foreground text-sm">
-        Move your cursor near the button — it subtly pulls toward you via spring physics.
+        Move your cursor near the button: it subtly pulls toward you via spring physics.
       </p>
       <div className="border-border bg-muted/30 flex h-40 items-center justify-center rounded-xl border">
         <motion.button

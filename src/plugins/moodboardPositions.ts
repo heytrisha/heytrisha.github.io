@@ -54,7 +54,7 @@ export default function moodboardPositionsPlugin(): Plugin {
 //
 // Workflow:
 // 1. Arrange items in dev mode (drag body to move, drag pin/tape to rotate).
-// 2. Click "Save to File" — positions are written to this file automatically.
+// 2. Click "Save to File" and positions are written to this file automatically.
 // 3. Commit. Staging/production will build with these exact positions.
 //
 // Do NOT edit these numbers by hand unless you know what you're doing.

@@ -6,7 +6,7 @@ const projects = defineCollection({
   loader: glob({ base: './src/content/projects', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
-    description: z.string().optional(),
+    description: z.string().min(1),
     type: z.enum(['case-study', 'coded']),
     pubDate: z.coerce.date(),
     heroImage: z.string().optional(),

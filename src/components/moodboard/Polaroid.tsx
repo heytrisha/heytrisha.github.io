@@ -13,7 +13,7 @@ export function Polaroid({ color, caption, src }: PolaroidProperties) {
         boxShadow: '0 4px 12px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.1)',
       }}
     >
-      {/* Pushpin — also serves as rotation handle in dev mode */}
+      {/* Pushpin, also serves as rotation handle in dev mode */}
       <div
         data-rotate-handle
         className="absolute top-2 left-1/2 z-10 -translate-x-1/2 cursor-ew-resize"
