@@ -12,11 +12,15 @@ export async function getStaticPaths() {
   }));
 }
 
-const basePath = import.meta.env.BASE_PATH || '';
 const { project } = Astro.props;
 
 let Content = null;
 if (project.data.type === 'case-study') {
+  if (!project.data.behanceUrl) {
+    throw new Error(
+      `Case study "${project.id}" is missing required frontmatter: behanceUrl. Add a behanceUrl field to src/content/projects/${project.id}.mdx (frontmatter).`,
+    );
+  }
   const rendered = await render(project);
   Content = rendered.Content;
 }
@@ -30,40 +34,32 @@ const CodedComponent =
 
 const isShowHeader = !project.data.hideDefaultHeader;
 const containerClass = project.data.type === 'coded' ? 'max-w-5xl' : 'max-w-4xl';
+const accent = project.data.accent ?? 'amber';
 ---
 
 <Layout title={project.data.title} description={project.data.description}>
-  <article class="px-6 py-24">
+  <article class="px-6 py-24" data-accent={accent}>
     <div class={`mx-auto ${containerClass}`}>
       {
         isShowHeader && (
-          <>
-            <a
-              href={`${basePath}/#work`}
-              class="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-2 text-sm transition-colors"
-            >
-              ← Back to work
-            </a>
-
-            <header class="mb-12">
-              <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">{project.data.title}</h1>
-              <p class="text-muted-foreground mt-4 text-lg">{project.data.description}</p>
-              <div class="mt-6 flex flex-wrap gap-2">
-                {project.data.tags.map((tag: string) => (
-                  <span class="bg-muted text-muted-foreground rounded-md px-2.5 py-1 text-xs">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              {project.data.heroImage && (
-                <img
-                  src={project.data.heroImage}
-                  alt={project.data.title}
-                  class="mt-8 aspect-video w-full rounded-xl object-cover"
-                />
-              )}
-            </header>
-          </>
+          <header class="mb-12">
+            <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">{project.data.title}</h1>
+            <p class="text-muted-foreground mt-4 text-lg">{project.data.description}</p>
+            <div class="mt-6 flex flex-wrap gap-2">
+              {project.data.tags.map((tag: string) => (
+                <span class="bg-muted text-muted-foreground rounded-md px-2.5 py-1 text-xs">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            {project.data.heroImage && (
+              <img
+                src={project.data.heroImage}
+                alt={project.data.title}
+                class="mt-8 aspect-video w-full rounded-xl object-cover"
+              />
+            )}
+          </header>
         )
       }
 

@@ -1,0 +1,33 @@
+---
+// src/components/case-studies/ContinueOnBehance.astro
+// Off-page CTA placed after The thinking, before the case-study footer nav.
+// Reads case-accent from the surrounding <article data-accent="…"> scope set in [slug].astro.
+
+interface Properties {
+  href: string;
+}
+
+const { href } = Astro.props as Properties;
+---
+
+<section
+  class="not-prose my-20 rounded-xl border border-[color:var(--case-accent)]/30 bg-[color:var(--case-accent)]/5 p-6"
+>
+  <span class="text-sm font-medium tracking-wider text-[color:var(--case-accent)] uppercase"
+    >Continue</span
+  >
+  <h3 class="mt-3 mb-3 text-2xl font-bold">See how this came together.</h3>
+  <p class="text-foreground/70 mb-5">
+    Research, IA, interviews with target users, and the alternatives considered before deciding are
+    on Behance.
+  </p>
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener"
+    class="inline-flex items-center gap-2 rounded-md border border-[color:var(--case-accent)]/40 bg-[color:var(--case-accent)]/10 px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[color:var(--case-accent)]/15"
+  >
+    Read on Behance
+    <span aria-hidden="true">→</span>
+  </a>
+</section>

@@ -9,6 +9,8 @@ featured: true
 order: 3
 client: 'Evently'
 year: 2025
+accent: 'violet'
+behanceUrl: 'https://www.behance.net/gallery/235572841/Evently'
 ---
 
 import { Image } from 'astro:assets';
@@ -16,8 +18,7 @@ import hero from '../../assets/images/projects/evently/hero.png';
 import solution01 from '../../assets/images/projects/evently/screen-01.jpeg';
 import solution02 from '../../assets/images/projects/evently/screen-02.jpeg';
 import solution03 from '../../assets/images/projects/evently/screen-03.jpeg';
-
-<div class="max-w-4xl mx-auto bg-[#0a0a0a] text-[#fafafa]">
+import ContinueOnBehance from '@/components/case-studies/ContinueOnBehance.astro';
 
 {/* Hero */}
 
@@ -28,7 +29,7 @@ import solution03 from '../../assets/images/projects/evently/screen-03.jpeg';
 {/* Overview */}
 
 <section class="mb-20">
-  <blockquote class="text-xl md:text-2xl text-gray-400 italic leading-relaxed mb-8">
+  <blockquote class="text-xl md:text-2xl text-foreground italic leading-relaxed mb-8">
     "Evently turns overwhelming event listings into a personal, joyful discovery experience for the people attending and the people hosting."
   </blockquote>
 
@@ -36,15 +37,15 @@ import solution03 from '../../assets/images/projects/evently/screen-03.jpeg';
     <ul class="space-y-4">
       <li>
         <h3 class="text-lg font-semibold text-[#fafafa]">Personalized Discovery</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Smart recommendations and intuitive filters that surface events worth attending.</p>
+        <p class="text-foreground/70 text-sm leading-relaxed">Smart recommendations and intuitive filters that surface events worth attending.</p>
       </li>
       <li>
         <h3 class="text-lg font-semibold text-[#fafafa]">Two-sided Platform</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Designed for Explorers seeking inspiration and Creators seeking visibility.</p>
+        <p class="text-foreground/70 text-sm leading-relaxed">Designed for Explorers seeking inspiration and Creators seeking visibility.</p>
       </li>
       <li>
         <h3 class="text-lg font-semibold text-[#fafafa]">Emotionally Engaging</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">An experience that feels creative and lively, not transactional.</p>
+        <p class="text-foreground/70 text-sm leading-relaxed">An experience that feels creative and lively, not transactional.</p>
       </li>
     </ul>
   </div>
@@ -53,32 +54,32 @@ import solution03 from '../../assets/images/projects/evently/screen-03.jpeg';
 {/* The Problem */}
 
 <section class="mb-20">
-  <span class="text-sm font-medium tracking-wider uppercase text-violet-400">The Problem</span>
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">The Problem</span>
   <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Event discovery is broken, for both sides.</h2>
 
-<p class="mb-8 text-lg leading-relaxed text-gray-400">
+<p class="text-foreground/70 mb-8 text-lg leading-relaxed">
   Event platforms today feel like endless catalogues. For Explorers, it's decision fatigue: hundreds
   of listings, no personalization, and no way to interact with hosts before committing. For
   Creators, it's invisibility: even great events struggle to be seen, forcing them to promote on
   social media instead of using built-in tools.
 </p>
 
-  <div class="grid md:grid-cols-2 gap-6 mb-8">
+  <div class="not-prose grid md:grid-cols-2 gap-6 mb-8">
     <div class="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
       <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Listings, zero relevance</h3>
-      <p class="text-gray-400 text-sm leading-relaxed">Most platforms surface every event equally, leaving users to do the filtering themselves.</p>
+      <p class="text-foreground/70 text-sm leading-relaxed">Most platforms surface every event equally, leaving users to do the filtering themselves.</p>
     </div>
     <div class="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
       <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Filters, still no match</h3>
-      <p class="text-gray-400 text-sm leading-relaxed">Date, location, price. Niche interests are still buried under generic categories.</p>
+      <p class="text-foreground/70 text-sm leading-relaxed">Date, location, price. Niche interests are still buried under generic categories.</p>
     </div>
     <div class="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
       <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Abandoned searches</h3>
-      <p class="text-gray-400 text-sm leading-relaxed">Users drop off when overwhelmed by options and lack of guidance.</p>
+      <p class="text-foreground/70 text-sm leading-relaxed">Users drop off when overwhelmed by options and lack of guidance.</p>
     </div>
     <div class="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
       <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Promotion scattered across channels</h3>
-      <p class="text-gray-400 text-sm leading-relaxed">Hosts juggle Instagram, email, and DMs because the platform gives them no built-in reach.</p>
+      <p class="text-foreground/70 text-sm leading-relaxed">Hosts juggle Instagram, email, and DMs because the platform gives them no built-in reach.</p>
     </div>
   </div>
 </section>
@@ -86,55 +87,55 @@ import solution03 from '../../assets/images/projects/evently/screen-03.jpeg';
 {/* The Solution */}
 
 <section class="mb-20">
-  <span class="text-sm font-medium tracking-wider uppercase text-violet-400">The Solution</span>
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">The Solution</span>
   <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Evently is event discovery designed for the person, not the listing.</h2>
 
-<p class="mb-8 text-lg leading-relaxed text-gray-400">
+<p class="text-foreground/70 mb-8 text-lg leading-relaxed">
   Six design choices, each tied to a real problem Explorers and Hosts face.
 </p>
 
-  <div class="grid md:grid-cols-2 gap-6 mb-8">
+  <div class="not-prose grid md:grid-cols-2 gap-6 mb-8">
     <div class="rounded-lg bg-white/[0.02] p-6">
-      <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500/10">
-        <span class="text-xl font-bold text-violet-400">01</span>
+      <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10">
+        <span class="text-[color:var(--case-accent)] text-xl font-bold">01</span>
       </div>
       <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Personalized Discovery</h3>
-      <p class="text-gray-400 text-sm leading-relaxed">Smart recommendations that surface events worth attending.</p>
+      <p class="text-foreground/70 text-sm leading-relaxed">Smart recommendations that surface events worth attending.</p>
     </div>
     <div class="rounded-lg bg-white/[0.02] p-6">
-      <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500/10">
-        <span class="text-xl font-bold text-violet-400">02</span>
+      <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10">
+        <span class="text-[color:var(--case-accent)] text-xl font-bold">02</span>
       </div>
       <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Faster Search</h3>
-      <p class="text-gray-400 text-sm leading-relaxed">Less time browsing, more time finding the right event.</p>
+      <p class="text-foreground/70 text-sm leading-relaxed">Less time browsing, more time finding the right event.</p>
     </div>
     <div class="rounded-lg bg-white/[0.02] p-6">
-      <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500/10">
-        <span class="text-xl font-bold text-violet-400">03</span>
+      <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10">
+        <span class="text-[color:var(--case-accent)] text-xl font-bold">03</span>
       </div>
       <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Smarter Filtering</h3>
-      <p class="text-gray-400 text-sm leading-relaxed">Tools that go beyond date and location to match real interests.</p>
+      <p class="text-foreground/70 text-sm leading-relaxed">Tools that go beyond date and location to match real interests.</p>
     </div>
     <div class="rounded-lg bg-white/[0.02] p-6">
-      <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500/10">
-        <span class="text-xl font-bold text-violet-400">04</span>
+      <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10">
+        <span class="text-[color:var(--case-accent)] text-xl font-bold">04</span>
       </div>
       <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Built-in Reach</h3>
-      <p class="text-gray-400 text-sm leading-relaxed">Creators get visibility without juggling Instagram and email.</p>
+      <p class="text-foreground/70 text-sm leading-relaxed">Creators get visibility without juggling Instagram and email.</p>
     </div>
     <div class="rounded-lg bg-white/[0.02] p-6">
-      <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500/10">
-        <span class="text-xl font-bold text-violet-400">05</span>
+      <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10">
+        <span class="text-[color:var(--case-accent)] text-xl font-bold">05</span>
       </div>
       <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Direct Interaction</h3>
-      <p class="text-gray-400 text-sm leading-relaxed">Explorers and hosts can connect before committing.</p>
+      <p class="text-foreground/70 text-sm leading-relaxed">Explorers and hosts can connect before committing.</p>
     </div>
     <div class="rounded-lg bg-white/[0.02] p-6">
-      <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500/10">
-        <span class="text-xl font-bold text-violet-400">06</span>
+      <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10">
+        <span class="text-[color:var(--case-accent)] text-xl font-bold">06</span>
       </div>
       <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Creative, Lively UI</h3>
-      <p class="text-gray-400 text-sm leading-relaxed">An interface that feels like the events it surfaces.</p>
+      <p class="text-foreground/70 text-sm leading-relaxed">An interface that feels like the events it surfaces.</p>
     </div>
   </div>
 </section>
@@ -149,7 +150,7 @@ import solution03 from '../../assets/images/projects/evently/screen-03.jpeg';
         alt="Evently, Explorer discovery flow"
         class="h-auto w-full rounded-xl"
       />
-      <figcaption class="mt-3 text-center text-sm text-gray-500">
+      <figcaption class="text-foreground/60 mt-3 text-center text-sm">
         Discovery flow for explorers: browsing, filtering, and surfacing events that match personal
         interests.
       </figcaption>
@@ -160,13 +161,13 @@ import solution03 from '../../assets/images/projects/evently/screen-03.jpeg';
         alt="Evently, Explorer booking journey"
         class="h-auto w-full rounded-xl"
       />
-      <figcaption class="mt-3 text-center text-sm text-gray-500">
+      <figcaption class="text-foreground/60 mt-3 text-center text-sm">
         Booking journey for explorers: from event details to a confident, low-friction reservation.
       </figcaption>
     </figure>
     <figure>
       <Image src={solution03} alt="Evently, Host dashboard" class="h-auto w-full rounded-xl" />
-      <figcaption class="mt-3 text-center text-sm text-gray-500">
+      <figcaption class="text-foreground/60 mt-3 text-center text-sm">
         Host dashboard: high-level overview, per-event metrics and controls, and host profile
         management.
       </figcaption>
@@ -174,4 +175,20 @@ import solution03 from '../../assets/images/projects/evently/screen-03.jpeg';
   </div>
 </section>
 
-</div>
+{/* The thinking */}
+
+<section class="mb-20">
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">The thinking</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Both sides feel the same kind of invisible.</h2>
+
+  <div class="text-foreground/70 leading-relaxed">
+    <p class="text-lg mb-6">
+      The problem with event platforms isn't the listings. It's that the listings are presented with equal weight to a sold-out warehouse show and a yoga class in someone's garage, with no signal to the user about which is which and no signal to the host about whether their event reached anyone. Both sides feel the same kind of invisible.
+    </p>
+    <p class="text-lg">
+      Evently's six design choices are a thesis that discovery should be designed for the two humans at each end of the listing: the person deciding whether tonight is worth going out, and the person wondering if anyone noticed their event. Build around that, and the catalogue becomes a side effect.
+    </p>
+  </div>
+</section>
+
+<ContinueOnBehance href={frontmatter.behanceUrl} />

@@ -12,12 +12,14 @@ const projects = defineCollection({
     heroImage: z.string().optional(),
     thumbnail: z.string(),
     figmaUrl: z.url().optional(),
+    behanceUrl: z.url().optional(),
     tags: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
     order: z.number().default(0),
     client: z.string().optional(),
     year: z.number(),
     hideDefaultHeader: z.boolean().default(false),
+    accent: z.enum(['amber', 'violet', 'orange']).default('amber'),
   }),
 });
 
