@@ -15,8 +15,10 @@ export function Cursor({ name = 'me', color = '#7DD3FC' }: CursorProperties) {
   const isTouch = useMediaQuery('(pointer: coarse)');
   const [isVisible, setIsVisible] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(
-    () => globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  const [reducedMotion, setReducedMotion] = useState(() =>
+    typeof globalThis.matchMedia === 'function'
+      ? globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches
+      : false,
   );
 
   const targetX = useMotionValue(-100);
