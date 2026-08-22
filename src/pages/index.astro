@@ -8,6 +8,7 @@ import { Skills } from '@/components/sections/Skills';
 import { Life } from '@/components/sections/Life';
 import Connect from '@/components/sections/Connect.tsx';
 import { moodboardItems } from '@/data/moodboard/items';
+import { Cursor } from '@/components/ui/Cursor';
 
 const basePath = import.meta.env.BASE_PATH || '';
 
@@ -64,4 +65,5 @@ const resolvedMoodboardItems = moodboardItems.map((item) => {
   <Skills client:visible />
   <Life items={resolvedMoodboardItems} client:visible />
   <Connect />
+  <Cursor client:load />
 </Layout>
