@@ -141,3 +141,9 @@
     @apply font-sans;
   }
 }
+
+html[data-cursor-active] *,
+html[data-cursor-active] *::before,
+html[data-cursor-active] *::after {
+  cursor: none !important;
+}

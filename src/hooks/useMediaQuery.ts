@@ -1,7 +1,15 @@
 import { useSyncExternalStore } from 'react';
 
+function getMatchMedia(): ((query: string) => MediaQueryList) | null {
+  return typeof globalThis.matchMedia === 'function'
+    ? globalThis.matchMedia.bind(globalThis)
+    : null;
+}
+
 function subscribe(query: string, callback: (event: MediaQueryListEvent) => void) {
-  const media = globalThis.matchMedia(query);
+  const match = getMatchMedia();
+  if (!match) return () => {};
+  const media = match(query);
   media.addEventListener('change', callback);
   return () => media.removeEventListener('change', callback);
 }
@@ -9,7 +17,7 @@ function subscribe(query: string, callback: (event: MediaQueryListEvent) => void
 export function useMediaQuery(query: string): boolean {
   return useSyncExternalStore(
     (callback) => subscribe(query, callback),
-    () => globalThis.matchMedia(query).matches,
+    () => getMatchMedia()?.(query).matches ?? false,
     () => false,
   );
 }

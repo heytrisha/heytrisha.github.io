@@ -33,10 +33,7 @@ export function Cursor({ name = 'me', color = '#7DD3FC' }: CursorProperties) {
     const onMotionChange = (event: MediaQueryListEvent) => setReducedMotion(event.matches);
     motionQuery.addEventListener('change', onMotionChange);
 
-    const previousBodyCursor = document.body.style.cursor;
-    const previousHtmlCursor = document.documentElement.style.cursor;
-    document.body.style.cursor = 'none';
-    document.documentElement.style.cursor = 'none';
+    document.documentElement.setAttribute('data-cursor-active', '');
 
     let frame = 0;
     const updatePosition = (clientX: number, clientY: number) => {
@@ -77,8 +74,7 @@ export function Cursor({ name = 'me', color = '#7DD3FC' }: CursorProperties) {
       document.documentElement.removeEventListener('mouseleave', onMouseLeave);
       document.documentElement.removeEventListener('mouseenter', onMouseEnter);
       motionQuery.removeEventListener('change', onMotionChange);
-      document.body.style.cursor = previousBodyCursor;
-      document.documentElement.style.cursor = previousHtmlCursor;
+      document.documentElement.removeAttribute('data-cursor-active');
     };
   }, [isTouch, reducedMotion, targetX, targetY, springX, springY]);
 
