@@ -137,3 +137,48 @@ Re-runs the same gates as reusable workflows:
 ### Adding new tools that need postinstall
 
 pnpm 11+ blocks postinstall scripts by default. If you add a new dev dependency that needs to run a postinstall (binary download, native build), append it to `pnpm-workspace.yaml` under `allowBuilds`. Existing entries: `esbuild`, `sharp`, `lefthook`.
+
+---
+
+## 9. Learnings
+
+Best practices for any agent (or human) doing design work in Figma via MCP. Learned from real sessions on this project.
+
+### Connect first
+
+- Check the bridge connection and confirm the active file/page before touching anything.
+- Node IDs go stale between sessions. Re-find nodes by name each session instead of reusing old IDs.
+
+### Read the system before drawing
+
+- List text styles, paint styles, and components before creating anything. Match by measured values (RGB, font, size), not by eye.
+- Clone existing nodes instead of building from scratch. You inherit correct styling for free.
+- If no style matches a value exactly, say so and follow the closest existing precedent. Don't invent new tokens silently.
+
+### Link styles, don't paint raw values
+
+- Bind text to text styles and fills/strokes to paint styles. A raw value that looks identical today is still tech debt.
+- Some edits silently break style links (e.g. changing font size right after binding a text style). Re-check linkage after each pass.
+- Use the async setters (`getNodeByIdAsync`, `setTextStyleIdAsync`, `setFillStyleIdAsync`). The sync versions throw under restricted page access.
+- Resolve style objects at runtime. Never hardcode style IDs — listings can hide characters (trailing commas, odd spacing in names).
+
+### Let layout do the math
+
+- Hug, don't hardcode heights. Vertical stacks hug on the primary axis, horizontal rows on the counter axis.
+- Set text auto-resize (`HEIGHT` or `WIDTH_AND_HEIGHT`). `resize()` pins text boxes fixed, which clips text when fonts or line-heights change.
+- After content changes, re-seat dependent elements (sticky buttons, footers) and keep device frames at fixed size so the canvas can't drift.
+
+### Keep structure flat
+
+- Every wrapper frame must earn its place. A card can be the row itself; a section needs only a title plus content.
+- Check nesting depth after structural edits, not just during cleanups.
+
+### Prove it visually
+
+- Screenshot after every change using the plugin's live capture, and review it like a critic: clipping, overlap, balance, spacing.
+- Recompute any numbers by hand (prices, totals). Math errors ship as design errors.
+- Spacing is zero-sum on fixed canvases. State what paid for every gap increase (trimmed padding, shifted position) so it can be vetoed.
+
+### Leave a trail
+
+- Report what you deliberately left unlinked or untouched and why (instance-owned paints, no exact matching style). The next agent inherits your exceptions, not just your work.
