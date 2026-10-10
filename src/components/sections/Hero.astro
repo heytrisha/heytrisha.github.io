@@ -1,25 +1,35 @@
 ---
+import { Image } from 'astro:assets';
 import { site } from '@/data/site';
+import portrait from '@/assets/images/intro/intro.png';
 ---
 
-<section
-  class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-6 py-20 text-center"
->
-  <div class="relative mx-auto max-w-3xl">
-    <p class="text-muted-foreground text-sm font-medium tracking-widest uppercase">
-      {site.title}
-    </p>
-    <h1 class="mt-4 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-      Hi, I'm {site.fullName}
-    </h1>
-    <p class="text-muted-foreground mt-6 text-lg leading-relaxed sm:text-xl">
-      I am a self-taught Product Designer. My design workflow includes research, wireframing, vibe
-      coding, fast prototyping, while leveraging AI. I build design systems to keep what I make
-      consistent as it grows.
-    </p>
-    <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-      <a href="#work" class="cta-primary">View my work</a>
-      <a href="#connect" class="cta-secondary">Get in touch</a>
+<section class="flex min-h-[calc(100vh-4rem)] flex-col justify-center px-6 py-20">
+  <div class="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
+    <div class="text-left">
+      <p class="text-muted-foreground text-sm font-medium tracking-widest uppercase">
+        {site.title}
+      </p>
+      <h1 class="mt-4 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+        Hi, I&apos;m {site.fullName}
+      </h1>
+      <p class="text-muted-foreground mt-6 max-w-xl text-lg leading-relaxed sm:text-xl">
+        I am a self-taught Product Designer. My design workflow includes research, wireframing, vibe
+        coding, fast prototyping, while leveraging AI. I build design systems to keep what I make
+        consistent as it grows.
+      </p>
+      <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+        <a href="#work" class="cta-primary">View my work</a>
+        <a href="#connect" class="cta-secondary">Get in touch</a>
+      </div>
+    </div>
+    <div class="mx-auto w-full max-w-sm md:max-w-none">
+      <Image
+        src={portrait}
+        alt={`Portrait of ${site.fullName}`}
+        class="h-auto w-full mix-blend-screen"
+        loading="eager"
+      />
     </div>
   </div>
 </section>
