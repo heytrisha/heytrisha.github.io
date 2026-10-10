@@ -47,7 +47,7 @@ export function Work({ projects, basePath, images }: Properties) {
 
       {projects.length > 0 ? (
         <div ref={containerReference} className="mx-auto max-w-6xl px-6">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-col gap-8 md:gap-12">
             {projects.map((project, index) => (
               <ProjectCard
                 key={project.id}
@@ -56,6 +56,7 @@ export function Work({ projects, basePath, images }: Properties) {
                 basePath={basePath}
                 active={scrollActive && index === activeIndex}
                 imageModule={images[project.id]}
+                flip={index % 2 === 1}
               />
             ))}
           </div>
