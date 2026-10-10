@@ -1,39 +1,93 @@
 ---
-const toolkit = [
-  'Figma',
-  'Canva',
-  'User Research',
-  'Wireframing',
-  'Prototyping',
-  'Design Systems',
-  'AI Prototyping',
+import figmaIcon from '@/assets/icons/figma.svg?raw';
+import lovableIcon from '@/assets/icons/lovable.svg?raw';
+import claudeCodeIcon from '@/assets/icons/claude.svg?raw';
+import opencodeIcon from '@/assets/icons/opencode.svg?raw';
+import vscodeIcon from '@/assets/icons/visualstudiocode.svg?raw';
+import githubIcon from '@/assets/icons/github.svg?raw';
+
+const tileBase =
+  'flex size-16 items-center justify-center rounded-[26%] shadow-lg shadow-black/40 ring-1 ring-white/10 transition duration-300 motion-safe:group-hover:scale-105 sm:size-20';
+
+type Tool = {
+  name: string;
+  tile: string;
+  glyph?: string;
+  icon?: string;
+  textGlyph?: string;
+};
+
+const toolkit: Tool[] = [
+  { name: 'Figma', icon: figmaIcon, tile: `${tileBase} bg-[#1c1c1f]`, glyph: 'h-[58%]' },
+  {
+    name: 'Canva',
+    tile: `${tileBase} bg-gradient-to-br from-[#00C4CC] to-[#7D2AE8]`,
+    textGlyph: 'C',
+  },
+  {
+    name: 'Lovable',
+    icon: lovableIcon,
+    tile: `${tileBase} bg-white`,
+    glyph: 'h-[52%] [&>svg]:fill-[#F43F5E]',
+  },
+  {
+    name: 'Claude Code',
+    icon: claudeCodeIcon,
+    tile: `${tileBase} bg-[#F4F1EA]`,
+    glyph: 'h-[58%] [&>svg]:fill-[#D97757]',
+  },
+  {
+    name: 'OpenCode',
+    icon: opencodeIcon,
+    tile: `${tileBase} bg-[#101014]`,
+    glyph: 'h-[52%] [&>svg]:fill-white',
+  },
+  {
+    name: 'VS Code',
+    icon: vscodeIcon,
+    tile: `${tileBase} bg-[#007ACC]`,
+    glyph: 'h-[52%] [&>svg]:fill-white',
+  },
+  {
+    name: 'GitHub',
+    icon: githubIcon,
+    tile: `${tileBase} bg-white`,
+    glyph: 'h-[58%] [&>svg]:fill-[#181717]',
+  },
 ];
 ---
 
 <section id="skills" tabindex="-1" class="py-24">
-  <div class="mx-auto mb-10 max-w-6xl px-6 text-center">
+  <div class="mx-auto mb-12 max-w-6xl px-6 text-center">
     <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Toolkit</h2>
-    <p class="text-muted-foreground mt-3">
-      The tools and methods I use to take products from research to shipped
-    </p>
+    <p class="text-muted-foreground mt-3">Hover an icon to see what&apos;s in my dock</p>
   </div>
 
-  <div class="border-foreground/10 border-y">
-    <div
-      class="mx-auto flex max-w-6xl [scrollbar-width:none] scrollbar-none items-center gap-8 overflow-x-auto px-6 py-6 whitespace-nowrap [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-    >
-      {
-        toolkit.map((item, index) => (
-          <>
-            {index > 0 && (
-              <span aria-hidden="true" class="text-muted-foreground text-lg">
-                /
+  <div class="mx-auto flex max-w-4xl flex-wrap items-start justify-center gap-5 px-6 sm:gap-7">
+    {
+      toolkit.map(({ name, icon, tile, glyph, textGlyph }) => (
+        <span class="group relative flex flex-col items-center">
+          <span aria-hidden="true" class:list={[tile]}>
+            {icon ? (
+              <span
+                class:list={[
+                  'flex items-center justify-center',
+                  glyph,
+                  '[&>svg]:h-full [&>svg]:w-auto',
+                ]}
+                set:html={icon}
+              />
+            ) : (
+              <span aria-hidden="true" class="text-3xl font-bold text-white sm:text-4xl">
+                {textGlyph}
               </span>
             )}
-            <span class="text-xl font-medium tracking-tight sm:text-2xl">{item}</span>
-          </>
-        ))
-      }
-    </div>
+          </span>
+          <span class="bg-popover text-popover-foreground border-border pointer-events-none absolute top-full z-10 mt-3 rounded-md border px-3 py-1 text-sm font-medium whitespace-nowrap opacity-0 shadow-xl transition duration-200 group-hover:opacity-100 motion-safe:translate-y-1 motion-safe:group-hover:translate-y-0">
+            {name}
+          </span>
+        </span>
+      ))
+    }
   </div>
 </section>
