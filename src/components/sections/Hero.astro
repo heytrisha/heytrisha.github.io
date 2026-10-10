@@ -4,8 +4,10 @@ import { site } from '@/data/site';
 import portrait from '@/assets/images/intro/intro.png';
 ---
 
-<section class="flex min-h-[calc(100vh-4rem)] flex-col justify-center px-6 py-20">
-  <div class="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
+<section class="flex min-h-[calc(100svh-4rem)] flex-col justify-center px-6 py-10">
+  <div
+    class="mx-auto grid w-full max-w-6xl items-center gap-8 md:grid-cols-[1.1fr_0.9fr] lg:gap-12"
+  >
     <div class="text-left">
       <p class="text-muted-foreground text-sm font-medium tracking-widest uppercase">
         {site.title}
@@ -23,11 +25,11 @@ import portrait from '@/assets/images/intro/intro.png';
         <a href="#connect" class="cta-secondary">Get in touch</a>
       </div>
     </div>
-    <div class="mx-auto w-full max-w-sm md:max-w-none">
+    <div class="flex w-full justify-center md:justify-end">
       <Image
         src={portrait}
         alt={`Portrait of ${site.fullName}`}
-        class="h-auto w-full mix-blend-screen"
+        class="h-auto max-h-[calc(100svh-12rem)] w-auto mix-blend-screen"
         loading="eager"
       />
     </div>
