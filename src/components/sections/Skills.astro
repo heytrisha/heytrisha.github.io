@@ -1,0 +1,39 @@
+---
+const toolkit = [
+  'Figma',
+  'Canva',
+  'User Research',
+  'Wireframing',
+  'Prototyping',
+  'Design Systems',
+  'AI Prototyping',
+];
+---
+
+<section id="skills" tabindex="-1" class="py-24">
+  <div class="mx-auto mb-10 max-w-6xl px-6 text-center">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Toolkit</h2>
+    <p class="text-muted-foreground mt-3">
+      The tools and methods I use to take products from research to shipped
+    </p>
+  </div>
+
+  <div class="border-foreground/10 border-y">
+    <div
+      class="mx-auto flex max-w-6xl [scrollbar-width:none] scrollbar-none items-center gap-8 overflow-x-auto px-6 py-6 whitespace-nowrap [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+    >
+      {
+        toolkit.map((item, index) => (
+          <>
+            {index > 0 && (
+              <span aria-hidden="true" class="text-muted-foreground text-lg">
+                /
+              </span>
+            )}
+            <span class="text-xl font-medium tracking-tight sm:text-2xl">{item}</span>
+          </>
+        ))
+      }
+    </div>
+  </div>
+</section>
