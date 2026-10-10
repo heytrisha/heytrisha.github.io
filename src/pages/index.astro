@@ -4,7 +4,7 @@ import Hero from '@/components/sections/Hero.astro';
 import { getCollection } from 'astro:content';
 import type { ImageMetadata } from 'astro';
 import { Work } from '@/components/sections/Work';
-import { Skills } from '@/components/sections/Skills';
+import Skills from '@/components/sections/Skills.astro';
 import { Life } from '@/components/sections/Life';
 import Connect from '@/components/sections/Connect.tsx';
 import { moodboardItems } from '@/data/moodboard/items';
@@ -62,7 +62,7 @@ const resolvedMoodboardItems = moodboardItems.map((item) => {
 <Layout>
   <Hero />
   <Work client:visible projects={workProjects} basePath={basePath} images={workImages} />
-  <Skills client:visible />
+  <Skills />
   <Life items={resolvedMoodboardItems} client:visible />
   <Connect />
   <Cursor client:load />
