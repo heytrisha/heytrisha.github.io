@@ -1,29 +1,32 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '@/layouts/Layout.astro';
 import { site } from '@/data/site';
+import page1 from '@/assets/images/resume/page-1.png';
+import page2 from '@/assets/images/resume/page-2.png';
 
 const basePath = import.meta.env.BASE_PATH || '';
 const pdfUrl = `${basePath}/resume.pdf`;
 ---
 
 <Layout title="Resume" description={`Resume of ${site.fullName}, ${site.title}`}>
-  <section class="mx-auto max-w-5xl px-6 py-16">
-    <div class="mb-8 text-center">
-      <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Resume</h1>
+  <section class="mx-auto max-w-4xl px-6 py-16">
+    <div class="flex flex-col gap-6">
+      <Image
+        src={page1}
+        alt={`${site.fullName} resume, page 1`}
+        class="h-auto w-full rounded-lg"
+        loading="eager"
+      />
+      <Image
+        src={page2}
+        alt={`${site.fullName} resume, page 2`}
+        class="h-auto w-full rounded-lg"
+        loading="lazy"
+      />
     </div>
 
-    <div class="border-foreground/10 overflow-hidden rounded-xl border">
-      <iframe src={pdfUrl} title={`${site.fullName} resume`} class="h-[70vh] w-full" loading="lazy"
-      ></iframe>
-    </div>
-
-    <p class="text-muted-foreground mt-4 text-center text-sm">
-      Cannot see the preview?{' '}
-      <a href={pdfUrl} class="underline" target="_blank" rel="noreferrer"> Open it in a new tab </a>
-      .
-    </p>
-
-    <div class="mt-10 flex justify-center">
+    <div class="mt-12 flex justify-center">
       <a href={pdfUrl} download={site.resumeDownloadName} class="cta-primary"> Download resume </a>
     </div>
   </section>
