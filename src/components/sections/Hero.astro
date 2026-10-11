@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import { site } from '@/data/site';
 import portrait from '@/assets/images/intro/intro.png';
+
+const basePath = import.meta.env.BASE_PATH || '';
 ---
 
 <section class="flex min-h-[calc(100svh-4rem)] flex-col justify-center px-6 py-10">
@@ -20,8 +22,8 @@ import portrait from '@/assets/images/intro/intro.png';
         consistent as it grows.
       </p>
       <div class="mt-10 flex flex-col gap-4 sm:flex-row">
-        <a href="#work" class="cta-primary">View my work</a>
-        <a href="#connect" class="cta-secondary">Get in touch</a>
+        <a href="#work" class="cta-primary">My work</a>
+        <a href={`${basePath}/resume`} class="cta-secondary">Resume</a>
       </div>
     </div>
     <div class="flex w-full justify-center md:justify-start lg:order-1 lg:justify-start">
