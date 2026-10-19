@@ -16,9 +16,52 @@ behanceUrl: 'https://www.behance.net/gallery/253310331/Sampatti'
 import { Image } from 'astro:assets';
 import hero from '../../assets/images/projects/sampatti/hero.png';
 import overview from '../../assets/images/projects/sampatti/overview.png';
-import screenshot01 from '../../assets/images/projects/sampatti/screenshots_01.jpeg';
-import screenshot02 from '../../assets/images/projects/sampatti/screenshots_02.jpeg';
-import ContinueOnBehance from '@/components/case-studies/ContinueOnBehance.astro';
+import solution1 from '../../assets/images/projects/sampatti/solution1.png';
+import solution2 from '../../assets/images/projects/sampatti/solution2.png';
+import solution3 from '../../assets/images/projects/sampatti/solution3.png';
+import solution4 from '../../assets/images/projects/sampatti/solution4.png';
+import IATree from '@/components/case-studies/IATree.astro';
+import FlowScrollButton from '@/components/case-studies/FlowScrollButton.astro';
+
+export const iaData = {
+  label: 'SAMPATTI',
+  children: [
+    {
+      label: 'HOME',
+      children: [
+        {
+          label: 'Empty State',
+          children: [{ label: 'KYC' }, { label: 'Set a goal' }, { label: 'Start without a goal' }],
+        },
+        {
+          label: 'Active State',
+          children: [
+            { label: 'View total investments' },
+            { label: 'Set new goals' },
+            { label: 'Invest without goals' },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'WEALTH',
+      children: [{ label: 'View portfolio' }, { label: 'Invest money' }],
+    },
+    {
+      label: 'PROGRESS',
+      children: [{ label: 'Track achievement' }],
+    },
+    {
+      label: 'USER',
+      children: [
+        { label: 'Account details' },
+        { label: 'Investment profile' },
+        { label: 'Notifications' },
+        { label: 'Settings' },
+      ],
+    },
+  ],
+};
 
 {/* Hero */}
 
@@ -29,15 +72,10 @@ import ContinueOnBehance from '@/components/case-studies/ContinueOnBehance.astro
 {/* Opening */}
 
 <section class="mb-20">
-  <blockquote class="text-xl md:text-2xl text-foreground italic leading-relaxed mb-8">
-    "Every major Indian investment app is designed for the moment after the decision to invest. Sampatti designs for the moment before it."
+  <blockquote class="text-foreground text-xl leading-relaxed italic md:text-2xl">
+    "Every major Indian investment app is designed for the moment after the decision to invest.
+    Sampatti designs for the moment before it."
   </blockquote>
-
-  <div class="text-foreground/70 leading-relaxed">
-    <p class="text-base">
-      40 million first-time investors entered the Indian market between 2020 and 2023. The apps are polished, the intent is real, and the infrastructure exists. Yet most of them never make their first investment. This case study is about why. And what happens when you design for the user who is still deciding.
-    </p>
-  </div>
 </section>
 
 {/* Image placeholder after Overview */}
@@ -69,50 +107,279 @@ import ContinueOnBehance from '@/components/case-studies/ContinueOnBehance.astro
 </div>
 
 <h3 class="mb-4 text-xl font-bold text-[#fafafa]">The market context</h3>
-<dl class="not-prose grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-5">
+<dl class="not-prose grid auto-rows-fr items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
+  <div class="flex h-full flex-col rounded-xl border border-white/10 bg-white/[0.02] p-5">
     <dt class="text-2xl font-bold text-[color:var(--case-accent)]">35M</dt>
     <dd class="text-foreground/80 mt-3 text-base">
       Active SIP accounts despite 40M new investors joining since 2020
     </dd>
+    <p class="text-foreground/60 mt-auto pt-4 text-xs">Source: SEBI, 2024</p>
   </div>
-  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-5">
+  <div class="flex h-full flex-col rounded-xl border border-white/10 bg-white/[0.02] p-5">
     <dt class="text-2xl font-bold text-[color:var(--case-accent)]">1.43Cr</dt>
     <dd class="text-foreground/80 mt-3 text-base">
       Dormant SIP folios removed in a single 2025 cleanup. Registered, never actively contributing.
     </dd>
+    <p class="text-foreground/60 mt-auto pt-4 text-xs">Source: AMFI India, May 2025</p>
   </div>
-  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-5">
+  <div class="flex h-full flex-col rounded-xl border border-white/10 bg-white/[0.02] p-5">
     <dt class="text-2xl font-bold text-[color:var(--case-accent)]">10M / 7.3M</dt>
     <dd class="text-foreground/80 mt-3 text-base">
       Zerodha Varsity learners vs. active traders. More people learning than doing.
     </dd>
+    <p class="text-foreground/60 mt-auto pt-4 text-xs">Source: Zerodha, 2024</p>
   </div>
-  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-5">
+  <div class="flex h-full flex-col rounded-xl border border-white/10 bg-white/[0.02] p-5">
     <dt class="text-2xl font-bold text-[color:var(--case-accent)]">27%</dt>
     <dd class="text-foreground/80 mt-3 text-base">
       Indian adults who are financially literate. The knowledge exists. The action doesn't.
     </dd>
+    <p class="text-foreground/60 mt-auto pt-4 text-xs">Source: NCFE / SEBI FLS</p>
   </div>
 </dl>
 
-<div class="text-foreground/60 text-base text-xs">
-  Sources: AMFI monthly SIP data (2024). SEBI's July 2025 dormant-folio consolidation exercise.
-  Zerodha Varsity public enrollment. S&amp;P Global FinLit Survey 2024.
+</section>
+
+{/* Who we're designing for */}
+
+<section class="mb-20">
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Who we're designing for</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-4">Four segments. One deliberate focus.</h2>
+  <p class="text-foreground/70 mb-8 text-lg leading-relaxed">Mapping the full landscape before narrowing — to show why choice matters.</p>
+
+<div class="not-prose mb-8 grid gap-6 md:grid-cols-2">
+  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+    <span class="text-foreground/60 text-xs font-medium tracking-wider uppercase">
+      1 · Not our user
+    </span>
+    <h3 class="mt-2 mb-2 text-lg font-semibold text-[#fafafa]">The financially unaware</h3>
+    <p class="text-foreground/70 text-sm leading-relaxed">
+      No working knowledge of financial concepts. Has not Googled SIPs or watched finance content.
+      Needs foundational literacy before any investment tool is relevant.
+    </p>
+  </div>
+  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+    <span class="text-foreground/60 text-xs font-medium tracking-wider uppercase">
+      2 · Adjacent, not our focus
+    </span>
+    <h3 class="mt-2 mb-2 text-lg font-semibold text-[#fafafa]">
+      The curious but conceptually shallow
+    </h3>
+    <p class="text-foreground/70 text-sm leading-relaxed">
+      Has heard of SIPs and mutual funds socially. Watched a few reels. Knows the vocabulary but not
+      the logic behind it. Has never opened an investment app. Designing for them would recreate an
+      educational product, a need already served by Varsity, Finology, and others.
+    </p>
+  </div>
+  <div class="rounded-xl border border-[color:var(--case-accent)]/30 bg-[color:var(--case-accent)]/5 p-6">
+    <span class="text-sm font-medium tracking-wider text-[color:var(--case-accent)] uppercase">
+      3 · Our segment
+    </span>
+    <h3 class="mt-2 mb-2 text-lg font-semibold text-[#fafafa]">The aware but inactive</h3>
+    <p class="text-foreground/70 text-sm leading-relaxed">
+      Understands personal finance concepts. Has watched finance content, read articles, and
+      researched platforms. Has downloaded an investment app and completed KYC, but has never made a
+      single investment. Stuck at the decision threshold, not the knowledge threshold.
+    </p>
+  </div>
+  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+    <span class="text-foreground/60 text-xs font-medium tracking-wider uppercase">
+      4 · Not our user
+    </span>
+    <h3 class="mt-2 mb-2 text-lg font-semibold text-[#fafafa]">The active investor</h3>
+    <p class="text-foreground/70 text-sm leading-relaxed">
+      Already has active SIPs or stock positions. Comparing fund performance, tracking XIRR,
+      managing a portfolio. Well served by Zerodha, ET Money, and INDmoney.
+    </p>
+  </div>
 </div>
 
-<p class="text-muted-foreground mb-12 text-xs italic">
+  <p class="text-foreground/70 leading-relaxed">
+    Segment 3 was chosen because it has the clearest unmet need, the most designable problem, and the strongest business case. Users at this point have money and intent — the shortest conversion path — and need personalised guidance, not overwhelming options.
+  </p>
+</section>
 
-</p>
+{/* User persona */}
 
-  <div class="border-[color:var(--case-accent)]/30 bg-[color:var(--case-accent)]/5 mb-8 rounded-xl border p-6">
-    <h3 className="text-xl font-bold text-[#fafafa] mb-3">Who this product is for</h3>
-    <p className="text-gray-300 text-sm leading-relaxed mb-3">
-      <strong>Rohan Mehta, 23, Software developer, Bangalore</strong>. 8 months into his first job. ₹42,000/month take-home. Has watched 50+ SIP videos, downloaded Groww, completed KYC, but closed the app when he saw 200 fund options.
-    </p>
-    <p className="text-gray-400 text-sm leading-relaxed">
-      He is not financially unaware. He is <strong>aware but inactive</strong>, stuck at the decision threshold, not the knowledge threshold. He needs personalised guidance, not overwhelming options.
-    </p>
+<section class="mb-20">
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">User persona</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Rohan Mehta, 23. Aware but inactive.</h2>
+
+<div class="mb-8 rounded-xl border border-[color:var(--case-accent)]/30 bg-[color:var(--case-accent)]/5 p-6">
+  <p className="mb-1 text-sm leading-relaxed text-gray-300">
+    <strong>Software developer · Bangalore · 8 months into first job · Segment 3</strong>
+  </p>
+  <p className="mb-4 text-sm leading-relaxed text-gray-400">
+    ₹42,000/month take-home · ₹8,000 disposable · 0 active investments
+  </p>
+  <blockquote class="text-foreground border-l-2 border-[color:var(--case-accent)] pl-4 text-base leading-relaxed italic">
+    "I've watched like 50 videos on SIPs. I know I should start. I even downloaded Groww and
+    completed the KYC. But when I saw all those fund options I just closed it. What if I pick the
+    wrong one?"
+  </blockquote>
+</div>
+
+  <div class="not-prose grid auto-rows-fr md:grid-cols-2 gap-6">
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-3 text-lg font-semibold text-[#fafafa]">Goals</h3>
+      <ul class="text-foreground/70 space-y-2 text-sm leading-relaxed list-disc pl-5 marker:text-[color:var(--case-accent)]">
+        <li>Build a financial safety net without depending on parents</li>
+        <li>Feel financially capable, not just financially active</li>
+        <li>Take a first step that's reversible</li>
+      </ul>
+    </div>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-3 text-lg font-semibold text-[#fafafa]">Pain points</h3>
+      <ul class="text-foreground/70 space-y-2 text-sm leading-relaxed list-disc pl-5 marker:text-[color:var(--case-accent)]">
+        <li>200 fund options, no guidance on which suits him</li>
+        <li>Fear of making a wrong, permanent decision</li>
+        <li>No product showed a personalised split based on his situation</li>
+        <li>Didn't know if he should start with debt or equity</li>
+      </ul>
+    </div>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-3 text-lg font-semibold text-[#fafafa]">What he already knows</h3>
+      <ul class="text-foreground/70 space-y-2 text-sm leading-relaxed list-disc pl-5 marker:text-[color:var(--case-accent)]">
+        <li>What a SIP is</li>
+        <li>That index funds outperform most active funds</li>
+        <li>That he should start early</li>
+        <li>That compound interest works in his favour at 23</li>
+        <li>Understands debt vs equity conceptually but doesn't know how to split</li>
+      </ul>
+    </div>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-3 text-lg font-semibold text-[#fafafa]">What he's tried</h3>
+      <ul class="text-foreground/70 space-y-2 text-sm leading-relaxed list-disc pl-5 marker:text-[color:var(--case-accent)]">
+        <li>Googled "best SIP India"</li>
+        <li>Watched Groww tutorials</li>
+        <li>Downloaded Groww, completed KYC</li>
+        <li>Reached fund selection, saw 200+ options</li>
+        <li>Got overwhelmed, closed the app. Three times.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{/* Design principles */}
+
+<section class="mb-20">
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Design principles</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Five decisions that shaped every screen.</h2>
+
+  <div class="not-prose flex flex-col gap-6">
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-3 text-lg font-semibold text-[#fafafa]">Start with intent, not instrument</h3>
+      <p class="text-foreground/70 text-sm leading-relaxed">The experience is anchored on the user's job-to-be-done — "I want a home" — not the financial instrument, "I want a Large-Cap Index Fund." Fund selection only surfaces after the user has already made an emotional commitment to an outcome. This inverts the standard fintech discovery model (browse, filter, hope you find purpose) and uses a goal-first architecture instead, which reduces the abstraction gap between the user's mental model and the product's structure.</p>
+    </div>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-3 text-lg font-semibold text-[#fafafa]">Opinionated defaults with escape hatches</h3>
+      <p class="text-foreground/70 text-sm leading-relaxed">The app recommends an 80/20 allocation based on timeline, but never locks it. A slider and preset chips allow override from 0/100 to 100/0. This balances cognitive ease for beginners (who need guidance) with agency for informed users (who want control). The default is derived from logic — time horizon plus risk profiling — but the interface makes override feel like a first-class feature, not a hidden setting.</p>
+    </div>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-3 text-lg font-semibold text-[#fafafa]">Curated discovery over infinite browse</h3>
+      <p class="text-foreground/70 text-sm leading-relaxed">The app shows three funds per category — one recommended, two alternatives — rather than an exhaustive marketplace. This is a deliberate choice-architecture decision. Hick's Law predicts that more options increase decision time and decrease satisfaction. By curating direct-plan index funds with transparent selection criteria (expense ratio, consistency), it removes noise without removing agency. The "Recommended" badge is backed by a rationale, not an algorithmic black box.</p>
+    </div>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-3 text-lg font-semibold text-[#fafafa]">Radical transparency as a trust pattern</h3>
+      <p class="text-foreground/70 text-sm leading-relaxed">Treating friction as content, not an edge case to bury. Exit loads, tax implications, and assumed rates are surfaced at the point of decision, not hidden in scheme documents. Most financial products use security theater — lock icons, "100% safe" badges — to build trust. This product has information honesty instead. Every fund card shows the exit load. Every graph carries its assumptions. This follows the progressive disclosure model: the user sees what they need to decide, and can expand for deeper regulatory context.</p>
+    </div>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-3 text-lg font-semibold text-[#fafafa]">One decision per surface</h3>
+      <p class="text-foreground/70 text-sm leading-relaxed">No screen asks the user to optimize a portfolio before they understand what a SIP is. The flow is strictly sequential: Amount, Allocation, Funds, Review. This applies cognitive load theory and the wizard pattern to a traditionally dense domain. By isolating each variable to its own screen, it prevents decision paralysis. The user never faces a dashboard of 50 funds on day one; they face one question at a time, with contextual education.</p>
+    </div>
+  </div>
+</section>
+
+{/* Information architecture */}
+
+<section class="mb-20">
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Information architecture</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Two paths, one decision per surface.</h2>
+
+<div class="not-prose mb-10">
+  <IATree data={iaData} />
+</div>
+
+  <div class="not-prose flex flex-col gap-6">
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-2 text-lg font-semibold text-[#fafafa]">Flow A — Invest with a goal</h3>
+      <p class="text-foreground/70 mb-6 text-sm leading-relaxed">Goal-first architecture for users who know what they are saving for.</p>
+      <div class="not-prose mb-2 flex justify-end">
+        <FlowScrollButton
+          targetId="flowA-track"
+          fallbackId="flowA-end"
+          label="Scroll to the last step of Flow A"
+        />
+      </div>
+      <ol id="flowA-track" class="flex gap-4 overflow-x-auto scroll-smooth pb-3 [scrollbar-width:thin] [scrollbar-color:rgba(255,255,255,0.25)_transparent] [mask-image:linear-gradient(to_right,black_calc(100%-3rem),transparent)] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/25 [&::-webkit-scrollbar-track]:bg-transparent">
+        <li id="flowA-start" class="relative min-w-[128px] flex-1 before:absolute before:left-9 before:-right-4 before:top-3.5 before:h-px before:bg-white/15 before:content-[''] last:before:hidden">
+          <span class="text-[color:var(--case-accent)] mb-3 flex h-7 w-7 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10 text-sm font-bold">1</span>
+          <p class="text-sm font-semibold text-[#fafafa]">Home, empty state</p>
+          <p class="text-foreground/60 mt-1 text-xs leading-relaxed">"Set a goal" or "Not sure yet?"</p>
+        </li>
+        <li class="relative min-w-[128px] flex-1 before:absolute before:left-9 before:-right-4 before:top-3.5 before:h-px before:bg-white/15 before:content-[''] last:before:hidden">
+          <span class="text-[color:var(--case-accent)] mb-3 flex h-7 w-7 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10 text-sm font-bold">2</span>
+          <p class="text-sm font-semibold text-[#fafafa]">Goal selection</p>
+          <p class="text-foreground/60 mt-1 text-xs leading-relaxed">My First Home, Wanderlust, Invest as Me, You Name It</p>
+        </li>
+        <li class="relative min-w-[128px] flex-1 before:absolute before:left-9 before:-right-4 before:top-3.5 before:h-px before:bg-white/15 before:content-[''] last:before:hidden">
+          <span class="text-[color:var(--case-accent)] mb-3 flex h-7 w-7 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10 text-sm font-bold">3</span>
+          <p class="text-sm font-semibold text-[#fafafa]">Goal details</p>
+          <p class="text-foreground/60 mt-1 text-xs leading-relaxed">Target amount to timeline</p>
+        </li>
+        <li class="relative min-w-[128px] flex-1 before:absolute before:left-9 before:-right-4 before:top-3.5 before:h-px before:bg-white/15 before:content-[''] last:before:hidden">
+          <span class="text-[color:var(--case-accent)] mb-3 flex h-7 w-7 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10 text-sm font-bold">4</span>
+          <p class="text-sm font-semibold text-[#fafafa]">Projection</p>
+          <p class="text-foreground/60 mt-1 text-xs leading-relaxed">Lumpsum plus SIP graph, On Track</p>
+        </li>
+        <li class="relative min-w-[128px] flex-1 before:absolute before:left-9 before:-right-4 before:top-3.5 before:h-px before:bg-white/15 before:content-[''] last:before:hidden">
+          <span class="text-[color:var(--case-accent)] mb-3 flex h-7 w-7 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10 text-sm font-bold">5</span>
+          <p class="text-sm font-semibold text-[#fafafa]">Fund selection</p>
+          <p class="text-foreground/60 mt-1 text-xs leading-relaxed">3 equity plus 3 debt, Recommended</p>
+        </li>
+        <li class="relative min-w-[128px] flex-1 before:absolute before:left-9 before:-right-4 before:top-3.5 before:h-px before:bg-white/15 before:content-[''] last:before:hidden">
+          <span class="text-[color:var(--case-accent)] mb-3 flex h-7 w-7 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10 text-sm font-bold">6</span>
+          <p class="text-sm font-semibold text-[#fafafa]">Review</p>
+          <p class="text-foreground/60 mt-1 text-xs leading-relaxed">Editable cards, SEBI disclaimer</p>
+        </li>
+        <li id="flowA-end" class="relative min-w-[128px] flex-1 before:absolute before:left-9 before:-right-4 before:top-3.5 before:h-px before:bg-white/15 before:content-[''] last:before:hidden">
+          <span class="text-[color:var(--case-accent)] mb-3 flex h-7 w-7 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10 text-sm font-bold">7</span>
+          <p class="text-sm font-semibold text-[#fafafa]">Success toast</p>
+          <p class="text-foreground/60 mt-1 text-xs leading-relaxed">"SIP Started"</p>
+        </li>
+      </ol>
+    </div>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-2 text-lg font-semibold text-[#fafafa]">Flow B — Invest without a goal</h3>
+      <p class="text-foreground/70 mb-6 text-sm leading-relaxed">For users who want to start investing without naming a goal or timeline. Allocation is exposed earlier as a 0–100 slider.</p>
+      <ol class="flex gap-4 overflow-x-auto pb-2">
+        <li class="relative min-w-[128px] flex-1 before:absolute before:left-9 before:-right-4 before:top-3.5 before:h-px before:bg-white/15 before:content-[''] last:before:hidden">
+          <span class="text-[color:var(--case-accent)] mb-3 flex h-7 w-7 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10 text-sm font-bold">1</span>
+          <p class="text-sm font-semibold text-[#fafafa]">Home, empty state</p>
+          <p class="text-foreground/60 mt-1 text-xs leading-relaxed">"Not sure yet?"</p>
+        </li>
+        <li class="relative min-w-[128px] flex-1 before:absolute before:left-9 before:-right-4 before:top-3.5 before:h-px before:bg-white/15 before:content-[''] last:before:hidden">
+          <span class="text-[color:var(--case-accent)] mb-3 flex h-7 w-7 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10 text-sm font-bold">2</span>
+          <p class="text-sm font-semibold text-[#fafafa]">Amount</p>
+          <p class="text-foreground/60 mt-1 text-xs leading-relaxed">One-time / Monthly SIP</p>
+        </li>
+        <li class="relative min-w-[128px] flex-1 before:absolute before:left-9 before:-right-4 before:top-3.5 before:h-px before:bg-white/15 before:content-[''] last:before:hidden">
+          <span class="text-[color:var(--case-accent)] mb-3 flex h-7 w-7 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10 text-sm font-bold">3</span>
+          <p class="text-sm font-semibold text-[#fafafa]">Fund selection</p>
+          <p class="text-foreground/60 mt-1 text-xs leading-relaxed">3 equity plus 3 debt, 0–100 slider</p>
+        </li>
+        <li class="relative min-w-[128px] flex-1 before:absolute before:left-9 before:-right-4 before:top-3.5 before:h-px before:bg-white/15 before:content-[''] last:before:hidden">
+          <span class="text-[color:var(--case-accent)] mb-3 flex h-7 w-7 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10 text-sm font-bold">4</span>
+          <p class="text-sm font-semibold text-[#fafafa]">Review</p>
+          <p class="text-foreground/60 mt-1 text-xs leading-relaxed">Editable cards, SEBI disclaimer</p>
+        </li>
+        <li class="relative min-w-[128px] flex-1 before:absolute before:left-9 before:-right-4 before:top-3.5 before:h-px before:bg-white/15 before:content-[''] last:before:hidden">
+          <span class="text-[color:var(--case-accent)] mb-3 flex h-7 w-7 items-center justify-center rounded-lg bg-[color:var(--case-accent)]/10 text-sm font-bold">5</span>
+          <p class="text-sm font-semibold text-[#fafafa]">Success toast</p>
+          <p class="text-foreground/60 mt-1 text-xs leading-relaxed">"Investment placed"</p>
+        </li>
+      </ol>
+    </div>
   </div>
 </section>
 
@@ -122,40 +389,193 @@ import ContinueOnBehance from '@/components/case-studies/ContinueOnBehance.astro
   <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">The Solution</span>
   <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Sampatti is built for the user who is still deciding.</h2>
 
-  <div class="mb-8">
-    <p class="text-foreground/70 leading-relaxed">Sampatti replaces the overwhelming fund catalogue with a single personalised recommendation based on two questions about your financial situation and risk tolerance. The first SIP starts at ₹100, pause anytime, stop anytime, no exit fees. Every term is explained in plain language where it appears, not buried in a glossary. Projections are calculated from your actual income and age, not generic calculators. And the guidance adapts as you invest, growing with you from first SIP to multiple goals.</p>
+<div class="mb-8">
+  <p class="text-foreground/70 leading-relaxed">
+    Sampatti replaces the overwhelming fund catalogue with a single personalised recommendation
+    based on two questions about your financial situation and risk tolerance. The first SIP starts
+    at ₹100, pause anytime, stop anytime, no exit fees. Every term is explained in plain language
+    where it appears, not buried in a glossary. Projections are calculated from your actual income
+    and age, not generic calculators. And the guidance adapts as you invest, growing with you from
+    first SIP to multiple goals.
+  </p>
+</div>
+
+  <div class="mt-8 grid gap-4">
+    <figure>
+      <Image
+        src={solution1}
+        alt="Sampatti onboarding: situation, risk attitude, and KYC. Personalized wealth allocation that adapts to your risk profile and investment objectives."
+        class="h-auto w-full rounded-xl"
+      />
+    </figure>
+    <figure>
+      <Image
+        src={solution2}
+        alt="Sampatti home: empty state and active portfolio. See where your money is, where it's going, and what to do next."
+        class="h-auto w-full rounded-xl"
+      />
+    </figure>
+    <figure>
+      <Image
+        src={solution3}
+        alt="Sampatti goals: goal selection, wealth tracking, and goal detail. Set goals. Watch your wealth grow."
+        class="h-auto w-full rounded-xl"
+      />
+    </figure>
+    <figure>
+      <Image
+        src={solution4}
+        alt="Sampatti investing: amount, allocation slider, and curated fund selection. Pick an amount, choose your mix, meet your funds."
+        class="h-auto w-full rounded-xl"
+      />
+    </figure>
   </div>
 </section>
 
-{/* Image placeholder after Solution */}
+{/* Outcomes and metrics */}
 
 <section class="mb-20">
-  <Image
-    src={screenshot01}
-    alt="Sampatti Solution, Onboarding flow"
-    class="mt-8 h-auto w-full rounded-xl"
-  />
-  <Image
-    src={screenshot02}
-    alt="Sampatti Solution, Personalised guidance"
-    class="mt-6 h-auto w-full rounded-xl"
-  />
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Outcomes & metrics</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">What I'd watch if I shipped.</h2>
+
+<div class="not-prose mb-8 grid gap-6 md:grid-cols-3">
+  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+    <span class="text-sm font-medium tracking-wider text-[color:var(--case-accent)] uppercase">
+      Setup & activation
+    </span>
+    {/* prettier-ignore */}
+    <p class="mt-3 text-sm font-semibold text-[#fafafa]">Did we make starting easy enough?</p>
+    <div class="border-foreground/10 my-4 border-t" aria-hidden="true"></div>
+    <div class="space-y-4">
+      <div>
+        {/* prettier-ignore */}
+        <p class="text-sm font-semibold text-[#fafafa]">Time from install to first decision surface.</p>
+        <p class="text-foreground/70 text-sm leading-relaxed">
+          Validates the light-onboarding assumption.
+        </p>
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-[#fafafa]">Drop-off at the empty-state Home.</p>
+        <p class="text-foreground/70 text-sm leading-relaxed">
+          If most users leave without tapping either card, the goal-first premise fails.
+        </p>
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-[#fafafa]">% reaching a fund-selection screen.</p>
+        <p class="text-foreground/70 text-sm leading-relaxed">Validates the curated 3+3 funnel.</p>
+      </div>
+    </div>
+  </div>
+  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+    <span class="text-sm font-medium tracking-wider text-[color:var(--case-accent)] uppercase">
+      Investment conversion
+    </span>
+    {/* prettier-ignore */}
+    <p class="mt-3 text-sm font-semibold text-[#fafafa]">Did the design actually move people to invest?</p>
+    <div class="border-foreground/10 my-4 border-t" aria-hidden="true"></div>
+    <div class="space-y-4">
+      <div>
+        {/* prettier-ignore */}
+        <p class="text-sm font-semibold text-[#fafafa]">Tap-through rate from Home to either flow.</p>
+        <p class="text-foreground/70 text-sm leading-relaxed">
+          Validates the empty-state as a real entry point.
+        </p>
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-[#fafafa]">Goal creation completion rate.</p>
+        <p class="text-foreground/70 text-sm leading-relaxed">
+          If many drop at Projection, "illustrative not promised" isn't doing its job.
+        </p>
+      </div>
+      <div>
+        {/* prettier-ignore */}
+        <p class="text-sm font-semibold text-[#fafafa]">Allocation override rate on the 80/20 default.</p>
+        <p class="text-foreground/70 text-sm leading-relaxed">
+          If many override, the recommended default is wrong.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+    <span class="text-sm font-medium tracking-wider text-[color:var(--case-accent)] uppercase">
+      Retention & quality
+    </span>
+    {/* prettier-ignore */}
+    <p class="mt-3 text-sm font-semibold text-[#fafafa]">Did they stay, and did they trust the picks?</p>
+    <div class="border-foreground/10 my-4 border-t" aria-hidden="true"></div>
+    <div class="space-y-4">
+      <div>
+        <p class="text-sm font-semibold text-[#fafafa]">SIP continuation rate at month 3.</p>
+        <p class="text-foreground/70 text-sm leading-relaxed">
+          The most honest metric in Indian fintech — committed vs tried-and-quit.
+        </p>
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-[#fafafa]">Fund switch rate in months 1–6.</p>
+        <p class="text-foreground/70 text-sm leading-relaxed">
+          If many switch, the "Recommended" badge isn't trusted.
+        </p>
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-[#fafafa]">Streak length before first missed SIP.</p>
+        <p class="text-foreground/70 text-sm leading-relaxed">
+          Tests whether Progress gamification drives behavior or is just decoration.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mb-8 rounded-xl border border-[color:var(--case-accent)]/30 bg-[color:var(--case-accent)]/5 p-6">
+  <span class="text-sm font-medium tracking-wider text-[color:var(--case-accent)] uppercase">
+    The question this design optimizes for
+  </span>
+  {/* prettier-ignore */}
+  <p class="mt-3 text-2xl font-bold text-[#fafafa] md:text-[2rem]">Does the user get from Home to a confirmed investment in under 5 minutes?</p>
+</div>
+
+  <p class="text-foreground/60 text-sm leading-relaxed">
+    This section describes the questions a real product would need to answer — not targets it has hit. I have not run this product with users. The number that would justify any of these metrics is the first cohort of users who actually use it.
+  </p>
 </section>
 
-{/* The thinking */}
+{/* Accessibility and reflections */}
 
 <section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">The thinking</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">The decision is the hard part.</h2>
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Accessibility and reflections</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">The mindset behind the design.</h2>
 
-  <div class="text-foreground/70 leading-relaxed">
-    <p class="text-lg mb-6">
-      The decision to invest has always been treated as a knowledge problem. It isn't. Forty million Indians are watching the videos, downloading the apps, completing the KYC. And walking away. What stops them is a missing moment of personalised guidance in the half-second after intent and before commitment, where every existing app hands them a catalogue instead of a recommendation.
-    </p>
-    <p class="text-lg">
-      Sampatti's job is to fill that half-second. One recommendation. ₹100 to start. Plain language where terms appear. Projections that use your income and age. The work proves a single decision can reframe how an entire product category addresses its hardest moment.
-    </p>
+<h3 class="mb-4 text-xl font-bold text-[#fafafa]">Accessibility and inclusion</h3>
+<ul class="text-foreground/70 mb-10 space-y-3 leading-relaxed">
+  <li>
+    Dark mode chosen for visual calm in a finance context — the eye scans numbers, not lifestyle
+    imagery, and a darker surface reduces competing visual weight on charts.
+  </li>
+  <li>Color is never the only signal: badges carry text labels alongside their tone.</li>
+  <li>All interactive targets meet ≥44px touch.</li>
+  <li>
+    IBM Plex Mono is used for currency to prevent digit jitter during balance animations and to keep
+    tabular figures aligned.
+  </li>
+  <li>
+    Honest about what is not yet tested: keyboard-only navigation on the allocation slider,
+    low-vision contrast between gold accent and dark-green surface, and screen-reader labeling for
+    the projection graph data points.
+  </li>
+</ul>
+
+  <div class="border-[color:var(--case-accent)]/30 bg-[color:var(--case-accent)]/5 rounded-xl border p-6 md:p-8">
+    <span class="text-sm font-medium tracking-wider text-[color:var(--case-accent)] uppercase">Closing reflection</span>
+    <div class="text-foreground/80 mt-4 space-y-5 leading-relaxed">
+      <p>
+        Designing Sampatti taught me that the hardest part of an investment app isn't picking funds — it's getting someone who downloaded an app, finished KYC, and still hasn't invested across the threshold. The gap is not financial literacy. It is decision confidence. Every screen in this case study is an answer to that one question.
+      </p>
+      <p>
+        A note on where I started: I was new to finance when I began this project. I did not know enough about mutual funds, SEBI rules, or the Indian investment landscape to design for it credibly. So this was also a personal upskill — days of reading AMFI disclosures, scrolling through and reading about leading fin-tech apps in India, listening to investor podcasts, and asking people who actually invest what they wish their first app had done differently. The product you see here is the result of that learning.
+      </p>
+      <p>
+        And to be clear about what this case study is not: it is not a finished product. There are screens I would redesign, assumptions I would test, and flows I would simplify further with real user feedback. The product will keep evolving.
+      </p>
+    </div>
   </div>
 </section>
-
-<ContinueOnBehance href={frontmatter.behanceUrl} />
