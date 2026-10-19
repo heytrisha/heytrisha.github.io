@@ -14,6 +14,7 @@ const projects = defineCollection({
     figmaUrl: z.url().optional(),
     behanceUrl: z.url().optional(),
     tags: z.array(z.string()).default([]),
+    tldr: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
     order: z.number().default(0),
     client: z.string().optional(),

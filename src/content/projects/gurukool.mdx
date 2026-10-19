@@ -5,6 +5,24 @@ type: 'case-study'
 pubDate: 2025-09-21
 thumbnail: '../../assets/images/gurukool.png'
 tags: ['EdTech', 'Mobile App', 'Community', 'AI Assistant']
+tldr:
+  [
+    'Gurukool is an AI-assisted homework companion for parents who feel out of their depth helping their kids learn.',
+    '## The problem',
+    'Parents no longer remember the concepts, teaching methods have changed, and existing edtech is built for students: help is scattered across videos, tutors, and WhatsApp groups.',
+    '## Key challenges',
+    'Designing for users who feel inadequate: building their confidence instead of exposing the gap.',
+    'Earning trust in AI: parents are open to it only when it explains instead of just answering.',
+    'Consolidating a fragmented journey: learning, tracking, and community lived in separate tools.',
+    'Serving two audiences: parents first, with a lighter layer for students.',
+    '## Key decisions',
+    'Community support: topic-based discussion spaces so no parent feels alone in the journey.',
+    'Personalised experience: content tailored to curriculum, grade, and progress so help is always relevant.',
+    'Trustworthy AI: GURU explains the reasoning instead of just giving answers.',
+    'One unified platform: Home, Curriculum, Guided Help, Community, and Tools in a single navigation model.',
+    '## Solution',
+    'A parent-first app with guided video help, a curriculum tracker, a parent community, a quick-access toolkit, and GURU, an AI assistant that checks homework from a photo or voice note.',
+  ]
 featured: true
 order: 2
 client: 'GuruKool Inc.'
@@ -15,10 +33,18 @@ behanceUrl: 'https://www.behance.net/gallery/235018941/Gurukool-A-Study-Partner-
 
 import { Image } from 'astro:assets';
 import hero from '../../assets/images/projects/gurukool/hero.png';
-import solution from '../../assets/images/projects/gurukool/solution.jpeg';
-import FigmaEmbed from '@/components/case-studies/FigmaEmbed.astro';
+import screenHome from '../../assets/images/projects/gurukool/screen1.png';
+import screenCurriculum from '../../assets/images/projects/gurukool/Group 267.png';
+import screenMaths from '../../assets/images/projects/gurukool/Math.png';
+import screenGuidedHelp from '../../assets/images/projects/gurukool/Guided Help.png';
+import screenGroups from '../../assets/images/projects/gurukool/Community.png';
+import screenQuestions from '../../assets/images/projects/gurukool/Community-2.png';
+import screenToolkit from '../../assets/images/projects/gurukool/Tool KIt.png';
+import screenGuru from '../../assets/images/projects/gurukool/GURU- Chat Bot.png';
+import screenProfile from '../../assets/images/projects/gurukool/Profile.png';
+import userflow from '../../assets/images/projects/gurukool/userflow.png';
+import styleGuide from '../../assets/images/projects/gurukool/style-guide.png';
 import IATree from '@/components/case-studies/IATree.astro';
-import ContinueOnBehance from '@/components/case-studies/ContinueOnBehance.astro';
 
 export const iaData = {
   label: 'GURUKOOL',
@@ -106,6 +132,10 @@ export const iaData = {
         <h3 class="text-lg font-semibold text-[#fafafa]">AI-Powered Assistant</h3>
         <p class="text-foreground/70 text-sm leading-relaxed">Instant, personalized help via homework scans, voice notes, and contextual explanations.</p>
       </li>
+      <li>
+        <h3 class="text-lg font-semibold text-[#fafafa]">Built for Parents & Students</h3>
+        <p class="text-foreground/70 text-sm leading-relaxed">Primarily designed for parents, with dedicated support for students seeking extra clarity.</p>
+      </li>
     </ul>
   </div>
 </section>
@@ -113,30 +143,235 @@ export const iaData = {
 {/* The Problem */}
 
 <section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">The Problem</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">What parents told us</h2>
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Challenges</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">What parents told</h2>
 
 <p class="text-foreground/70 mb-8 text-lg leading-relaxed">
   Parents want to help. But the way children learn today is different from how they were taught.
   They feel stuck, uncertain, and alone.
 </p>
 
-  <div class="not-prose grid md:grid-cols-2 gap-6 mb-8">
-    <div class="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
-      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Concepts have changed</h3>
-      <p class="text-foreground/70 text-sm leading-relaxed">"I don't always remember the concepts, and sometimes I feel like I don't even know the right way to explain them."</p>
+  <div class="not-prose grid md:grid-cols-2 gap-6 mb-8 auto-rows-fr">
+    <figure class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <blockquote class="text-foreground/80 text-sm leading-relaxed italic">"I don't always remember the concepts, and sometimes I feel like I don't even know the right way to explain them."</blockquote>
+      <figcaption class="text-foreground/60 mt-3 text-xs">— Parent 01</figcaption>
+    </figure>
+    <figure class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <blockquote class="text-foreground/80 text-sm leading-relaxed italic">"The way kids are taught today is so different from how I learned. I'm not sure if I'm guiding them the right way."</blockquote>
+      <figcaption class="text-foreground/60 mt-3 text-xs">— Parent 02</figcaption>
+    </figure>
+    <figure class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <blockquote class="text-foreground/80 text-sm leading-relaxed italic">"The way kids are taught today is so different from how I learned. I'm not sure if I'm guiding them the right way."</blockquote>
+      <figcaption class="text-foreground/60 mt-3 text-xs">— Parent 03</figcaption>
+    </figure>
+    <figure class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <blockquote class="text-foreground/80 text-sm leading-relaxed italic">"Sometimes I just want to know how other parents are handling this, it would feel reassuring to share tips and struggles with people going through the same thing."</blockquote>
+      <figcaption class="text-foreground/60 mt-3 text-xs">— Parent 04</figcaption>
+    </figure>
+    <figure class="rounded-xl border border-white/10 bg-white/[0.02] p-6 md:col-span-2">
+      <blockquote class="text-foreground/80 text-sm leading-relaxed italic">"When my child asks a question, I need help instantly. I can't spend hours searching for trustworthy explanations online."</blockquote>
+      <figcaption class="text-foreground/60 mt-3 text-xs">— Parent 05</figcaption>
+    </figure>
+  </div>
+</section>
+
+{/* Research */}
+
+<section class="mb-20">
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Research</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Listening before designing.</h2>
+
+<p class="text-foreground/70 mb-10 text-lg leading-relaxed">
+  To understand parents' and students' homework habits, challenges, and expectations, I used two key
+  research methods.
+</p>
+
+<h3 class="mb-4 text-xl font-bold text-[#fafafa]">User interviews</h3>
+<p class="text-foreground/70 mb-6 leading-relaxed">
+  Interviewed 10 working and stay-at-home parents to better understand challenges, behaviors, and
+  needs when supporting their children with schoolwork.
+</p>
+
+<h4 class="text-foreground/60 mb-4 text-xs font-medium tracking-wider uppercase">
+  Key questions asked
+</h4>
+<ol class="not-prose mb-10 grid gap-3 sm:grid-cols-2">
+  <li class="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm leading-relaxed">
+    <span class="font-bold text-[color:var(--case-accent)]">01 · </span>
+    <span class="text-foreground/80">
+      Can you walk me through a typical day when your child has homework?
+    </span>
+  </li>
+  <li class="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm leading-relaxed">
+    <span class="font-bold text-[color:var(--case-accent)]">02 · </span>
+    <span class="text-foreground/80">
+      What kinds of subjects or topics do you find easy or difficult to help with?
+    </span>
+  </li>
+  <li class="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm leading-relaxed">
+    <span class="font-bold text-[color:var(--case-accent)]">03 · </span>
+    <span class="text-foreground/80">
+      What challenges do you face when supporting your child with homework?
+    </span>
+  </li>
+  <li class="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm leading-relaxed">
+    <span class="font-bold text-[color:var(--case-accent)]">04 · </span>
+    <span class="text-foreground/80">How much time do you spend helping with homework?</span>
+  </li>
+  <li class="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm leading-relaxed">
+    <span class="font-bold text-[color:var(--case-accent)]">05 · </span>
+    <span class="text-foreground/80">
+      Have you ever felt stuck or unsure about how to explain a concept?
+    </span>
+  </li>
+  <li class="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm leading-relaxed">
+    <span class="font-bold text-[color:var(--case-accent)]">06 · </span>
+    <span class="text-foreground/80">What tools do you currently use?</span>
+  </li>
+  <li class="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm leading-relaxed">
+    <span class="font-bold text-[color:var(--case-accent)]">07 · </span>
+    <span class="text-foreground/80">Would you trust AI-based homework help?</span>
+  </li>
+  <li class="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm leading-relaxed">
+    <span class="font-bold text-[color:var(--case-accent)]">08 · </span>
+    <span class="text-foreground/80">
+      Are there any emotional challenges, like stress or guilt, during homework time?
+    </span>
+  </li>
+  <li class="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm leading-relaxed">
+    <span class="font-bold text-[color:var(--case-accent)]">09 · </span>
+    <span class="text-foreground/80">
+      Do you ever look for outside help (online resources, tutors, other parents)?
+    </span>
+  </li>
+  <li class="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm leading-relaxed">
+    <span class="font-bold text-[color:var(--case-accent)]">10 · </span>
+    <span class="text-foreground/80">
+      Have you ever wanted to connect with other parents or experts for advice?
+    </span>
+  </li>
+  <li class="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm leading-relaxed sm:col-span-2">
+    <span class="font-bold text-[color:var(--case-accent)]">11 · </span>
+    <span class="text-foreground/80">
+      What would an ideal support system or community for parents look like to you?
+    </span>
+  </li>
+</ol>
+
+<h3 class="mb-4 text-xl font-bold text-[#fafafa]">Competitive analysis</h3>
+<p class="text-foreground/70 mb-6 leading-relaxed">
+  Analyzed 4 popular homework and learning support platforms (BYJU'S, Brainly, Toppr, and Vedantu)
+  to understand existing solutions, identify feature gaps, and uncover opportunities to design a
+  more parent-inclusive, guided learning experience.
+</p>
+
+<div class="not-prose mb-10 overflow-x-auto rounded-xl border border-white/10">
+  <table class="w-full min-w-[560px] border-collapse text-left text-sm">
+    <thead>
+      <tr class="border-b border-white/10 text-xs tracking-wider text-[#fafafa] uppercase">
+        <th class="px-4 py-3 font-semibold">Feature / Focus</th>
+        <th class="px-4 py-3 font-semibold text-[color:var(--case-accent)]">Gurukool</th>
+        <th class="px-4 py-3 font-semibold">BYJU'S</th>
+        <th class="px-4 py-3 font-semibold">Brainly</th>
+        <th class="px-4 py-3 font-semibold">Toppr</th>
+        <th class="px-4 py-3 font-semibold">Vedantu</th>
+      </tr>
+    </thead>
+    <tbody class="text-foreground/70">
+      <tr class="border-b border-white/5">
+        <td class="px-4 py-3">AI-Powered Help</td>
+        <td class="px-4 py-3 text-[color:var(--case-accent)]">✓</td>
+        <td class="px-4 py-3">–</td>
+        <td class="px-4 py-3">✓</td>
+        <td class="px-4 py-3">–</td>
+        <td class="px-4 py-3">–</td>
+      </tr>
+      <tr class="border-b border-white/5">
+        <td class="px-4 py-3">Quick Access Toolkit</td>
+        <td class="px-4 py-3 text-[color:var(--case-accent)]">✓</td>
+        <td class="px-4 py-3">–</td>
+        <td class="px-4 py-3">–</td>
+        <td class="px-4 py-3">–</td>
+        <td class="px-4 py-3">–</td>
+      </tr>
+      <tr class="border-b border-white/5">
+        <td class="px-4 py-3">Parent-Centric Features</td>
+        <td class="px-4 py-3 text-[color:var(--case-accent)]">✓</td>
+        <td class="px-4 py-3">–</td>
+        <td class="px-4 py-3">–</td>
+        <td class="px-4 py-3">–</td>
+        <td class="px-4 py-3">–</td>
+      </tr>
+      <tr class="border-b border-white/5">
+        <td class="px-4 py-3">Community Support</td>
+        <td class="px-4 py-3 text-[color:var(--case-accent)]">✓</td>
+        <td class="px-4 py-3">–</td>
+        <td class="px-4 py-3">✓</td>
+        <td class="px-4 py-3">✓</td>
+        <td class="px-4 py-3">✓</td>
+      </tr>
+      <tr class="border-b border-white/5">
+        <td class="px-4 py-3">Curriculum Mapping</td>
+        <td class="px-4 py-3 text-[color:var(--case-accent)]">✓</td>
+        <td class="px-4 py-3">✓</td>
+        <td class="px-4 py-3">–</td>
+        <td class="px-4 py-3">✓</td>
+        <td class="px-4 py-3">✓</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3">History & Saved Content</td>
+        <td class="px-4 py-3 text-[color:var(--case-accent)]">✓</td>
+        <td class="px-4 py-3">✓</td>
+        <td class="px-4 py-3">–</td>
+        <td class="px-4 py-3">✓</td>
+        <td class="px-4 py-3">✓</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="mb-10 rounded-xl border border-[color:var(--case-accent)]/30 bg-[color:var(--case-accent)]/5 p-6 md:p-8">
+  <span class="text-sm font-medium tracking-wider text-[color:var(--case-accent)] uppercase">
+    Key findings
+  </span>
+  <h3 class="mt-3 mb-6 text-2xl font-bold text-[#fafafa]">What was discovered</h3>
+  <div class="grid gap-6 sm:grid-cols-2">
+    <blockquote class="border-l-2 border-[color:var(--case-accent)] pl-4 text-sm leading-relaxed text-[#fafafa] italic">
+      "Parents face time constraints and low confidence when helping with homework."
+    </blockquote>
+    <blockquote class="border-l-2 border-[color:var(--case-accent)] pl-4 text-sm leading-relaxed text-[#fafafa] italic">
+      "They prefer quick, reliable support over complex solutions."
+    </blockquote>
+    <blockquote class="border-l-2 border-[color:var(--case-accent)] pl-4 text-sm leading-relaxed text-[#fafafa] italic">
+      "Learning is fragmented across multiple tools, leading to lost progress."
+    </blockquote>
+    <blockquote class="border-l-2 border-[color:var(--case-accent)] pl-4 text-sm leading-relaxed text-[#fafafa] italic">
+      "Existing platforms are student-centric, with minimal parent support."
+    </blockquote>
+    <blockquote class="border-l-2 border-[color:var(--case-accent)] pl-4 text-sm leading-relaxed text-[#fafafa] italic sm:col-span-2">
+      "Trust in AI depends on clarity, transparency, and ease of use."
+    </blockquote>
+  </div>
+</div>
+
+  <h3 class="mb-2 text-xl font-bold text-[#fafafa]">How insights shaped the experience</h3>
+  <p class="text-foreground/60 mb-6 text-xs font-medium tracking-wider uppercase">From research to design</p>
+  <div class="not-prose grid gap-6 md:grid-cols-2">
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h4 class="mb-2 text-lg font-semibold text-[#fafafa]">Community Support</h4>
+      <p class="text-foreground/70 text-sm leading-relaxed">Enable peer interaction through topic-based discussion spaces so parents never feel alone in the journey.</p>
     </div>
-    <div class="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
-      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Teaching methods differ</h3>
-      <p class="text-foreground/70 text-sm leading-relaxed">"The way kids are taught today is so different from how I learned. I'm not sure if I'm guiding them the right way."</p>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h4 class="mb-2 text-lg font-semibold text-[#fafafa]">Personalized Experience</h4>
+      <p class="text-foreground/70 text-sm leading-relaxed">Deliver tailored content based on curriculum, grade, and progress so help is always relevant.</p>
     </div>
-    <div class="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
-      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Need instant help</h3>
-      <p class="text-foreground/70 text-sm leading-relaxed">"When my child asks a question, I need help instantly. I can't spend hours searching for trustworthy explanations online."</p>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h4 class="mb-2 text-lg font-semibold text-[#fafafa]">Trustworthy AI</h4>
+      <p class="text-foreground/70 text-sm leading-relaxed">Provide instant, reliable assistance through a simple and transparent chatbot that explains, not just answers.</p>
     </div>
-    <div class="border border-white/10 rounded-xl p-6 bg-white/[0.02]">
-      <h3 class="text-lg font-semibold text-[#fafafa] mb-2">Seeking community</h3>
-      <p class="text-foreground/70 text-sm leading-relaxed">"Sometimes I just want to know how other parents are handling this, it would feel reassuring to share tips and struggles."</p>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h4 class="mb-2 text-lg font-semibold text-[#fafafa]">Unified Platform</h4>
+      <p class="text-foreground/70 text-sm leading-relaxed">Consolidate learning, tracking, and support into a single seamless experience, no more juggling apps.</p>
     </div>
   </div>
 </section>
@@ -183,7 +418,61 @@ export const iaData = {
   </div>
 </div>
 
-  <Image src={solution} alt="Gurukool solution, guided help and AI assistant surface" class="w-full rounded-xl mt-8" />
+  <div class="not-prose mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-4 md:p-6">
+    <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+      <Image src={screenHome} alt="Gurukool home: continue learning, last watched, community updates, new videos" class="h-auto w-full rounded-xl" />
+      <Image src={screenCurriculum} alt="Gurukool curriculum: subjects, topics, add subject" class="h-auto w-full rounded-xl" />
+      <Image src={screenMaths} alt="Gurukool mathematics: lesson journey, Ask Guru, quick tools and resources" class="h-auto w-full rounded-xl" />
+      <Image src={screenGuidedHelp} alt="Gurukool guided help: topic videos, practice, worksheets, community replies" class="h-auto w-full rounded-xl" />
+      <Image src={screenGroups} alt="Gurukool community groups: my groups and explore groups" class="h-auto w-full rounded-xl" />
+      <Image src={screenQuestions} alt="Gurukool community questions: my questions, top questions, community questions" class="h-auto w-full rounded-xl" />
+      <Image src={screenToolkit} alt="Gurukool tool kit: calendar, timer, checklist, flashcards, study tips, doodle pad, saved" class="h-auto w-full rounded-xl" />
+      <Image src={screenGuru} alt="Gurukool Ask GURU chat: homework help conversation" class="h-auto w-full rounded-xl" />
+      <Image src={screenProfile} alt="Gurukool profile: streak, rewards, daily puzzles, account settings" class="h-auto w-full rounded-xl" />
+    </div>
+  </div>
+</section>
+
+{/* Information architecture */}
+
+<section class="mb-20">
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">IA and user flow</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">One home for everything homework.</h2>
+
+<div class="not-prose mb-10">
+  <IATree data={iaData} />
+</div>
+
+  <div class="not-prose grid gap-4">
+    <figure>
+      <Image
+        src={userflow}
+        alt="Gurukool user flow: from opening the app through Ask GURU, Community, and Guided Help back to homework"
+        class="h-auto w-full rounded-xl"
+      />
+      <figcaption class="text-foreground/60 mt-3 text-center text-sm">
+        Mapping the journey: from opening Gurukool to resuming homework.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+{/* Style guide */}
+
+<section class="mb-20">
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Style guide</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Setting the tone.</h2>
+
+  <figure>
+    <Image
+      src={styleGuide}
+      alt="Gurukool style guide: Dark Charcoal, Seashell White, Burnt Orange, Leaf Green, Plus Jakarta Sans, components, and GURU"
+      class="h-auto w-full rounded-xl"
+    />
+    <figcaption class="text-foreground/60 mt-3 text-center text-sm">
+      Color, type, components, and GURU.
+    </figcaption>
+  </figure>
 </section>
 
 {/* The thinking */}
@@ -202,4 +491,54 @@ export const iaData = {
   </div>
 </section>
 
-<ContinueOnBehance href={frontmatter.behanceUrl} />
+{/* Testing outcomes */}
+
+<section class="mb-20">
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Impact</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Testing outcomes.</h2>
+
+  <div class="not-prose grid gap-6 sm:grid-cols-2">
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6 text-center">
+      <p class="text-4xl font-bold text-[color:var(--case-accent)]">4/5</p>
+      <p class="mt-2 text-base font-semibold text-[#fafafa]">Confident Navigation</p>
+      <p class="text-foreground/70 mt-2 text-sm leading-relaxed">Parents navigated the prototype without assistance.</p>
+    </div>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6 text-center">
+      <p class="text-4xl font-bold text-[color:var(--case-accent)]">High</p>
+      <p class="mt-2 text-base font-semibold text-[#fafafa]">Increased Confidence</p>
+      <p class="text-foreground/70 mt-2 text-sm leading-relaxed">Parents felt more in control with homework support.</p>
+    </div>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6 text-center">
+      <p class="text-4xl font-bold text-[color:var(--case-accent)]">Low</p>
+      <p class="mt-2 text-base font-semibold text-[#fafafa]">Reduced Confusion</p>
+      <p class="text-foreground/70 mt-2 text-sm leading-relaxed">Simplified flows made help easier to find.</p>
+    </div>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6 text-center">
+      <p class="text-4xl font-bold text-[color:var(--case-accent)]">Strong</p>
+      <p class="mt-2 text-base font-semibold text-[#fafafa]">Unified Preference</p>
+      <p class="text-foreground/70 mt-2 text-sm leading-relaxed">Reduced reliance on multiple tools.</p>
+    </div>
+  </div>
+</section>
+
+{/* Key learnings */}
+
+<section class="mb-20">
+  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Key learnings</span>
+  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">What this project taught me.</h2>
+
+  <div class="not-prose grid gap-6 md:grid-cols-3">
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-2 text-lg font-semibold text-[#fafafa]">Balance Both Audiences</h3>
+      <p class="text-foreground/70 text-sm leading-relaxed">Effective solutions require a balance between parent usability and child engagement.</p>
+    </div>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-2 text-lg font-semibold text-[#fafafa]">Empathy Drives Design</h3>
+      <p class="text-foreground/70 text-sm leading-relaxed">Empathy-driven insights lead to more meaningful and relevant design decisions.</p>
+    </div>
+    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <h3 class="mb-2 text-lg font-semibold text-[#fafafa]">Small Scale, Big Impact</h3>
+      <p class="text-foreground/70 text-sm leading-relaxed">Even small-scale testing (5 users) can uncover high-impact usability improvements.</p>
+    </div>
+  </div>
+</section>
