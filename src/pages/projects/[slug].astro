@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
+import { TldrButton } from '@/components/case-studies/TldrButton';
 
 const codedModules = import.meta.glob('/src/projects/*/index.astro', { eager: true });
 
@@ -73,6 +74,16 @@ const accent = project.data.accent ?? 'amber';
           <CodedComponent />
         ) : (
           <p class="text-muted-foreground">Project not found.</p>
+        )
+      }
+      {
+        project.data.type === 'case-study' && (
+          <TldrButton
+            client:load
+            projectTitle={project.data.title}
+            accent={accent}
+            points={project.data.tldr}
+          />
         )
       }
     </div>
