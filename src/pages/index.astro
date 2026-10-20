@@ -22,15 +22,15 @@ try {
   // No projects yet
 }
 
-// Resolve project thumbnail images
+// Resolve project thumbnail images by full relative path (thumbnails may live in
+// subfolders, and bare filenames like hero.png are ambiguous across projects)
 const workImageGlob = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/images/*.{png,jpg,jpeg,webp}',
+  '/src/assets/images/**/*.{png,jpg,jpeg,webp}',
   { eager: true },
 );
 const workImages: Record<string, ImageMetadata> = {};
 for (const project of workProjects) {
-  const filename = project.data.thumbnail.split('/').pop();
-  const path = `/src/assets/images/${filename}`;
+  const path = `/src/${project.data.thumbnail.replace(/^(\.\.\/)+/, '')}`;
   const module_ = workImageGlob[path];
   if (module_) workImages[project.id] = module_.default;
 }

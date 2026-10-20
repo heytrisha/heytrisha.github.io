@@ -17,11 +17,6 @@ const { project } = Astro.props;
 
 let Content = null;
 if (project.data.type === 'case-study') {
-  if (!project.data.behanceUrl) {
-    throw new Error(
-      `Case study "${project.id}" is missing required frontmatter: behanceUrl. Add a behanceUrl field to src/content/projects/${project.id}.mdx (frontmatter).`,
-    );
-  }
   const rendered = await render(project);
   Content = rendered.Content;
 }

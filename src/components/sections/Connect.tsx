@@ -35,16 +35,6 @@ export default function Connect() {
               LinkedIn
             </a>
           )}
-          {site.socials.behance && (
-            <a
-              href={site.socials.behance}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-            >
-              Behance
-            </a>
-          )}
         </div>
       </div>
     </section>
