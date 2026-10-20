@@ -12,7 +12,6 @@ const projects = defineCollection({
     heroImage: z.string().optional(),
     thumbnail: z.string(),
     figmaUrl: z.url().optional(),
-    behanceUrl: z.url().optional(),
     tags: z.array(z.string()).default([]),
     tldr: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
