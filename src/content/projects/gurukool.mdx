@@ -112,7 +112,7 @@ export const iaData = {
 
 {/* Overview */}
 
-<section class="mb-20">
+<section id="overview" class="mb-20">
   <blockquote class="text-xl md:text-2xl text-foreground italic leading-relaxed mb-8">
     "How might we help parents support their child's learning journey in a guided, stress-free way?"
   </blockquote>
@@ -141,9 +141,9 @@ export const iaData = {
 
 {/* The Problem */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Challenges</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">What parents told</h2>
+<section id="challenges" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">Challenges</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">What parents told</p>
 
 <p class="text-foreground/70 mb-8 text-lg leading-relaxed">
   Parents want to help. But the way children learn today is different from how they were taught.
@@ -176,9 +176,9 @@ export const iaData = {
 
 {/* Research */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Research</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Listening before designing.</h2>
+<section id="research" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">Research</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">Listening before designing.</p>
 
 <p class="text-foreground/70 mb-10 text-lg leading-relaxed">
   To understand parents' and students' homework habits, challenges, and expectations, I used two key
@@ -375,11 +375,35 @@ export const iaData = {
   </div>
 </section>
 
+{/* Information architecture */}
+
+<section id="architecture" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">IA and user flow</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">One home for everything homework.</p>
+
+<div class="not-prose mb-10">
+  <IATree data={iaData} />
+</div>
+
+  <div class="not-prose grid gap-4">
+    <figure>
+      <Image
+        src={userflow}
+        alt="Gurukool user flow: from opening the app through Ask GURU, Community, and Guided Help back to homework"
+        class="h-auto w-full rounded-xl"
+      />
+      <figcaption class="text-foreground/60 mt-3 text-center text-sm">
+        Mapping the journey: from opening Gurukool to resuming homework.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
 {/* The Solution */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">The Solution</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Guided help, AI support, and a community, in one place</h2>
+<section id="solution" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">The solution</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">Guided help, AI support, and a community, in one place</p>
 
 <p class="text-foreground/70 mb-8 text-lg leading-relaxed">
   Gurukool replaces the chaos of searching online with a structured, guided experience. Parents
@@ -432,35 +456,11 @@ export const iaData = {
   </div>
 </section>
 
-{/* Information architecture */}
-
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">IA and user flow</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">One home for everything homework.</h2>
-
-<div class="not-prose mb-10">
-  <IATree data={iaData} />
-</div>
-
-  <div class="not-prose grid gap-4">
-    <figure>
-      <Image
-        src={userflow}
-        alt="Gurukool user flow: from opening the app through Ask GURU, Community, and Guided Help back to homework"
-        class="h-auto w-full rounded-xl"
-      />
-      <figcaption class="text-foreground/60 mt-3 text-center text-sm">
-        Mapping the journey: from opening Gurukool to resuming homework.
-      </figcaption>
-    </figure>
-  </div>
-</section>
-
 {/* Style guide */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Style guide</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Setting the tone.</h2>
+<section id="style-guide" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">Style guide</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">Setting the tone.</p>
 
   <figure>
     <Image
@@ -476,9 +476,9 @@ export const iaData = {
 
 {/* The thinking */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">The thinking</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Help at 8:14pm.</h2>
+<section id="thinking" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">The thinking</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">Help at 8:14pm.</p>
 
   <div class="text-foreground/70 leading-relaxed">
     <p class="text-lg mb-6">
@@ -490,41 +490,45 @@ export const iaData = {
   </div>
 </section>
 
-{/* Testing outcomes */}
+{/* Impact: prototype walkthroughs */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Impact</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Testing outcomes.</h2>
+<section id="outcomes" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">Impact</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">Walkthroughs, not analytics.</p>
 
-  <div class="not-prose grid gap-6 sm:grid-cols-2">
-    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6 text-center">
-      <p class="text-4xl font-bold text-[color:var(--case-accent)]">4/5</p>
-      <p class="mt-2 text-base font-semibold text-[#fafafa]">Confident Navigation</p>
-      <p class="text-foreground/70 mt-2 text-sm leading-relaxed">Parents navigated the prototype without assistance.</p>
-    </div>
-    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6 text-center">
-      <p class="text-4xl font-bold text-[color:var(--case-accent)]">High</p>
-      <p class="mt-2 text-base font-semibold text-[#fafafa]">Increased Confidence</p>
-      <p class="text-foreground/70 mt-2 text-sm leading-relaxed">Parents felt more in control with homework support.</p>
-    </div>
-    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6 text-center">
-      <p class="text-4xl font-bold text-[color:var(--case-accent)]">Low</p>
-      <p class="mt-2 text-base font-semibold text-[#fafafa]">Reduced Confusion</p>
-      <p class="text-foreground/70 mt-2 text-sm leading-relaxed">Simplified flows made help easier to find.</p>
-    </div>
-    <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6 text-center">
-      <p class="text-4xl font-bold text-[color:var(--case-accent)]">Strong</p>
-      <p class="mt-2 text-base font-semibold text-[#fafafa]">Unified Preference</p>
-      <p class="text-foreground/70 mt-2 text-sm leading-relaxed">Reduced reliance on multiple tools.</p>
-    </div>
+<div class="not-prose grid gap-6 sm:grid-cols-2">
+  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6 text-center">
+    <p class="text-base font-semibold text-[#fafafa]">Confident navigation</p>
+    <p class="text-foreground/70 mt-2 text-sm leading-relaxed">
+      Parents walked through the prototype flows without assistance.
+    </p>
+  </div>
+  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6 text-center">
+    <p class="text-base font-semibold text-[#fafafa]">Increased confidence</p>
+    <p class="text-foreground/70 mt-2 text-sm leading-relaxed">
+      Parents said they felt more in control with homework support.
+    </p>
+  </div>
+  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6 text-center">
+    <p class="text-base font-semibold text-[#fafafa]">Reduced confusion</p>
+    <p class="text-foreground/70 mt-2 text-sm leading-relaxed">
+      Simplified flows made help easier to find.
+    </p>
+  </div>
+  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6 text-center">
+    <p class="text-base font-semibold text-[#fafafa]">Unified preference</p>
+    <p class="text-foreground/70 mt-2 text-sm leading-relaxed">
+      Parents preferred one place over juggling multiple tools.
+    </p>
+  </div>
   </div>
 </section>
 
 {/* Key learnings */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Key learnings</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">What this project taught me.</h2>
+<section id="learnings" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">Key learnings</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">What this project taught me.</p>
 
   <div class="not-prose grid gap-6 md:grid-cols-3">
     <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
@@ -536,8 +540,8 @@ export const iaData = {
       <p class="text-foreground/70 text-sm leading-relaxed">Empathy-driven insights lead to more meaningful and relevant design decisions.</p>
     </div>
     <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
-      <h3 class="mb-2 text-lg font-semibold text-[#fafafa]">Small Scale, Big Impact</h3>
-      <p class="text-foreground/70 text-sm leading-relaxed">Even small-scale testing (5 users) can uncover high-impact usability improvements.</p>
+      <h3 class="mb-2 text-lg font-semibold text-[#fafafa]">Small Sessions, Real Signal</h3>
+      <p class="text-foreground/70 text-sm leading-relaxed">Walking interview participants through even a static prototype surfaces navigation and comprehension issues worth fixing.</p>
     </div>
   </div>
 </section>

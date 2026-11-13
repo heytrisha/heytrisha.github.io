@@ -1,0 +1,102 @@
+---
+// src/components/case-studies/CaseStudyIndex.astro
+// "On this page" index for case-study detail pages. Section lists are keyed by
+// project id and must match the section ids in src/content/projects/*.mdx.
+
+interface Properties {
+  projectId: string;
+}
+
+const { projectId } = Astro.props as Properties;
+
+const sectionsByProject: Record<string, { id: string; label: string }[]> = {
+  sampatti: [
+    { id: 'problem', label: 'The problem' },
+    { id: 'research', label: 'Research' },
+    { id: 'principles', label: 'Design principles' },
+    { id: 'architecture', label: 'Information architecture' },
+    { id: 'solution', label: 'The solution' },
+    { id: 'outcomes', label: 'Outcomes & metrics' },
+    { id: 'accessibility', label: 'Accessibility' },
+    { id: 'closing', label: 'Closing reflection' },
+  ],
+  gurukool: [
+    { id: 'overview', label: 'Overview' },
+    { id: 'challenges', label: 'Challenges' },
+    { id: 'research', label: 'Research' },
+    { id: 'architecture', label: 'IA and user flow' },
+    { id: 'solution', label: 'The solution' },
+    { id: 'style-guide', label: 'Style guide' },
+    { id: 'thinking', label: 'The thinking' },
+    { id: 'outcomes', label: 'Impact' },
+    { id: 'learnings', label: 'Key learnings' },
+  ],
+  evently: [
+    { id: 'overview', label: 'Overview' },
+    { id: 'problem', label: 'The problem' },
+    { id: 'research', label: 'Research' },
+    { id: 'solution', label: 'The solution' },
+    { id: 'thinking', label: 'The thinking' },
+  ],
+};
+
+const sections = sectionsByProject[projectId] ?? [];
+---
+
+{
+  sections.length > 0 && (
+    <nav
+      aria-label="On this page"
+      class="border-foreground/10 bg-card rounded-xl border p-5 min-[1400px]:fixed min-[1400px]:top-1/2 min-[1400px]:left-16 min-[1400px]:max-h-[80vh] min-[1400px]:w-52 min-[1400px]:-translate-y-1/2 min-[1400px]:overflow-y-auto min-[1400px]:border-none min-[1400px]:bg-transparent min-[1400px]:p-0"
+    >
+      <ol class="grid gap-2">
+        {sections.map(({ id, label }) => (
+          <li>
+            <a
+              href={`#${id}`}
+              class="text-foreground/70 hover:text-foreground text-sm transition-colors"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
+
+<script>
+  const indexLinks = Array.from(
+    document.querySelectorAll('nav[aria-label="On this page"] a[href^="#"]'),
+  ).filter((link): link is HTMLAnchorElement => link instanceof HTMLAnchorElement);
+  const indexSections = indexLinks
+    .map((link) => document.getElementById(link.hash.slice(1)))
+    .filter((section): section is HTMLElement => section !== null);
+
+  function setActiveSection(id: string) {
+    indexLinks.forEach((link) => {
+      const active = link.hash.slice(1) === id;
+      link.classList.toggle('text-[color:var(--case-accent)]', active);
+      link.classList.toggle('text-foreground/70', !active);
+      if (active) {
+        link.setAttribute('aria-current', 'true');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  indexLinks.forEach((link) => {
+    link.addEventListener('click', () => setActiveSection(link.hash.slice(1)));
+  });
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActiveSection(entry.target.id);
+      });
+    },
+    { rootMargin: '-20% 0px -70% 0px' },
+  );
+  indexSections.forEach((section) => sectionObserver.observe(section));
+</script>

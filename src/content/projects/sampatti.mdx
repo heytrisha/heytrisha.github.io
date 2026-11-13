@@ -7,11 +7,11 @@ thumbnail: '../../assets/images/sampatti.png'
 tags: ['Fintech', 'Mobile App', 'UX Research', 'Onboarding']
 tldr:
   [
-    'Sampatti is a concept iOS app designed around the moment before the first investment: end-to-end product design.',
+    'Sampatti is a concept iOS app designed around the moment before the first investment.',
     '## The problem',
     'India added 40M first-time investors, yet only 35M SIP accounts are active. The gap is decision confidence: Rohan (23) finished KYC, then closed the app three times at 200+ funds.',
     '## Key challenges',
-    'Choosing who not to design for: one aware-but-inactive segment with the clearest unmet need, not all four.',
+    'Choosing who not to design for: one aware-but-inactive segment with the clearest unmet need.',
     'Guidance without control: opinionated 80/20 defaults with visible escape hatches for informed users.',
     'Trust with money: exit loads, taxes, and assumptions surfaced at the point of decision, not lock icons.',
     'Two intents, one product: goal-first in 7 steps and goal-free in 5, one decision per screen.',
@@ -104,9 +104,9 @@ export const iaData = {
 
 {/* The Problem */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">The Problem</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">40 million first-time investors. Most never make their first investment.</h2>
+<section id="problem" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">The problem</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">40 million first-time investors. Most never make their first investment.</p>
 
 <p class="text-foreground/70 mb-8 text-lg leading-relaxed">
   The apps are polished. The intent is real. The infrastructure exists. Yet the gap between knowing
@@ -158,12 +158,14 @@ export const iaData = {
 
 </section>
 
-{/* Who we're designing for */}
+{/* Research */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Who we're designing for</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-4">Four segments. One deliberate focus.</h2>
-  <p class="text-foreground/70 mb-8 text-lg leading-relaxed">Mapping the full landscape before narrowing — to show why choice matters.</p>
+<section id="research" class="mb-20">
+  <h2 class="mt-4 mb-8 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">Research</h2>
+  <div id="segments">
+    <h3 class="mb-3 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">Who we’re designing for</h3>
+    <p class="text-xl font-bold tracking-tight text-[#fafafa] md:text-2xl">Four segments. One deliberate focus.</p>
+    <p class="text-foreground/70 mt-3 mb-8 text-base leading-relaxed">Mapping the full landscape before narrowing — to show why choice matters.</p>
 
 <div class="not-prose mb-8 grid gap-6 md:grid-cols-2">
   <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
@@ -215,13 +217,11 @@ export const iaData = {
   <p class="text-foreground/70 leading-relaxed">
     Segment 3 was chosen because it has the clearest unmet need, the most designable problem, and the strongest business case. Users at this point have money and intent — the shortest conversion path — and need personalised guidance, not overwhelming options.
   </p>
-</section>
+  </div>
 
-{/* User persona */}
-
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">User persona</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Rohan Mehta, 23. Aware but inactive.</h2>
+  <div id="persona" class="mt-14">
+    <h3 class="mb-3 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">User persona</h3>
+    <p class="mb-8 text-xl font-bold tracking-tight text-[#fafafa] md:text-2xl">Rohan Mehta, 23. Aware but inactive.</p>
 
 <div class="mb-8 rounded-xl border border-[color:var(--case-accent)]/30 bg-[color:var(--case-accent)]/5 p-6">
   <p className="mb-1 text-sm leading-relaxed text-gray-300">
@@ -276,13 +276,14 @@ export const iaData = {
       </ul>
     </div>
   </div>
+  </div>
 </section>
 
 {/* Design principles */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Design principles</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Five decisions that shaped every screen.</h2>
+<section id="principles" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">Design principles</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">Five decisions that shaped every screen.</p>
 
   <div class="not-prose flex flex-col gap-6">
     <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
@@ -310,9 +311,9 @@ export const iaData = {
 
 {/* Information architecture */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Information architecture</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Two paths, one decision per surface.</h2>
+<section id="architecture" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">Information architecture</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">Two paths, one decision per surface.</p>
 
 <div class="not-prose mb-10">
   <IATree data={iaData} />
@@ -403,9 +404,9 @@ export const iaData = {
 
 {/* The Solution */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">The Solution</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">Sampatti is built for the user who is still deciding.</h2>
+<section id="solution" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">The solution</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">Sampatti is built for the user who is still deciding.</p>
 
 <div class="mb-8">
   <p class="text-foreground/70 leading-relaxed">
@@ -452,9 +453,9 @@ export const iaData = {
 
 {/* Outcomes and metrics */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Outcomes & metrics</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">What I'd watch if I shipped.</h2>
+<section id="outcomes" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">Outcomes & metrics</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">What I'd watch if I shipped.</p>
 
 <div class="not-prose mb-8 grid gap-6 md:grid-cols-3">
   <div class="rounded-xl border border-white/10 bg-white/[0.02] p-6">
@@ -557,11 +558,11 @@ export const iaData = {
   </p>
 </section>
 
-{/* Accessibility and reflections */}
+{/* Accessibility */}
 
-<section class="mb-20">
-  <span class="text-[color:var(--case-accent)] text-sm font-medium tracking-wider uppercase">Accessibility and reflections</span>
-  <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8">The mindset behind the design.</h2>
+<section id="accessibility" class="mb-20">
+  <h2 class="mt-4 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">Accessibility</h2>
+  <p class="mt-3 mb-8 text-2xl font-bold tracking-tight text-[#fafafa] md:text-3xl">The mindset behind the design.</p>
 
 <h3 class="mb-4 text-xl font-bold text-[#fafafa]">Accessibility and inclusion</h3>
 <ul class="text-foreground/70 mb-10 space-y-3 leading-relaxed">
@@ -581,10 +582,15 @@ export const iaData = {
     the projection graph data points.
   </li>
 </ul>
+</section>
+
+{/* Closing reflection */}
+
+<section id="closing" class="mb-20">
+  <h2 class="mt-4 mb-8 text-2xl font-bold tracking-tight text-[color:var(--case-accent)] md:text-3xl">Closing reflection</h2>
 
   <div class="border-[color:var(--case-accent)]/30 bg-[color:var(--case-accent)]/5 rounded-xl border p-6 md:p-8">
-    <span class="text-sm font-medium tracking-wider text-[color:var(--case-accent)] uppercase">Closing reflection</span>
-    <div class="text-foreground/80 mt-4 space-y-5 leading-relaxed">
+    <div class="text-foreground/80 space-y-5 leading-relaxed">
       <p>
         Designing Sampatti taught me that the hardest part of an investment app isn't picking funds — it's getting someone who downloaded an app, finished KYC, and still hasn't invested across the threshold. The gap is not financial literacy. It is decision confidence. Every screen in this case study is an answer to that one question.
       </p>
