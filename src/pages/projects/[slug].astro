@@ -1,7 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
-import { TldrButton } from '@/components/case-studies/TldrButton';
+import TldrAccordion from '@/components/case-studies/TldrAccordion.astro';
+import CaseStudyIndex from '@/components/case-studies/CaseStudyIndex.astro';
 
 const codedModules = import.meta.glob('/src/projects/*/index.astro', { eager: true });
 
@@ -29,6 +30,7 @@ const CodedComponent =
     : null;
 
 const isShowHeader = !project.data.hideDefaultHeader;
+const isCaseStudy = project.data.type === 'case-study';
 const containerClass = project.data.type === 'coded' ? 'max-w-5xl' : 'max-w-4xl';
 const accent = project.data.accent ?? 'amber';
 ---
@@ -59,7 +61,20 @@ const accent = project.data.accent ?? 'amber';
         )
       }
 
-      <!-- Content -->
+      {
+        project.data.type === 'case-study' && project.data.tldr.length > 0 && (
+          <div class="mb-12">
+            <TldrAccordion points={project.data.tldr} />
+          </div>
+        )
+      }
+      {
+        isCaseStudy && (
+          <div class="mb-12 min-[1400px]:contents">
+            <CaseStudyIndex projectId={project.id} />
+          </div>
+        )
+      }
       {
         project.data.type === 'case-study' && Content ? (
           <div class="prose prose-invert max-w-none">
@@ -69,16 +84,6 @@ const accent = project.data.accent ?? 'amber';
           <CodedComponent />
         ) : (
           <p class="text-muted-foreground">Project not found.</p>
-        )
-      }
-      {
-        project.data.type === 'case-study' && (
-          <TldrButton
-            client:load
-            projectTitle={project.data.title}
-            accent={accent}
-            points={project.data.tldr}
-          />
         )
       }
     </div>
